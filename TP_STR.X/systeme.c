@@ -57,17 +57,22 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
-// Fin de sauvegarde des zones utilisées par le compilateur
-
-        TMR0=(0xFFFF-30000);// l'IT se redéclenchera dans 10ms
-        T0IF=0;   // effacement du flag pour attendre la prochaine it
-
-        Tick_Count++;// Incrémentation du compteur de tick
-
-        pointeur_de_tache++;                        //
-        if (pointeur_de_tache==NOMBRE_DE_TACHES)    // Evolution du cycle des taches
-            pointeur_de_tache=0;                    // 1-2-3-4-5-6-1-2-3...
-        tache_active=queue[pointeur_de_tache];      //
+        // Fin de sauvegarde des zones utilisées par le compilateur
+        pointeur_de_tache++;                        
+        if (pointeur_de_tache == NOMBRE_DE_TACHES)    
+            pointeur_de_tache = 0;                    
+        
+        // Nouvelle logique pour gérer les tâches en attente
+        tache_active = queue[pointeur_de_tache];
+        
+        // Vérification si la tâche est en attente du sémaphore
+        while (semaphores.attente & (1 << tache_active)) {
+            // Si la tâche est en attente, on passe à la suivante
+            pointeur_de_tache++;                        
+            if (pointeur_de_tache == NOMBRE_DE_TACHES)    
+                pointeur_de_tache = 0;                    
+            tache_active = queue[pointeur_de_tache];
+        }
 
  // Restauration du contexte de la tache active
 // Debut de restauration des zones utilisées par le compilateur

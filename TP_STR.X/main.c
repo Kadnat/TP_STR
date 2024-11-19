@@ -7,7 +7,7 @@ void main()
 {  
     initialisation_des_ports();
     initialisation_du_systeme();
-    Init(SEM_CAN);
+    semaphore_init(2);
 
         // Démarrage du système
     T0CONbits.TMR0ON=1; //Démarrage du Timer0
