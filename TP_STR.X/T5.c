@@ -32,6 +32,9 @@ void tache5(void)
     }
 }
 
+//Chaque tache doit être autonome alors ajouter des fonctions comme ca c'est con!
+//a revoir de toute manière ces fonctions étaient des test pour apprendre Git 
+
 void GestionBatterieVitesse(void){
     ////We assume this function is called via time controled fashion and is only called once a second 
     if (vitesse>3){batterie=batterie-3;}
