@@ -31,3 +31,18 @@ void tache5(void)
             ;
     }
 }
+
+void GestionBatterieVitesse(void){
+    ////We assume this function is called via time controled fashion and is only called once a second 
+    if (vitesse>3){batterie=batterie-3;}
+    else if (vitesse=1){batterie=batterie-2;}
+    else if (vitesse>=1){batterie=batterie-1;}
+    
+    
+}
+void GestionBatterieFourche(void){
+    // We assume that this func is called because the forks are sollicité
+    //We also assume this function is called in a time concious fashion and is only called once a second 
+    //Alors on diminue la batterie d'un taux fix de 1
+    batterie=batterie-1;
+}
