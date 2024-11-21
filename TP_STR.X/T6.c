@@ -23,25 +23,42 @@ void tache6(void)
         else key_c = 1;
         
         analog_c = 0x0F & ( ((key_c | 0xFE) << 3 ) | ((SIEGE | 0xFE) << 2 ) | 
-                ((FREIN_A_MAIN | 0xFE) << 1 ) | (CHOC | 0xFE) )
+                ((FREIN_A_MAIN | 0xFE) << 1 ) | (CHOC | 0xFE) );
         
+        if(MARCHE_AVANT)
+        {
+            drive_c = 1;
+        }
+        else 
+        {
+            if(MARCHE_ARRIERE)
+            {
+                drive_c = 2;
+            }
+            else
+            {
+                drive_c = 0;
+            }
+        }
+
+        //manque variables joystick droite gauche haut bas
+    
+        speed_c = vitesse;
         
+        water_c = TEMPERATURE_EAU;
+        oil_c = TEMPERATURE_HUILE;
+        battery_c = batterie;
         
-        while (PIR1bits.TX1IF==0);   TXREG1='t';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='a';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='c';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='h';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='e';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='5';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='_';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='e';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='n';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='_';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='c';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='o';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='u';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='r';while (TXSTA1bits.TRMT==0);
-        while (PIR1bits.TX1IF==0);   TXREG1='s';while (TXSTA1bits.TRMT==0);
+
+        
+        while (PIR1bits.TX1IF==0);   TXREG1=analog_c;while (TXSTA1bits.TRMT==0);
+        while (PIR1bits.TX1IF==0);   TXREG1=drive_c;while (TXSTA1bits.TRMT==0);
+        //wheels
+        //forks
+        while (PIR1bits.TX1IF==0);   TXREG1=speed_c;while (TXSTA1bits.TRMT==0);
+        while (PIR1bits.TX1IF==0);   TXREG1=water_c;while (TXSTA1bits.TRMT==0);
+        while (PIR1bits.TX1IF==0);   TXREG1=oil_c;while (TXSTA1bits.TRMT==0);
+        while (PIR1bits.TX1IF==0);   TXREG1=battery_c;while (TXSTA1bits.TRMT==0);
 
         // Libère le sémaphore après utilisation
         semaphore_release();
