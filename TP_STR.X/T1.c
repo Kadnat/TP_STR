@@ -9,7 +9,6 @@ void tache1(void)
     clear_text();
     clear_graphics();
     init_rxtx();
-    Init(SEM_RXTX);
     RXTX_libre=1;
     TXREG1='R';
     ei();

@@ -15,17 +15,18 @@ extern "C" {
 #include "main.h"
 
 // Liste des semaphores
-    #define     SEM_CAN     1
-    #define     SEM_RXTX    2
+    typedef struct {
+        volatile unsigned char jetons;    
+        volatile unsigned char max_jetons; 
+        volatile unsigned char attente;    
+    } Semaphore;
 
-// Variables globales semaphores
-    unsigned char Val_sem_cna;
-    unsigned char Val_sem_rxtx;
+    Semaphore semaphores;
 
     // Prototypes
-    void Init(unsigned char sem);
-    void __reentrant P(unsigned char sem);
-    void __reentrant V(unsigned char sem);
+    void semaphore_init(unsigned char jetons_initiaux);
+    unsigned char semaphore_tryacquire(unsigned char tache);
+    void semaphore_release(void);
     //reentrant void P(unsigned char sem);
     //reentrant void V(unsigned char sem);
 

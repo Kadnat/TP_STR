@@ -1,52 +1,37 @@
 #include "semaphore.h"
 
 
-void Init(unsigned char sem)
-{
-    switch (sem)
-    {
-        case SEM_CAN:
-            Val_sem_cna=1;
-            break;
-        case SEM_RXTX:
-            Val_sem_rxtx=1;
-            break;
-        default:
-            ;
+// Initialisation d'un sémaphore
+void semaphore_init(unsigned char jetons_initiaux) {
+    semaphores.jetons = jetons_initiaux;
+    semaphores.max_jetons = jetons_initiaux;
+    semaphores.attente = 0;
+}
+
+// Acquisition non bloquante du sémaphore
+unsigned char semaphore_tryacquire(unsigned char tache) {
+    if (semaphores.jetons > 0) {
+        semaphores.jetons--;
+        return 1; // Succès
+    }
+    
+    // Si pas de jeton, ajoute la tâche à la liste d'attente
+    semaphores.attente |= (1 << tache);
+    return 0; // Échec
+}
+
+// Libération du sémaphore
+void semaphore_release(void) {
+    if (semaphores.jetons < semaphores.max_jetons) {
+        semaphores.jetons++;
         
-    }
-}
-
-void __reentrant P(unsigned char sem)
-//reentrant void P(unsigned char sem)
-{
-    switch(sem)
-    {
-        case SEM_CAN:
-            while (Val_sem_cna<1)  // Tant que le cna est occupé
-                ;                   // On attend
-                Val_sem_cna=0; // Dès qu'il est libre, on le réserve
-        case SEM_RXTX:
-            while (Val_sem_rxtx<1)  // Tant que la liaison série est occupé
-                ;                   // On attend
-                Val_sem_rxtx=0; // Dès qu'elle est libre, on la réserve
-        default:
-            ;
-    }
-}
-
-void __reentrant V(unsigned char sem)
-//reentrant void V(unsigned char sem)
-{
-    switch(sem)
-    {
-        case SEM_CAN:
-            Val_sem_cna=1;
-            break;
-        case SEM_RXTX:
-            Val_sem_rxtx=1;
-            break;
-        default:
-            ;
+        // Réveille une tâche en attente
+        for (unsigned char i = 0; i < NOMBRE_DE_TACHES; i++) {
+            if (semaphores.attente & (1 << i)) {
+                // Retire la tâche de la liste d'attente
+                semaphores.attente &= ~(1 << i);
+                break;
+            }
+        }
     }
 }
