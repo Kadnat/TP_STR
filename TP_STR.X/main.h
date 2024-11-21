@@ -15,6 +15,7 @@ extern "C" {
 // Include de base
 #include <xc.h>
 #include <pic18f87k22.h>
+#include <stdbool.h>
     
 // Include du projet
 #include "systeme.h"
@@ -137,6 +138,12 @@ extern "C" {
 #define     TEMPERATURE_HUILE   3
 #define     JOYSTICK_X          10
 #define     JOYSTICK_Y          11
+    
+bool    ENGINE = 0;
+bool    HANDBRAKE = 1;
+int     DRIVE = 0;
+int     FORKLIFT = 0;
+int     WHEELDIRECTION = 0;
 
 
 // Prototypes
