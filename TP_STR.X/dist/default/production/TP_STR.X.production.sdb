@@ -92,7 +92,7 @@
 [v _tp_delai tp_delai `(v  1 e 1 0 ]
 "3 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T3.c
 [v _tache3 tache3 `(v  1 e 1 0 ]
-"5 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T4.c
+"3 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T4.c
 [v _tache4 tache4 `(v  1 e 1 0 ]
 "3 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T5.c
 [v _tache5 tache5 `(v  1 e 1 0 ]
@@ -104,6 +104,8 @@
 [v _HANDBRAKE HANDBRAKE `a  1 e 1 0 ]
 "144
 [v _DRIVE DRIVE `i  1 e 2 0 ]
+"145
+[v _FORKLIFT FORKLIFT `i  1 e 2 0 ]
 "146
 [v _WHEELDIRECTION WHEELDIRECTION `i  1 e 2 0 ]
 "22 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X/semaphore.h
@@ -800,10 +802,10 @@
 [v tache5@a a `ui  1 a 2 0 ]
 "33
 } 0
-"5 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T4.c
+"3 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T4.c
 [v _tache4 tache4 `(v  1 e 1 0 ]
 {
-"68
+"112
 } 0
 "3 C:\CESI\S9\Temps réel\CESI Projet STR A5\TP_STR\TP_STR.X\T3.c
 [v _tache3 tache3 `(v  1 e 1 0 ]

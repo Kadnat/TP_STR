@@ -21,5 +21,5 @@ void tache6(void)
         {
             n_octet_badge=0;
         }
-    }
+    }  
 }

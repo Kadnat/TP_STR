@@ -1,11 +1,10 @@
 #include "T4.h"
-#include "main.h"
-#include "variables_globales.h"
 
 void tache4(void)
 {
-    // Start
-    if(SIEGE == 1 && n_octet_badge != 0)
+    while(1)
+    {
+        if(SIEGE == 1 && n_octet_badge != 0)
     {
         ENGINE = 1;
     }
@@ -52,7 +51,7 @@ void tache4(void)
         else
         {
             WHEELDIRECTION = 0; //STRAIGHT
-        }
+        }  
 
         //Forklift
         if(lecture_8bit_analogique(JOYSTICK_Y) <= 83)
@@ -104,11 +103,10 @@ void tache4(void)
         if(MARCHE_ARRIERE == 0)
         {
             BUZZER = 1;  // Activer le buzzer
-            
-            BUZZER = 0;  // Désactiver le buzzer
-        }
+        }  
         else
         {
             BUZZER = 0;  // S'assurer que le buzzer est éteint
         }
+    }
 }

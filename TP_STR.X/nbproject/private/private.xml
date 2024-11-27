@@ -6,12 +6,14 @@
         <group>
             <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/T4.h</file>
             <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/main.h</file>
-            <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/afficheur.h</file>
             <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/T1.c</file>
             <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/main.c</file>
-            <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/variables_globales.h</file>
+            <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/afficheur.c</file>
             <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/T5.c</file>
+            <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/semaphore.c</file>
             <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/T4.c</file>
+            <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/systeme.c</file>
+            <file>file:/C:/CESI/S9/Temps%20réel/CESI%20Projet%20STR%20A5/TP_STR/TP_STR.X/stid.c</file>
         </group>
     </open-files>
 </project-private>

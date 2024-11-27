@@ -11401,12 +11401,11 @@ unsigned char lecture_8bit_analogique(unsigned char channel);
 # 1 "T4.c" 2
 
 
-
-
 void tache4(void)
 {
-
-    if(PORTBbits.RB2 == 1 && n_octet_badge != 0)
+    while(1)
+    {
+        if(PORTBbits.RB2 == 1 && n_octet_badge != 0)
     {
         ENGINE = 1;
     }
@@ -11439,27 +11438,72 @@ void tache4(void)
         DRIVE = 0;
     }
 
+    if(ENGINE == 1)
+    {
 
-    if(lecture_8bit_analogique(10) <= 83)
-    {
-        WHEELDIRECTION = 2;
-    }
-    else if(lecture_8bit_analogique(10) >= 173)
-    {
-        WHEELDIRECTION = 1;
-    }
-    else
-    {
-        WHEELDIRECTION = 0;
+        if(lecture_8bit_analogique(10) <= 83)
+        {
+            WHEELDIRECTION = 2;
+        }
+        else if(lecture_8bit_analogique(10) >= 173)
+        {
+            WHEELDIRECTION = 1;
+        }
+        else
+        {
+            WHEELDIRECTION = 0;
+        }
+
+
+        if(lecture_8bit_analogique(11) <= 83)
+        {
+            FORKLIFT = 1;
+        }
+        else if(lecture_8bit_analogique(11) >= 173)
+        {
+            FORKLIFT = 2;
+        }
+        else
+        {
+            FORKLIFT = 0;
+        }
+
+
+        if(PORTBbits.RB3 == 0)
+        {
+            ENGINE = 0;
+        }
+
+
+        if(lecture_8bit_analogique(2) > 100)
+        {
+            ENGINE = 0;
+        }
+        else if(lecture_8bit_analogique(2) < 5)
+        {
+            ENGINE = 0;
+        }
+
+
+        if(lecture_8bit_analogique(3) > 110)
+        {
+            ENGINE = 0;
+        }
+        else if(lecture_8bit_analogique(3) < 5)
+        {
+            ENGINE = 0;
+        }
+
+
+        if(batterie <= 0)
+        {
+            ENGINE = 0;
+        }
     }
 
-    while(1)
-    {
         if(PORTBbits.RB1 == 0)
         {
             LATJbits.LATJ7 = 1;
-
-            LATJbits.LATJ7 = 0;
         }
         else
         {
