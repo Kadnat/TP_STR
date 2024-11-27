@@ -33,8 +33,8 @@ class SerialWorker(QObject):
             try:
                 if self.serial_port.in_waiting > 0:
                     data_bytes = self.serial_port.read(self.serial_port.in_waiting)  # Lire tous les octets disponibles
-                    data_str = data_bytes.hex()         # Convertir les données en chaîne hexadécimale
-                    self.data_received.emit(data_str)   # Émettre la trame sous forme de chaîne pour analyse
+                    trame_fragment = data_bytes.hex()
+                    self.data_received.emit(trame_fragment)
             except serial.SerialException as e:
                 print(f"Exception série : {e}")
 
@@ -61,4 +61,4 @@ def test_serial_reception():
     worker.stop()
 
 # Appeler la fonction de test pour lancer la simulation de réception
-test_serial_reception()
+# test_serial_reception()

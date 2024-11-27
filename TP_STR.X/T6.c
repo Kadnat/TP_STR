@@ -2,36 +2,37 @@
 
 void tache6(void)
 {
-   unsigned int a;
-   unsigned char ma_tache = TACHE6; // Identifiant de la tâche
-   unsigned char analog_c = 0, drive_c = 0, forks_c = 0, speed_c = 0, 
+    unsigned int a;
+    unsigned char ma_tache = TACHE6; // Identifiant de la tï¿½che
+    unsigned char analog_c = 0, drive_c = 0, forks_c = 0, speed_c = 0, 
            water_c = 0, oil_c = 0, battery_c = 0, key_c = 0; 
+
 
     while(1)
     {
-        // Essaie d'acquérir le sémaphore
+        // Essaie d'acquï¿½rir le sï¿½maphore
         while (semaphore_tryacquire(ma_tache) == 0)
         {
-            // Si le sémaphore n'est pas disponible, 
+            // Si le sï¿½maphore n'est pas disponible, 
             // on attend passivement
-            // (l'ordonnanceur passera à une autre tâche)
+            // (l'ordonnanceur passera ï¿½ une autre tï¿½che)
         }
         
 
-        // Une fois le sémaphore acquis, on peut écrire
+        // Une fois le sï¿½maphore acquis, on peut ï¿½crire
         if(n_octet_badge == 0) key_c = 0;
         else key_c = 1;
         
         analog_c = 0x0F & ( ((key_c | 0xFE) << 3 ) | ((SIEGE | 0xFE) << 2 ) | 
                 ((FREIN_A_MAIN | 0xFE) << 1 ) | (CHOC | 0xFE) );
         
-        if(MARCHE_AVANT)
+        if(MARCHE_AVANT == 0)
         {
             drive_c = 1;
         }
         else 
         {
-            if(MARCHE_ARRIERE)
+            if(MARCHE_ARRIERE == 0)
             {
                 drive_c = 2;
             }
@@ -60,7 +61,7 @@ void tache6(void)
         while (PIR1bits.TX1IF==0);   TXREG1=oil_c;while (TXSTA1bits.TRMT==0);
         while (PIR1bits.TX1IF==0);   TXREG1=battery_c;while (TXSTA1bits.TRMT==0);
 
-        // Libère le sémaphore après utilisation
+        // Libï¿½re le sï¿½maphore aprï¿½s utilisation
         semaphore_release();
 
     }

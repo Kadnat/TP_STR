@@ -1,43 +1,48 @@
 def decode_trame(hex_trame):
-    if len(hex_trame) < 14:
-        raise ValueError("Trame trop courte, elle doit contenir 14 caractères hexadécimaux")
+    if len(hex_trame) != 20:
+        raise ValueError("Wrong length for frame ! (20 needed)")
 
-    # 1er caractère hexadécimal - 4 bits booléens
-    bool_data = int(hex_trame[0], 16)
-    key_presence = bool(bool_data & 0x8)    # 1000
-    seat_presence = bool(bool_data & 0x4)   # 0100
-    hand_brake = bool(bool_data & 0x2)      # 0010
-    shock = bool(bool_data & 0x1)           # 0001
+    # Start Flag
+    start_flag = hex_trame[0:2]
+    if start_flag != 'fe':
+        raise NameError("Missing start flag => ! (0xFE)")
+    
+    # 3e & 4e caractère hexadécimal - 4 bits booléens
+    status_data = int(hex_trame[2:4], 16)
+    key_presence =  True #not bool(status_data & 0x8)    # 1000
+    seat_presence = not bool(status_data & 0x4)   # 0100
+    hand_brake = not bool(status_data & 0x2)      # 0010
+    shock = not bool(status_data & 0x1)           # 0001
 
-    # 2e caractère hexadécimal - Marche (3 états possibles)
-    drive = int(hex_trame[1], 16)
+    # 5e & 6e caractère hexadécimal - Marche (3 états possibles)
+    drive = int(hex_trame[4:6], 16)
     if drive > 2:
-        raise ValueError("Wrong value for Marche")
+        raise ValueError("Wrong value for Marche", {drive})
 
-    # 3e caractère hexadécimal - Direction des roues (3 états possibles)
-    wheels_direction = int(hex_trame[2], 16)
+    # 7e & 8e caractère hexadécimal - Direction des roues (3 états possibles)
+    wheels_direction = int(hex_trame[6:8], 16)
     if wheels_direction > 2:
-        raise ValueError("Wrong value for Direction Roues")
+        raise ValueError("Wrong value for Direction Roues", {wheels_direction})
         
-    # 4e caractère hexadécimal - Hauteur des fourches (3 états possibles)
-    forks = int(hex_trame[3], 16)
+    # 9e & 10e caractère hexadécimal - Hauteur des fourches (3 états possibles)
+    forks = int(hex_trame[8:10], 16)
     if forks > 2:
-        raise ValueError("Wrong value for hauteur fourches")
+        raise ValueError("Wrong value for hauteur fourches", {forks})
 
-    # 5e et 6e caractères hexadécimaux - Vitesse
-    speed = int(hex_trame[4:6], 16)
+    # 11e et 12e caractères hexadécimaux - Vitesse
+    speed = int(hex_trame[10:12], 16)
 
-    # 7e et 8e caractères hexadécimaux - Température de l'eau
-    water_temp = int(hex_trame[6:8], 16)
+    # 13e et 14e caractères hexadécimaux - Température de l'eau
+    water_temp = int(hex_trame[12:14], 16)
 
-    # 9e et 10e caractères hexadécimaux - Température d'huile
-    oil_temp = int(hex_trame[8:10], 16)
+    # 15e et 16e caractères hexadécimaux - Température d'huile
+    oil_temp = int(hex_trame[14:16], 16)
 
-    # 11e et 12e caractères hexadécimaux - Batterie
-    battery = int(hex_trame[10:12], 16)
+    # 17e et 18e caractères hexadécimaux - Batterie
+    battery = int(hex_trame[16:18], 16)
 
-    # 13e et 14e caractères hexadécimaux - Fin de trame (toujours FF)
-    end_trame = hex_trame[12:14]
+    # 19e et 20e caractères hexadécimaux - Fin de trame (toujours FF)
+    end_trame = hex_trame[18:20]
     if end_trame != "ff":
         raise ValueError("La trame ne se termine pas correctement par 'FF'")
 

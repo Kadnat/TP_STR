@@ -23,7 +23,7 @@ def simulate_trame_on_com3():
 
         # Exemples de trames hexadécimales
         trames = [
-            "C00000646464FF",  # Allumer le moteur
+            "FEC00000646464FF",  # Allumer le moteur
             "C00200646464FF",  # Lever les fourches
             "E00000646464FF",  # Mettre le frein à main
             "200000646464FF",  # Eteindre le moteur
@@ -58,19 +58,37 @@ def simulate_trame_on_com3():
         
         print("Trames simulées envoyées avec succès sur COM3.")
 
-def handle_received_data(trame_str):
-    """
-    Fonction appelée lorsque la trame est reçue via UART.
-    Elle décode la trame et exécute les commandes correspondantes.
-    """
+def handle_received_data(trame_fragment):
     try:
-        # Décoder la trame reçue
-        print(f"Trame reçue : {trame_str}")
-        trame_data = decode_trame(trame_str)
-        print(f"Trame décodée : {trame_data}")
+        # Ajouter les données reçues au buffer
+        g.buffer += trame_fragment
+        print(f"Buffer actuel : {g.buffer}")
 
-        # Exécuter les contrôles du chariot élévateur
-        control_forklift(trame_data)
+        if "fe" in g.buffer and "ff" in g.buffer:
+            # Trouver les indices des délimiteurs
+            start_idx = g.buffer.index("fe")
+            end_idx = g.buffer.index("ff", start_idx) + 2  # Inclure "FF"
+
+            # Si FF précède FE, supprimer les données invalides avant FE
+            if start_idx > g.buffer.index("ff"):
+                g.buffer = g.buffer[start_idx:]
+                return
+
+            # Extraire la trame complète
+            trame_complete = g.buffer[start_idx:end_idx]
+            print(f"Trame complète détectée : {trame_complete}")
+
+            # Réinitialiser le buffer après traitement
+            g.buffer = g.buffer[end_idx:]
+
+            g.buffer = ""
+            
+            # Traiter la trame complète
+            trame_data = decode_trame(trame_complete)
+            print(f"Trame décodée : {trame_data}")
+
+            # Exécuter les contrôles du chariot élévateur
+            control_forklift(trame_data)    
 
     except ValueError as e:
         print(f"Erreur lors du décodage de la trame : {e}")
@@ -85,11 +103,11 @@ def main():
     time.sleep(5)
     
     # Lancer l'envoi des trames simulées dans un thread séparé
-    trame_thread = threading.Thread(target=simulate_trame_on_com3)
-    trame_thread.start()
+    # trame_thread = threading.Thread(target=simulate_trame_on_com3)
+    # trame_thread.start()
 
     # Initialiser le travailleur série pour la communication UART
-    worker = SerialWorker(port='COM4', baudrate=9600)
+    worker = SerialWorker(port='COM5', baudrate=9600)
     worker.data_received.connect(handle_received_data)
 
     # Démarrer la réception
