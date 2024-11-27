@@ -58,6 +58,12 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
         // Fin de sauvegarde des zones utilisées par le compilateur
+        TMR0=(0xFFFF-30000);// l'IT se red?clenchera dans 10ms
+        T0IF=0;   // effacement du flag pour attendre la prochaine it
+
+        Tick_Count++;// Incr?mentation du compteur de tick
+
+        
         pointeur_de_tache++;                        
         if (pointeur_de_tache == NOMBRE_DE_TACHES)    
             pointeur_de_tache = 0;                    
