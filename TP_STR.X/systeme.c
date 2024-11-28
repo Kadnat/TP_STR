@@ -76,8 +76,11 @@ void __interrupt(high_priority) fonction_d_interruption(void)
             // Si la tâche est en attente, on passe à la suivante
             pointeur_de_tache++;                        
             if (pointeur_de_tache == NOMBRE_DE_TACHES)    
-                pointeur_de_tache = 0;                    
+                pointeur_de_tache = 0;
+            
+            
             tache_active = queue[pointeur_de_tache];
+            int b=0;
         }
 
  // Restauration du contexte de la tache active

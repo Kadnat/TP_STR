@@ -21,15 +21,15 @@ void tache6(void)
         
 
         // Une fois le sémaphore acquis, on peut écrire
-        if(n_octet_badge == 0) key_c = 0;
-        else key_c = 1;
-        
+        //if(n_octet_badge == 0) key_c = 0;
+        //else key_c = 1;
+        key_c = 1;
         frein = FREIN_A_MAIN;
         choc = CHOC;
         siege = SIEGE;
         
         
-        analog_c |= ( ((key_c & 0x1) << 3 ) | ((siege & 0x1) << 2 ) | 
+        analog_c = ( ((key_c & 0x1) << 3 ) | ((siege & 0x1) << 2 ) | 
                 ((frein & 0x1) << 1 ) | (choc & 0x1) );
         
         if(MARCHE_AVANT == 0)
@@ -50,28 +50,30 @@ void tache6(void)
 
     
         speed_c = vitesse;   
-        water_c = TEMPERATURE_EAU;
-        oil_c = TEMPERATURE_HUILE;
+        water_c = ANALOG_TEMP_EAU;
+        oil_c = ANALOG_TEMP_HUILE;
         battery_c = batterie;
         
+        if(water_c >= 0xfd) water_c = 0xfd;
+        if(oil_c >= 0xfd) oil_c = 0xfd;
         
-        if(lecture_8bit_analogique(JOYSTICK_X) < 83) wheels = 2;
+        if(ANALOG_JOYSTICK_X < 83) wheels = 2;
         else
         {
-            if(lecture_8bit_analogique(JOYSTICK_X) > 173) wheels = 1;
+            if(ANALOG_JOYSTICK_X > 173) wheels = 1;
             
             else wheels = 0;
         }
         
-        if(lecture_8bit_analogique(JOYSTICK_Y) < 83) forks = 1;
+        if(ANALOG_JOYSTICK_Y < 83) forks = 1;
         else
         {
-            if(lecture_8bit_analogique(JOYSTICK_Y) > 173) forks = 2;
+            if(ANALOG_JOYSTICK_Y > 173) forks = 2;
             
             else forks = 0;
         }
             
-        
+
 
         while (PIR1bits.TX1IF==0);   TXREG1=0xFE;while (TXSTA1bits.TRMT==0);
         while (PIR1bits.TX1IF==0);   TXREG1=analog_c;while (TXSTA1bits.TRMT==0);
@@ -84,8 +86,10 @@ void tache6(void)
         while (PIR1bits.TX1IF==0);   TXREG1=battery_c;while (TXSTA1bits.TRMT==0);
         while (PIR1bits.TX1IF==0);   TXREG1=0xFF;while (TXSTA1bits.TRMT==0);
 
+        for (int a=0;a<1000;a++)
+         ;
         // Libère le sémaphore après utilisation
-        semaphore_release();
+        semaphore_release(ma_tache);
 
     }
 }

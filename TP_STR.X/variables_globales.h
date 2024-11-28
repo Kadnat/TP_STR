@@ -50,6 +50,11 @@ unsigned char n_octet_badge        __at(0x7F);
 
 unsigned char RXTX_libre        __at(0x80);
 
+unsigned char ANALOG_TEMP_HUILE     __at(0x81);
+unsigned char ANALOG_TEMP_EAU       __at(0x82);
+unsigned char ANALOG_JOYSTICK_X     __at(0x83);
+unsigned char ANALOG_JOYSTICK_Y     __at(0x84);
+
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
 void (*fptr)(void);

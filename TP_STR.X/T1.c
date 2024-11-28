@@ -1,11 +1,17 @@
 #include "T1.h"
 
 void tache1(void)
-{
-    unsigned char i;
-
-    di();
-    initialisation_afficheur();
+{   
+    //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
+    
+    unsigned char ma_tache = TACHE1;  
+    unsigned char n; //nombre d'octet de la clé d'identification
+    unsigned char buffer_vitesse_plus = 1;   //sert ? modifier la valeur de vitesse sur appuie unique et non continu
+    unsigned char buffer_vitesse_moins = 1;  //sert ? modifier la valeur de vitesse sur appuie unique et non continu
+    unsigned char buffer_batterie_plus = 1;  //sert ? modifier la valeur de batterie sur appuie unique et non continu
+    unsigned char buffer_batterie_moins = 1; //sert ? modifier la valeur de batterie sur appuie unique et non continu
+    di();                                   //disable interrupt
+    initialisation_afficheur();             
     clear_text();
     clear_graphics();
     init_rxtx();
@@ -14,106 +20,100 @@ void tache1(void)
     ei();
 
     LED_R=0;LED_G=0;LED_B=0;
-
-    vitesse=0;
-    batterie=120;
-    n_octet_badge=0;
-
-    goto_lico(13,34);draw_char('R');draw_char(' ');draw_char('V');draw_char(' ');draw_char('B');
-    goto_lico(14,34);draw_char('0');draw_char(' ');draw_char('0');draw_char(' ');draw_char('0');
-    goto_lico(15,34);draw_char('1');draw_char(' ');draw_char('1');draw_char(' ');draw_char('1');
-
-    TP_appui=0;
-
+    
     while(1)
     {
-
-        goto_lico(0,0);
-        draw_string("Marche:");
-        if (MARCHE_AVANT==0)
-            draw_string("AV");
-        else
-            if (MARCHE_ARRIERE==0)
-                draw_string("AR");
-            else
-                draw_string("N ");
-
-        goto_lico(1,0);
-        draw_string("Siege:");
-        if (SIEGE==0)
-        {draw_char('1');}
-        else
-        {draw_char('0');}
-
-        goto_lico(2,0);
-        draw_string("Temp. Eau:");
-        draw_hex8(lecture_8bit_analogique(TEMPERATURE_EAU));
-
-        goto_lico(3,0);
-        draw_string("Temp. Huile:");
-        draw_hex8(lecture_8bit_analogique(TEMPERATURE_HUILE));
-
-        goto_lico(4,0);
-        draw_string("Choc:");
-        if (CHOC==0)
-            draw_char('1');
-        else
-            draw_char('0');
-
-        goto_lico(5,0);
-        draw_string("Vitesse:");
-        if (VITESSE_PLUS==0)
-            vitesse++;
-        if (VITESSE_MOINS==0)
-            vitesse--;
-        draw_hex8(vitesse);
-
-        goto_lico(6,0);
-        draw_string("Batterie:");
-        if (BATTERIE_PLUS==0)
-            batterie++;
-        if (BATTERIE_MOINS==0)
-            batterie--;
-        draw_hex8(batterie);
-
-        goto_lico(7,0);
-        if (FREIN_A_MAIN==0)
-            draw_string("((!))");
-        else
-            draw_string("     ");
-
-        goto_lico(8,0);
-        draw_string("Badge:");
-        if (n_octet_badge==0)
-            draw_string(" AUCUN              ");
-        else
+        // Essaie d'acqu?rir le s?maphore
+        while (semaphore_tryacquire(ma_tache) == 0)
         {
-            for (i=0;i<n_octet_badge;i++)
+            // Si le s?maphore n'est pas disponible, 
+            // on attend passivement
+            // (l'ordonnanceur passera ? une autre t?che)
+        }
+    
+        //Une fois le s?maphore acquis on peut passer ? la routine d'acquisisiton
+    
+        //Acquisition et actualisation des valeurs analogiques jusqu'au tour suivant
+        ANALOG_JOYSTICK_X = lecture_8bit_analogique(JOYSTICK_X);
+        ANALOG_JOYSTICK_Y = lecture_8bit_analogique(JOYSTICK_Y);
+        ANALOG_TEMP_HUILE = lecture_8bit_analogique(TEMPERATURE_HUILE);
+        ANALOG_TEMP_EAU   = lecture_8bit_analogique(TEMPERATURE_EAU);
+    
+        //Acquisition et actualisation sur boutons poussoirs vitesse
+            //BOUTON VITESSE+
+        if((VITESSE_PLUS==0) && (buffer_vitesse_plus==1))      //Si appuie sur bp viteese plus
+        {
+            buffer_vitesse_plus=0;
+            if(vitesse < 6)
             {
-                draw_hex8(badge[i]);
+                vitesse++;
             }
         }
-
-        goto_lico(9,0);
-        draw_string("X-Joystick:");
-        draw_hex8(lecture_8bit_analogique(JOYSTICK_X));
-
-        goto_lico(10,0);
-        draw_string("Y-Joystick:");
-        draw_hex8(lecture_8bit_analogique(JOYSTICK_Y));
-
-        if (TP_appui==1)
+        else if((VITESSE_PLUS==1) && (buffer_vitesse_plus==0))  //Si bp relach? alors raz buffer sur bouton
         {
-            goto_lico(0,20);
-            draw_string("x=");
-            draw_hex8(TP_x);
-            draw_string(" y=");
-            draw_hex8(TP_y);
-            plot1(TP_x,TP_y);
+            buffer_vitesse_plus=1;
+        }
+            //BOUTON VITESSE-
+        if((VITESSE_MOINS==0) && (buffer_vitesse_moins==1))      //Si appuie sur bp viteese moins
+        {
+            buffer_vitesse_moins=0;
+            if(vitesse > 0)
+            {
+                vitesse--;
+            }
+        }
+        else if((VITESSE_MOINS==1) && (buffer_vitesse_moins==0))  //Si bp relach? alors raz buffer sur bouton
+        {
+            buffer_vitesse_moins=1;
+        }
+        //////////////////////////////////
+        //Acquisition et actualisation sur boutons poussoirs batterie
+            //BOUTON BATTERIE+
+        if((BATTERIE_PLUS==0) && (buffer_batterie_plus==1))      //Si appuie sur bp viteese plus
+        {
+            buffer_batterie_plus=0;
+            if(batterie < 100)
+            {
+                batterie++;
+            }
+        }
+        else if((BATTERIE_PLUS==1) && (buffer_batterie_plus==0))  //Si bp relach? alors raz buffer sur bouton
+        {
+            buffer_batterie_plus=1;
+        }
+            //BOUTON BATTERIE-
+        if((BATTERIE_MOINS==0) && (buffer_batterie_moins==1))      //Si appuie sur bp viteese moins
+        {
+            buffer_batterie_moins=0;
+            if(batterie > 0)
+            {
+                batterie--;
+            }
+        }
+        else if((BATTERIE_MOINS==1) && (buffer_batterie_moins==0))  //Si bp relach? alors raz buffer sur bouton
+        {
+            buffer_batterie_moins=1;
+        }
+        
+        //LECTURE CLE?  => Voir ce que ?a implique en HW et en traitement SW pour voir si c'est plus pertinent de le mettre ici
+        n=lecture_normale(badge);
+        if (n>0)
+        {
+            if(n<10)
+            {
+                n_octet_badge=n;
+            }
+            else
+            {
+                n_octet_badge=0;
+            }
         }
         else
         {
-            Nop();
+            n_octet_badge=0;
         }
+        //TACTILE GERE DANS TACHE 3 AVEC AFFICHAGE
+        
+        semaphore_release(ma_tache);
     }
 }

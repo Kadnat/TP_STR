@@ -18,7 +18,8 @@ extern "C" {
     typedef struct {
         volatile unsigned char jetons;    
         volatile unsigned char max_jetons; 
-        volatile unsigned char attente;    
+        volatile unsigned char attente;  
+        volatile unsigned char tache_util;  
     } Semaphore;
 
     Semaphore semaphores;
@@ -26,7 +27,7 @@ extern "C" {
     // Prototypes
     void semaphore_init(unsigned char jetons_initiaux);
     unsigned char semaphore_tryacquire(unsigned char tache);
-    void semaphore_release(void);
+    void semaphore_release(unsigned char tache);
     //reentrant void P(unsigned char sem);
     //reentrant void V(unsigned char sem);
 

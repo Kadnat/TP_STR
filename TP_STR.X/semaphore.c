@@ -6,12 +6,14 @@ void semaphore_init(unsigned char jetons_initiaux) {
     semaphores.jetons = jetons_initiaux;
     semaphores.max_jetons = jetons_initiaux;
     semaphores.attente = 0;
+    semaphores.tache_util = 0;
 }
 
 // Acquisition non bloquante du sémaphore
 unsigned char semaphore_tryacquire(unsigned char tache) {
     if (semaphores.jetons > 0) {
         semaphores.jetons--;
+        semaphores.tache_util |= (1 << tache);
         return 1; // Succès
     }
     
@@ -21,9 +23,10 @@ unsigned char semaphore_tryacquire(unsigned char tache) {
 }
 
 // Libération du sémaphore
-void semaphore_release(void) {
+void semaphore_release(unsigned char tache) {
     if (semaphores.jetons < semaphores.max_jetons) {
         semaphores.jetons++;
+        semaphores.tache_util &= ~(1 << tache);
         
         // Réveille une tâche en attente
         for (unsigned char i = 0; i < NOMBRE_DE_TACHES; i++) {
