@@ -79,7 +79,11 @@ unsigned char STKPTR_T5             __at(0x503);
 unsigned char STKPTR_T6             __at(0x603);
 
 
-
+//Variables globales hardware
+unsigned char ANALOG_TEMP_HUILE;
+unsigned char ANALOG_TEMP_EAU;
+unsigned char ANALOG_JOYSTICK_X;
+unsigned char ANALOG_JOYSTICK_Y;
 
 
 #ifdef	__cplusplus
