@@ -14,6 +14,7 @@ void tache6(void)
         // Essaie d'acquérir le sémaphore
         while (semaphore_tryacquire(ma_tache) == 0)
         {
+        
             // Si le sémaphore n'est pas disponible, 
             // on attend passivement
             // (l'ordonnanceur passera à une autre tâche)
@@ -90,6 +91,13 @@ void tache6(void)
          ;
         // Libère le sémaphore après utilisation
         semaphore_release(ma_tache);
+
+        T0IF = 1;
+        
+        
+        for (int a=0;a<10;a++)
+         ;
+        
 
     }
 }

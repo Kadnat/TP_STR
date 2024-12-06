@@ -17,12 +17,12 @@ extern "C" {
 // Liste des semaphores
     typedef struct {
         volatile unsigned char jetons;    
-        volatile unsigned char max_jetons; 
+        volatile unsigned char max_jetons;
         volatile unsigned char attente;  
         volatile unsigned char tache_util;  
     } Semaphore;
 
-    Semaphore semaphores;
+    Semaphore semaphores __at(0x90);
 
     // Prototypes
     void semaphore_init(unsigned char jetons_initiaux);

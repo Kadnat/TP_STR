@@ -26,6 +26,7 @@ void tache1(void)
         // Essaie d'acqu?rir le s?maphore
         while (semaphore_tryacquire(ma_tache) == 0)
         {
+        
             // Si le s?maphore n'est pas disponible, 
             // on attend passivement
             // (l'ordonnanceur passera ? une autre t?che)
@@ -115,5 +116,10 @@ void tache1(void)
         //TACTILE GERE DANS TACHE 3 AVEC AFFICHAGE
         
         semaphore_release(ma_tache);
+        T0IF = 1;
+        
+        for (int a=0;a<10;a++)
+         ;
+
     }
 }

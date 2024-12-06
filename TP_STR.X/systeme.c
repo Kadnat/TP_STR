@@ -72,8 +72,10 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         tache_active = queue[pointeur_de_tache];
         
         // Vérification si la tâche est en attente du sémaphore
-        while (semaphores.attente & (1 << tache_active)) {
+        if (semaphores.attente & (1 << tache_active)) {
+        //while (semaphores.attente & (1 << tache_active)) {
             // Si la tâche est en attente, on passe à la suivante
+            //semaphores.attente &= ~(1 << tache_active);
             pointeur_de_tache++;                        
             if (pointeur_de_tache == NOMBRE_DE_TACHES)    
                 pointeur_de_tache = 0;
