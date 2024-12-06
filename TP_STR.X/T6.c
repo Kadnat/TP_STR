@@ -29,8 +29,8 @@ void tache6(void)
         
 
         // Une fois le sémaphore acquis, on peut écrire
-        //if(n_octet_badge == 0) key_c = 0;
-        //else key_c = 1;
+        if(n_octet_badge == 0) key_c = 0;
+        else key_c = 1;
         key_c = 1;
         frein = FREIN_A_MAIN;
         choc = CHOC;

@@ -2,97 +2,89 @@
 
 void tache2(void)
 {
-
+    alarme_batterie = 0;
+    alarme_choc = 0;
+    alarme_cle = 0;
+    alarme_conducteur = 0;
+    alarme_eau = 0;
+    alarme_frein = 0;
+    alarme_huile = 0;
     
-    unsigned char hx,lx,hy,ly;
-    unsigned int ix,iy;
-
-    TP_appui=0;
+    unsigned char cpt1=0,cpt2=0;
 
     while(1)
     {
         //while (PIR1bits.TX1IF==0);   TXREG1='B';while (TXSTA1bits.TRMT==0);
 
+        //Gestion des alarmes
 
+        alarme_frein = (~(FREIN_A_MAIN)) & 0x1;
         
-        DRIVEA=1;// Right=Vcc Left=GND Top en l'air
-        DRIVEB=0;// Bottom en l'air
-        tp_delai(3000);// Délai d'établissement du signal ~= 3000 us
-
-        //P(SEM_CAN);
-
-        ADCON2=0x16; // Fosc/64 Tacq=4TAD
-        ADCON0=0x01; // Module AD ON channel 0 (X)
-        ADCON0=0x03; //Début de conversion
-        while(ADCON0bits.DONE==1)
-            ;
-        hx=ADRESH;
-        lx=ADRESL;
-
-        //V(SEM_CAN);
-
-        if ((lx&0x0F)!=0){hx=0;lx=0;}// Si tension négative
-
-
-        if (hx>=10)
+        if(n_octet_badge == 0) alarme_cle = 1;
+        else alarme_cle = 0;
+        
+        if(ANALOG_TEMP_EAU > 120) alarme_eau = 1;
+        else alarme_eau = 0;
+        
+        if(ANALOG_TEMP_HUILE > 120) alarme_huile = 1;
+        else alarme_huile = 0;     
+        
+        if(batterie < 15) alarme_batterie = 1;
+        else alarme_batterie = 0;
+        
+        alarme_conducteur = (~(SIEGE)) & 0x1;
+        
+        alarme_choc = (~(CHOC)) & 0x1;
+        
+        if(alarme_frein || alarme_eau || alarme_huile || alarme_batterie || alarme_cle || alarme_conducteur)
         {
-            DRIVEA=0;// Right en l'air Left en l'air Top=Vcc
-            DRIVEB=1;// Bottom=GND
-            tp_delai(3000);// Délai d'établissement du signal ~= 3000 us
-
-            //P(SEM_CAN);
-
-            ADCON2=0x16; // Fosc/64 Tacq=4TAD
-            ADCON0=0x05; // Module AD ON channel 1 (Y)
-            ADCON0=0x07; //Début de conversion
-            while(ADCON0bits.DONE==1)
-                ;
-            hy=ADRESH;
-            ly=ADRESL;
-
-            //V(SEM_CAN);
-
-            if ((ly&0x0F)!=0){hy=0;ly=0;}// Si tension négative
-
-            if (hy>=20)
+            if(cpt1==0)
             {
-                ix=lx+(((unsigned int)(hx))<<8);
-                iy=ly+(((unsigned int)(hy))<<8);
-                ix=ix-3150; // Offset
-                iy=iy-6500; // Offset
-
-                TP_x=ix/246; //Gain X
-                TP_y=127-(iy/409); //Gain Y
-
-//                hx=hx-15;
-//                hy=hy-26;
-//                hx=(unsigned char)(hx*1.053); // transformation de
-//                hy=(unsigned char)(hy*1.255);
-//                hy=127-(hy>>1);
-//                TP_x=hx;
-//                TP_y=hy;
-                TP_appui=1;
+                Tick_SaveT2 = Tick_Count;
+                cpt1 = 1;
             }
-            else
+            if(Tick_Count > Tick_SaveT2 + 10)
             {
-                TP_appui=0;
+                if(cpt1==1)
+                {
+                    Tick_SaveT2 = Tick_Count;
+                    if(vitesse >0)vitesse -= 1;
+                    else
+                    {
+                        vitesse = 0;
+                        cpt1 = 0;
+                    }
+                    
+                }
+                
             }
+            
         }
-        else
+        
+        if(alarme_cle)
         {
-            TP_appui=0;
+            if(cpt2==0)
+            {
+                Tick_SaveT2 = Tick_Count;
+                cpt2 = 1;
+            }
+            if(Tick_Count < Tick_SaveT2 + 100)
+            {
+                if(cpt2==1)
+                {
+
+                        vitesse = 0;
+                        cpt2 = 0;
+                }
+                    
+                }
+                
+            
         }
+        
+
         //while (PIR1bits.TX1IF==0);   TXREG1='H';while (TXSTA1bits.TRMT==0);
 
 
-    }
-}
-
-void tp_delai(unsigned int itpd)
-{
-    while(itpd>0) //la boucle dure 12 cycles machines
-    {
-        Nop();Nop();Nop();
-        itpd--;
     }
 }
