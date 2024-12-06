@@ -30,7 +30,7 @@ void tache2(void)
         else alarme_huile = 0;     
         
         if(batterie < 15) alarme_batterie = 1;
-        else alarme_batterie = 0;
+        else if(batterie > 15) alarme_batterie = 0;
         
         alarme_conducteur = (~(SIEGE)) & 0x1;
         
