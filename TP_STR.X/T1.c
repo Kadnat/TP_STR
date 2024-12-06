@@ -2,6 +2,8 @@
 
 void tache1(void)
 {   
+
+    
     //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
     
     unsigned char ma_tache = TACHE1;  
@@ -20,9 +22,14 @@ void tache1(void)
     ei();
 
     LED_R=0;LED_G=0;LED_B=0;
+    semtask1FLAG = 0;
     
     while(1)
     {
+        while(semtask1FLAG);
+        
+        //while (PIR1bits.TX1IF==0);   TXREG1='A';while (TXSTA1bits.TRMT==0);
+        
         // Essaie d'acqu?rir le s?maphore
         while (semaphore_tryacquire(ma_tache) == 0)
         {
@@ -114,12 +121,13 @@ void tache1(void)
             n_octet_badge=0;
         }
         //TACTILE GERE DANS TACHE 3 AVEC AFFICHAGE
-        
+        //while (PIR1bits.TX1IF==0);   TXREG1='G';while (TXSTA1bits.TRMT==0);
+
+
         semaphore_release(ma_tache);
-        T0IF = 1;
+        semtask1FLAG = 1;
         
-        for (int a=0;a<10;a++)
-         ;
+        T0IF = 1;
 
     }
 }

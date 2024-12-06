@@ -2,6 +2,8 @@
 
 void tache2(void)
 {
+
+    
     unsigned char hx,lx,hy,ly;
     unsigned int ix,iy;
 
@@ -9,6 +11,10 @@ void tache2(void)
 
     while(1)
     {
+        //while (PIR1bits.TX1IF==0);   TXREG1='B';while (TXSTA1bits.TRMT==0);
+
+
+        
         DRIVEA=1;// Right=Vcc Left=GND Top en l'air
         DRIVEB=0;// Bottom en l'air
         tp_delai(3000);// Délai d'établissement du signal ~= 3000 us
@@ -76,6 +82,9 @@ void tache2(void)
         {
             TP_appui=0;
         }
+        //while (PIR1bits.TX1IF==0);   TXREG1='H';while (TXSTA1bits.TRMT==0);
+
+
     }
 }
 

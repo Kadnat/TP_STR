@@ -14,6 +14,9 @@ void tache5(void)       //Gestion batterie
     unsigned int buffer_batterie = batterie * 100;   //image de la batterie en temps r?el sur 10 000 afin d'?viter d'utiliser des floats
     while(1)
     {   
+        //while (PIR1bits.TX1IF==0);   TXREG1='E';while (TXSTA1bits.TRMT==0);
+
+
         // Une fois le s?maphore acquis, on peut passer ? la routine batterie
         if(batterie!=0) //Si la batterie n'est pas vide
         {
@@ -41,5 +44,8 @@ void tache5(void)       //Gestion batterie
             }
         }
         //Si la batterie est vide on ?xecute pas la task 5
+        //while (PIR1bits.TX1IF==0);   TXREG1='K';while (TXSTA1bits.TRMT==0);
+
+
     }
 }

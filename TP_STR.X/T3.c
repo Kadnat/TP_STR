@@ -2,8 +2,11 @@
 
 void tache3(void)
 {
+    
     while(1)
     {
+        //while (PIR1bits.TX1IF==0);   TXREG1='C';while (TXSTA1bits.TRMT==0);
+
         if (TP_appui==1)
         {
             if ((TP_x>=203)&&(TP_x<209))
@@ -46,5 +49,8 @@ void tache3(void)
                 }
             }
         }
+        //while (PIR1bits.TX1IF==0);   TXREG1='I';while (TXSTA1bits.TRMT==0);
+
+
     }
 }

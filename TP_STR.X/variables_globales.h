@@ -55,6 +55,10 @@ unsigned char ANALOG_TEMP_EAU       __at(0x82);
 unsigned char ANALOG_JOYSTICK_X     __at(0x83);
 unsigned char ANALOG_JOYSTICK_Y     __at(0x84);
 
+unsigned char semtask6FLAG __at(0x85);
+unsigned char semtask1FLAG __at(0x86);
+
+
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
 void (*fptr)(void);

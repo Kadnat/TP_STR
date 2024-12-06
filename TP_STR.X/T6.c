@@ -7,11 +7,18 @@ void tache6(void)
            water_c = 0, oil_c = 0, battery_c = 0, key_c = 0, frein=0,
            choc = 0, siege = 0; 
    unsigned char wheels = 0, forks = 0;
-   
+   semtask6FLAG = 0;
    
     while(1)
     {
+        while(semtask6FLAG);
+        
+        
+        //while (PIR1bits.TX1IF==0);   TXREG1='F';while (TXSTA1bits.TRMT==0);
+
         // Essaie d'acquérir le sémaphore
+        
+        
         while (semaphore_tryacquire(ma_tache) == 0)
         {
         
@@ -89,14 +96,17 @@ void tache6(void)
 
         for (int a=0;a<1000;a++)
          ;
+        
+        //while (PIR1bits.TX1IF==0);   TXREG1='L';while (TXSTA1bits.TRMT==0);
+
+
         // Libère le sémaphore après utilisation
         semaphore_release(ma_tache);
+        
+        semtask6FLAG = 1;
 
         T0IF = 1;
         
-        
-        for (int a=0;a<10;a++)
-         ;
         
 
     }
