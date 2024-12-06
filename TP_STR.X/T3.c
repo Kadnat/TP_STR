@@ -2,53 +2,24 @@
 
 void tache3(void)
 {
+    unsigned char cpt1 =0;
     
     while(1)
     {
         //while (PIR1bits.TX1IF==0);   TXREG1='C';while (TXSTA1bits.TRMT==0);
 
-        if (TP_appui==1)
+        
+        if(BuzzerOn == 1)
         {
-            if ((TP_x>=203)&&(TP_x<209))
-            {
-                if ((TP_y>=113)&&(TP_y<121))
-                {
-                    LED_R=1;
-                }
-                if ((TP_y>=121)&&(TP_y<127))
-                {
-                    LED_R=0;
-                }
-            }
+            BUZZER = 1;
+            delai_us_char(4000);
+            BUZZER = 0;
+            delai_us_char(4000);
         }
-        if (TP_appui==1)
-        {
-            if ((TP_x>=215)&&(TP_x<221))
-            {
-                if ((TP_y>=113)&&(TP_y<121))
-                {
-                    LED_G=1;
-                }
-                if ((TP_y>=121)&&(TP_y<127))
-                {
-                    LED_G=0;
-                }
-            }
-        }
-        if (TP_appui==1)
-        {
-            if ((TP_x>=227)&&(TP_x<233))
-            {
-                if ((TP_y>=113)&&(TP_y<121))
-                {
-                    LED_B=1;
-                }
-                if ((TP_y>=121)&&(TP_y<127))
-                {
-                    LED_B=0;
-                }
-            }
-        }
+        
+        
+        
+
         //while (PIR1bits.TX1IF==0);   TXREG1='I';while (TXSTA1bits.TRMT==0);
 
 

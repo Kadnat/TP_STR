@@ -41,6 +41,7 @@ void initialisation_des_ports(void)
     LED_R=1;
     LED_G=1;
     LED_B=1;
+    BuzzerOn = 1;
 
 // Définition du sens des ports
     TRISCbits.TRISC2=0; //LED_R en sortie

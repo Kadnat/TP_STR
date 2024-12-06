@@ -66,7 +66,9 @@ unsigned char alarme_batterie __at(0x154);
 unsigned char alarme_choc __at(0x155);
 unsigned char alarme_conducteur __at(0x156);
 
-unsigned int Tick_Save __at(0x157);
+unsigned int Tick_SaveT2 __at(0x157);
+
+unsigned char BuzzerOn __at(0x159);
 
 
     //pointeur de fonction

@@ -18,7 +18,7 @@ void tache2(void)
 
         //Gestion des alarmes
 
-        alarme_frein = ~FREIN_A_MAIN;
+        alarme_frein = (~(FREIN_A_MAIN)) & 0x1;
         
         if(n_octet_badge == 0) alarme_cle = 1;
         else alarme_cle = 0;
@@ -32,22 +32,22 @@ void tache2(void)
         if(batterie < 15) alarme_batterie = 1;
         else alarme_batterie = 0;
         
-        alarme_conducteur = ~SIEGE;
+        alarme_conducteur = (~(SIEGE)) & 0x1;
         
-        alarme_choc = ~CHOC;
+        alarme_choc = (~(CHOC)) & 0x1;
         
         if(alarme_frein || alarme_eau || alarme_huile || alarme_batterie || alarme_cle || alarme_conducteur)
         {
             if(cpt1==0)
             {
-                Tick_Save = Tick_Count;
+                Tick_SaveT2 = Tick_Count;
                 cpt1 = 1;
             }
-            if(Tick_Count > Tick_Save + 10)
+            if(Tick_Count > Tick_SaveT2 + 10)
             {
                 if(cpt1==1)
                 {
-                    Tick_Save = Tick_Count;
+                    Tick_SaveT2 = Tick_Count;
                     if(vitesse >0)vitesse -= 1;
                     else
                     {
@@ -65,10 +65,10 @@ void tache2(void)
         {
             if(cpt2==0)
             {
-                Tick_Save = Tick_Count;
+                Tick_SaveT2 = Tick_Count;
                 cpt2 = 1;
             }
-            if(Tick_Count < Tick_Save + 100)
+            if(Tick_Count < Tick_SaveT2 + 100)
             {
                 if(cpt2==1)
                 {
