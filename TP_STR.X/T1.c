@@ -7,7 +7,7 @@ void tache1(void)
     //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
     
     unsigned char ma_tache = TACHE1;  
-    unsigned char n; //nombre d'octet de la clé d'identification
+    unsigned char n; //nombre d'octet de la clï¿½ d'identification
     unsigned char buffer_vitesse_plus = 1;   //sert ? modifier la valeur de vitesse sur appuie unique et non continu
     unsigned char buffer_vitesse_moins = 1;  //sert ? modifier la valeur de vitesse sur appuie unique et non continu
     unsigned char buffer_batterie_plus = 1;  //sert ? modifier la valeur de batterie sur appuie unique et non continu
