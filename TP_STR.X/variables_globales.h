@@ -50,6 +50,27 @@ unsigned char n_octet_badge        __at(0x7F);
 
 unsigned char RXTX_libre        __at(0x80);
 
+unsigned char ANALOG_TEMP_HUILE     __at(0x81);
+unsigned char ANALOG_TEMP_EAU       __at(0x82);
+unsigned char ANALOG_JOYSTICK_X     __at(0x83);
+unsigned char ANALOG_JOYSTICK_Y     __at(0x84);
+
+unsigned char semtask6FLAG __at(0x85);
+unsigned char semtask1FLAG __at(0x86);
+
+unsigned char alarme_frein __at(0x150);
+unsigned char alarme_cle __at(0x151);
+unsigned char alarme_eau __at(0x152);
+unsigned char alarme_huile __at(0x153);
+unsigned char alarme_batterie __at(0x154);
+unsigned char alarme_choc __at(0x155);
+unsigned char alarme_conducteur __at(0x156);
+
+unsigned int Tick_SaveT2 __at(0x157);
+
+unsigned char BuzzerOn __at(0x159);
+
+
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
 void (*fptr)(void);

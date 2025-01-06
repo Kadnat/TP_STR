@@ -58,6 +58,14 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
         POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;POSTINC0=POSTINC1;
         // Fin de sauvegarde des zones utilisées par le compilateur
+        TMR0=(0xFFFF-30000);// l'IT se red?clenchera dans 10ms
+        T0IF=0;   // effacement du flag pour attendre la prochaine it
+
+        Tick_Count++;// Incr?mentation du compteur de tick
+
+        if (semtask6FLAG == 1) semtask6FLAG = 0;
+        if (semtask1FLAG == 1) semtask1FLAG = 0;
+        
         pointeur_de_tache++;                        
         if (pointeur_de_tache == NOMBRE_DE_TACHES)    
             pointeur_de_tache = 0;                    
@@ -66,12 +74,17 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         tache_active = queue[pointeur_de_tache];
         
         // Vérification si la tâche est en attente du sémaphore
-        while (semaphores.attente & (1 << tache_active)) {
+        if (semaphores.attente & (1 << tache_active)) {
+        //while (semaphores.attente & (1 << tache_active)) {
             // Si la tâche est en attente, on passe à la suivante
+            //semaphores.attente &= ~(1 << tache_active);
             pointeur_de_tache++;                        
             if (pointeur_de_tache == NOMBRE_DE_TACHES)    
-                pointeur_de_tache = 0;                    
+                pointeur_de_tache = 0;
+            
+            
             tache_active = queue[pointeur_de_tache];
+            int b=0;
         }
 
  // Restauration du contexte de la tache active

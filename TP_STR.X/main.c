@@ -7,7 +7,7 @@ void main()
 {  
     initialisation_des_ports();
     initialisation_du_systeme();
-    semaphore_init(2);
+    semaphore_init(1);
 
         // Démarrage du système
     T0CONbits.TMR0ON=1; //Démarrage du Timer0
@@ -41,6 +41,7 @@ void initialisation_des_ports(void)
     LED_R=1;
     LED_G=1;
     LED_B=1;
+    BuzzerOn = 1;
 
 // Définition du sens des ports
     TRISCbits.TRISC2=0; //LED_R en sortie
