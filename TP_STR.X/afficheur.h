@@ -39,15 +39,15 @@ extern "C" {
     void delai_us_char(unsigned char ucdelai);
     void initialisation_afficheur(void);
     void draw_char(unsigned char dccar);
-    void draw_string(unsigned char * tableau);
-    void draw_hex8(unsigned char octet);
-    void draw_dec8(unsigned char octet);
-    void goto_lico(unsigned char ligne, unsigned char colonne);
+    void draw_string(unsigned char * tableau);      //écrit une chaine de caractère à lico, attention peut générer des erreurs de dépassement mémoire de con
+    void draw_hex8(unsigned char octet);            //écrit à lico la valeur hexa de octet    (xx)
+    void draw_dec8(unsigned char octet);            //écrit à lico la valeur décimal de octet (xxx)
+    void goto_lico(unsigned char ligne, unsigned char colonne);     //déplace le curseur d'écriture
     void clear_text(void);
     void clear_graphics(void);
     void clear_cgram(void);
-    void plot1(unsigned char x, unsigned char y);
-    void plot0(unsigned char x, unsigned char y);
+    void plot1(unsigned char x, unsigned char y);      //Dessine un point aux coordonnées x;y
+    void plot0(unsigned char x, unsigned char y);      //Efface  un point aux coordonnées x;y
 
 
 
