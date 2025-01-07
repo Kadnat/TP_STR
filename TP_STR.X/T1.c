@@ -1,17 +1,17 @@
 #include "T1.h"
 
+//Les taches 1 et 6 utilisent un sémaphore afin d'éviter que la t1 update les variables HW
+//alors que l'envoie UART n'est pas finie (puisque l'uart envoie les valeurs de ces dernières)
 void tache1(void)
 {   
-
-    
     //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
     
     unsigned char ma_tache = TACHE1;  
-    unsigned char n; //nombre d'octet de la clï¿½ d'identification
-    unsigned char buffer_vitesse_plus = 1;   //sert ? modifier la valeur de vitesse sur appuie unique et non continu
-    unsigned char buffer_vitesse_moins = 1;  //sert ? modifier la valeur de vitesse sur appuie unique et non continu
-    unsigned char buffer_batterie_plus = 1;  //sert ? modifier la valeur de batterie sur appuie unique et non continu
-    unsigned char buffer_batterie_moins = 1; //sert ? modifier la valeur de batterie sur appuie unique et non continu
+    unsigned char n; //nombre d'octet de la cle d'identification
+    unsigned char buffer_vitesse_plus = 1;   //sert a modifier la valeur de vitesse sur appuie unique et non continu
+    unsigned char buffer_vitesse_moins = 1;  //sert a modifier la valeur de vitesse sur appuie unique et non continu
+    unsigned char buffer_batterie_plus = 1;  //sert a modifier la valeur de batterie sur appuie unique et non continu
+    unsigned char buffer_batterie_moins = 1; //sert a modifier la valeur de batterie sur appuie unique et non continu
     di();                                   //disable interrupt
     initialisation_afficheur();             
     clear_text();
@@ -34,13 +34,13 @@ void tache1(void)
         while (semaphore_tryacquire(ma_tache) == 0)
         {
         
-            // Si le s?maphore n'est pas disponible, 
+            // Si le semaphore n'est pas disponible, 
             // on attend passivement
-            // (l'ordonnanceur passera ? une autre t?che)
+            // (l'ordonnanceur passera a une autre tache)
         }
     
-        //Une fois le s?maphore acquis on peut passer ? la routine d'acquisisiton
-    
+        //Une fois le semaphore acquis on peut passer a la routine d'acquisisiton
+        gui_update_batterie(100);
         //Acquisition et actualisation des valeurs analogiques jusqu'au tour suivant
         ANALOG_JOYSTICK_X = lecture_8bit_analogique(JOYSTICK_X);
         ANALOG_JOYSTICK_Y = lecture_8bit_analogique(JOYSTICK_Y);

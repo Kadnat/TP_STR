@@ -2,12 +2,12 @@
 
 void tache4(void)
 {
+    //gestion affichage
     while(1)
     {
-            //while (PIR1bits.TX1IF==0);   TXREG1='D';while (TXSTA1bits.TRMT==0);
-            //while (PIR1bits.TX1IF==0);   TXREG1='J';while (TXSTA1bits.TRMT==0);
-        
-
+        gui_update_batterie(batterie);
+        gui_update_temperature(ANALOG_TEMP_EAU, ANALOG_TEMP_HUILE);
+        gui_update_vitesse(vitesse, vitesse_1);
     }
     
 }

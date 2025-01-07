@@ -6,6 +6,8 @@ void initialisation_des_ports(void);
 void main()
 {  
     initialisation_des_ports();
+    initialisation_afficheur();
+    gui_init();
     initialisation_du_systeme();
     semaphore_init(1);
 
@@ -41,7 +43,7 @@ void initialisation_des_ports(void)
     LED_R=1;
     LED_G=1;
     LED_B=1;
-    BuzzerOn = 1;
+    BuzzerOn = 0;
 
 // Définition du sens des ports
     TRISCbits.TRISC2=0; //LED_R en sortie

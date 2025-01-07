@@ -63,8 +63,8 @@ void __interrupt(high_priority) fonction_d_interruption(void)
 
         Tick_Count++;// Incr?mentation du compteur de tick
 
-        if (semtask6FLAG == 1) semtask6FLAG = 0;
-        if (semtask1FLAG == 1) semtask1FLAG = 0;
+        if (semtask6FLAG == 1) semtask6FLAG = 0; //Utilisation de flag pour les tasks sous sémaphore afin d'éviter
+        if (semtask1FLAG == 1) semtask1FLAG = 0; //que le process recommence la tache pendant les 10ms
         
         pointeur_de_tache++;                        
         if (pointeur_de_tache == NOMBRE_DE_TACHES)    

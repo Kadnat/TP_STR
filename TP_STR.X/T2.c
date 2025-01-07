@@ -2,6 +2,7 @@
 
 void tache2(void)
 {
+    //gestion d'alarme
     alarme_batterie = 0;
     alarme_choc = 0;
     alarme_cle = 0;

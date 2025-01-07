@@ -43,6 +43,7 @@ unsigned char tache_active         __at(0x6F);
 unsigned char pointeur_de_tache    __at(0x70);
 unsigned int Tick_Count            __at(0x71);
 unsigned char vitesse              __at(0x73);
+unsigned char vitesse_1             __at(0x87);  //sample de la valeur de vitesse n-1
 unsigned char batterie             __at(0x74);
 
 unsigned char badge[10]            __at(0x75);

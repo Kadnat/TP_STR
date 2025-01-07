@@ -2,6 +2,7 @@
 
 void tache3(void)
 {
+    //gestion buzzer
     unsigned char cpt1 =0;
     
     while(1)

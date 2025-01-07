@@ -23,6 +23,7 @@ extern "C" {
 #include "semaphore.h"
 #include "stid.h"
 #include "rxtx.h"
+#include "gui.h"
 #include "T1.h"
 #include "T2.h"
 #include "T3.h"

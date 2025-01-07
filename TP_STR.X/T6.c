@@ -1,5 +1,7 @@
 #include "T6.h"
 
+//Les taches 1 et 6 utilisent un sémaphore afin d'éviter que la t1 update les variables HW
+//alors que l'envoie UART n'est pas finie (puisque l'uart envoie les valeurs de ces dernières)
 void tache6(void)
 {
    unsigned char ma_tache = TACHE6; // Identifiant de la tâche
