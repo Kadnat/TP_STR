@@ -11230,12 +11230,46 @@ unsigned char tache_active __attribute__((address(0x6F)));
 unsigned char pointeur_de_tache __attribute__((address(0x70)));
 unsigned int Tick_Count __attribute__((address(0x71)));
 unsigned char vitesse __attribute__((address(0x73)));
+unsigned char vitesse_1 __attribute__((address(0x87)));
 unsigned char batterie __attribute__((address(0x74)));
 
 unsigned char badge[10] __attribute__((address(0x75)));
 unsigned char n_octet_badge __attribute__((address(0x7F)));
 
 unsigned char RXTX_libre __attribute__((address(0x80)));
+
+unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x81)));
+unsigned char ANALOG_TEMP_EAU __attribute__((address(0x82)));
+unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x83)));
+unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x84)));
+
+unsigned char semtask6FLAG __attribute__((address(0x85)));
+unsigned char semtask1FLAG __attribute__((address(0x86)));
+
+unsigned char alarme_frein __attribute__((address(0x150)));
+unsigned char alarme_cle __attribute__((address(0x151)));
+unsigned char alarme_eau __attribute__((address(0x152)));
+unsigned char alarme_huile __attribute__((address(0x153)));
+unsigned char alarme_batterie __attribute__((address(0x154)));
+unsigned char alarme_choc __attribute__((address(0x155)));
+unsigned char alarme_conducteur __attribute__((address(0x156)));
+
+unsigned int Tick_SaveT2 __attribute__((address(0x157)));
+
+unsigned char BuzzerOn __attribute__((address(0x159)));
+
+unsigned char cptT5 __attribute__((address(0x568)));
+unsigned char passageT5 __attribute__((address(0x569)));
+unsigned int buffer_batterie __attribute__((address(0x570)));
+
+
+unsigned char KM_0 __attribute__((address(0x369)));
+unsigned char KM_1 __attribute__((address(0x36A)));
+unsigned char KM_2 __attribute__((address(0x36B)));
+unsigned char KM_3 __attribute__((address(0x36C)));
+
+
+
 
 
 
@@ -11264,6 +11298,13 @@ unsigned char STKPTR_T3 __attribute__((address(0x303)));
 unsigned char STKPTR_T4 __attribute__((address(0x403)));
 unsigned char STKPTR_T5 __attribute__((address(0x503)));
 unsigned char STKPTR_T6 __attribute__((address(0x603)));
+
+
+
+unsigned char ANALOG_TEMP_HUILE;
+unsigned char ANALOG_TEMP_EAU;
+unsigned char ANALOG_JOYSTICK_X;
+unsigned char ANALOG_JOYSTICK_Y;
 # 22 "./main.h" 2
 # 1 "./afficheur.h" 1
 # 15 "./afficheur.h"
@@ -11296,18 +11337,25 @@ unsigned char STKPTR_T6 __attribute__((address(0x603)));
 # 16 "./semaphore.h" 2
 
 
+    typedef struct {
+        volatile unsigned char jetons;
+        volatile unsigned char max_jetons;
+        volatile unsigned char attente;
+        volatile unsigned char tache_util;
+    } Semaphore;
+
+    Semaphore semaphores __attribute__((address(0x90)));
 
 
-
-
-    unsigned char Val_sem_cna;
-    unsigned char Val_sem_rxtx;
-
-
-    void Init(unsigned char sem);
-    void __attribute__((reentrant)) P(unsigned char sem);
-    void __attribute__((reentrant)) V(unsigned char sem);
+    void semaphore_init(unsigned char jetons_initiaux);
+    unsigned char semaphore_tryacquire(unsigned char tache);
+    void semaphore_release(unsigned char tache);
 # 24 "./main.h" 2
+# 1 "./eeprom.h" 1
+# 37 "./eeprom.h"
+void EEPROM_Write(unsigned char addr, unsigned char data);
+unsigned char EEPROM_Read(unsigned char addr);
+# 25 "./main.h" 2
 # 1 "./stid.h" 1
 # 15 "./stid.h"
 # 1 "./main.h" 1
@@ -11315,7 +11363,7 @@ unsigned char STKPTR_T6 __attribute__((address(0x603)));
 
 unsigned char lecture_normale(unsigned char * stid_id);
 void stid_delai_us(unsigned int isdu);
-# 25 "./main.h" 2
+# 26 "./main.h" 2
 # 1 "./rxtx.h" 1
 # 15 "./rxtx.h"
 # 1 "./main.h" 1
@@ -11323,13 +11371,26 @@ void stid_delai_us(unsigned int isdu);
 
 
 void init_rxtx(void);
-# 26 "./main.h" 2
+# 27 "./main.h" 2
+# 1 "./gui.h" 1
+# 15 "./gui.h"
+# 1 "./main.h" 1
+# 16 "./gui.h" 2
+# 31 "./gui.h"
+void gui_init();
+void gui_update_batterie(char batterie);
+void gui_update_vitesse(char vit, char vit_1);
+void gui_draw_aiguille_vitesse(char vit);
+void gui_erase_aiguille_vitesse(char vit);
+void gui_update_temperature(char t_eau, char t_huile);
+void gui_temp_alert(unsigned char t_eau, unsigned char t_huile);
+# 28 "./main.h" 2
 # 1 "./T1.h" 1
 # 15 "./T1.h"
 # 1 "./main.h" 1
 # 16 "./T1.h" 2
 void tache1(void);
-# 27 "./main.h" 2
+# 29 "./main.h" 2
 # 1 "./T2.h" 1
 # 15 "./T2.h"
 # 1 "./main.h" 1
@@ -11337,27 +11398,27 @@ void tache1(void);
 
 void tache2(void);
 void tp_delai(unsigned int itpd);
-# 28 "./main.h" 2
+# 30 "./main.h" 2
 # 1 "./T3.h" 1
-# 29 "./main.h" 2
+# 31 "./main.h" 2
 # 1 "./T4.h" 1
 # 15 "./T4.h"
 # 1 "./main.h" 1
 # 16 "./T4.h" 2
  void tache4(void);
-# 30 "./main.h" 2
+# 32 "./main.h" 2
 # 1 "./T5.h" 1
 # 15 "./T5.h"
 # 1 "./main.h" 1
 # 16 "./T5.h" 2
  void tache5(void);
-# 31 "./main.h" 2
+# 33 "./main.h" 2
 # 1 "./T6.h" 1
 # 15 "./T6.h"
 # 1 "./main.h" 1
 # 16 "./T6.h" 2
  void tache6(void);
-# 32 "./main.h" 2
+# 34 "./main.h" 2
 
 
 
@@ -11376,57 +11437,54 @@ void tp_delai(unsigned int itpd);
 #pragma config CONFIG6H = 0xE0
 #pragma config CONFIG7L = 0xFF
 #pragma config CONFIG7H = 0x40
-# 143 "./main.h"
+# 145 "./main.h"
 unsigned char lecture_8bit_analogique(unsigned char channel);
 # 16 "./T3.h" 2
  void tache3(void);
 # 2 "T3.c" 2
 
-void tache3(void)
-{
+void tache3(void) {
+    unsigned char init = 0;
+
     while(1)
-    {
-        if (TP_appui==1)
         {
-            if ((TP_x>=203)&&(TP_x<209))
-            {
-                if ((TP_y>=113)&&(TP_y<121))
-                {
-                    LATCbits.LATC2=1;
+        char b;
+        b=0;
+        b++;
+            if (init == 0) {
+
+                if (EEPROM_Read(0x00) == 0xFF &&
+                    EEPROM_Read(0x01) == 0xFF &&
+                    EEPROM_Read(0x02) == 0xFF &&
+                    EEPROM_Read(0x03) == 0xFF) {
+                    (*(unsigned long*)&KM_0) = 0;
+
+                    EEPROM_Write(0x00, 0);
+                    EEPROM_Write(0x01, 0);
+                    EEPROM_Write(0x02, 0);
+                    EEPROM_Write(0x03, 0);
+                } else {
+                    (*(unsigned long*)&KM_0) = 0;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x00) << 24;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x01) << 16;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x02) << 8;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x03);
                 }
-                if ((TP_y>=121)&&(TP_y<127))
-                {
-                    LATCbits.LATC2=0;
-                }
+                init = 1;
             }
-        }
-        if (TP_appui==1)
-        {
-            if ((TP_x>=215)&&(TP_x<221))
-            {
-                if ((TP_y>=113)&&(TP_y<121))
-                {
-                    LATCbits.LATC1=1;
-                }
-                if ((TP_y>=121)&&(TP_y<127))
-                {
-                    LATCbits.LATC1=0;
-                }
+
+
+            (*(unsigned long*)&KM_0) += vitesse;
+
+
+            static unsigned int save_counter = 0;
+            save_counter++;
+            if (save_counter >= 1000) {
+                save_counter = 0;
+                EEPROM_Write(0x00, ((*(unsigned long*)&KM_0) >> 24) & 0xFF);
+                EEPROM_Write(0x01, ((*(unsigned long*)&KM_0) >> 16) & 0xFF);
+                EEPROM_Write(0x02, ((*(unsigned long*)&KM_0) >> 8) & 0xFF);
+                EEPROM_Write(0x03, (*(unsigned long*)&KM_0) & 0xFF);
             }
-        }
-        if (TP_appui==1)
-        {
-            if ((TP_x>=227)&&(TP_x<233))
-            {
-                if ((TP_y>=113)&&(TP_y<121))
-                {
-                    LATGbits.LATG0=1;
-                }
-                if ((TP_y>=121)&&(TP_y<127))
-                {
-                    LATGbits.LATG0=0;
-                }
-            }
-        }
     }
 }

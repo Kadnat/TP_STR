@@ -11,7 +11,6 @@ void tache2(void)
     alarme_frein = 0;
     alarme_huile = 0;
     
-    unsigned char cpt1=0,cpt2=0;
 
     while(1)
     {
@@ -35,57 +34,64 @@ void tache2(void)
         
         alarme_conducteur = (~(SIEGE)) & 0x1;
         
-        alarme_choc = (~(CHOC)) & 0x1;
-        
-        if(alarme_frein || alarme_eau || alarme_huile || alarme_batterie || alarme_cle || alarme_conducteur)
+        if(((~(CHOC)) & 0x1) == 1)
         {
-            if(cpt1==0)
-            {
-                Tick_SaveT2 = Tick_Count;
-                cpt1 = 1;
-            }
-            if(Tick_Count > Tick_SaveT2 + 10)
-            {
-                if(cpt1==1)
-                {
-                    Tick_SaveT2 = Tick_Count;
-                    if(vitesse >0)vitesse -= 1;
-                    else
-                    {
-                        vitesse = 0;
-                        cpt1 = 0;
-                    }
-                    
-                }
-                
-            }
-            
-        }
-        
-        if(alarme_cle)
-        {
-            if(cpt2==0)
-            {
-                Tick_SaveT2 = Tick_Count;
-                cpt2 = 1;
-            }
-            if(Tick_Count < Tick_SaveT2 + 100)
-            {
-                if(cpt2==1)
-                {
-
-                        vitesse = 0;
-                        cpt2 = 0;
-                }
-                    
-                }
-                
-            
+            alarme_choc = 1;
         }
         
 
-        //while (PIR1bits.TX1IF==0);   TXREG1='H';while (TXSTA1bits.TRMT==0);
+        if(alarme_eau || alarme_huile || alarme_batterie)
+        {
+            LED_B = 1;
+            BUZZER = 1;
+            delai_us_char(4000);
+            LED_B = 0;
+            BUZZER = 0;
+            delai_us_char(4000);
+            
+        }
+        
+        if(alarme_frein)
+        {
+            BUZZER = 1;
+            delai_us_char(8000);
+            BUZZER = 0;
+            delai_us_char(8000);
+            
+        }
+        
+        if(alarme_cle || alarme_conducteur)
+        {
+            LED_B = 1;
+            LED_G = 1;
+            BUZZER = 1;
+            delai_us_char(6000);
+            LED_B = 0;
+            LED_G = 0;
+            BUZZER = 0;
+            delai_us_char(6000);
+            
+            if(alarme_cle)
+            {
+                if(alarme_choc == 1) alarme_choc = 0;
+                    
+            }
 
+        }
+        
+        if(alarme_choc)
+        {
+            LED_B = 1;
+            LED_G = 1;
+            BUZZER = 1;
+            delai_us_char(2000);
+            LED_B = 0;
+            LED_G = 0;
+            BUZZER = 0;
+            delai_us_char(2000);
+        }
+
+        
 
     }
 }

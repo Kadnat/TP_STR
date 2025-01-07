@@ -21,6 +21,7 @@ extern "C" {
 #include "variables_globales.h"
 #include "afficheur.h"
 #include "semaphore.h"
+#include "eeprom.h"
 #include "stid.h"
 #include "rxtx.h"
 #include "gui.h"

@@ -40,12 +40,16 @@ void tache1(void)
         }
     
         //Une fois le semaphore acquis on peut passer a la routine d'acquisisiton
-        gui_update_batterie(100);
+        //gui_update_batterie(100);
         //Acquisition et actualisation des valeurs analogiques jusqu'au tour suivant
         ANALOG_JOYSTICK_X = lecture_8bit_analogique(JOYSTICK_X);
         ANALOG_JOYSTICK_Y = lecture_8bit_analogique(JOYSTICK_Y);
         ANALOG_TEMP_HUILE = lecture_8bit_analogique(TEMPERATURE_HUILE);
         ANALOG_TEMP_EAU   = lecture_8bit_analogique(TEMPERATURE_EAU);
+        
+        
+        
+
     
         //Acquisition et actualisation sur boutons poussoirs vitesse
             //BOUTON VITESSE+
@@ -55,6 +59,10 @@ void tache1(void)
             if(vitesse < 6)
             {
                 vitesse++;
+            }
+            else if(vitesse >= 6)
+            {
+                vitesse = 6;
             }
         }
         else if((VITESSE_PLUS==1) && (buffer_vitesse_plus==0))  //Si bp relach? alors raz buffer sur bouton
@@ -74,35 +82,20 @@ void tache1(void)
         {
             buffer_vitesse_moins=1;
         }
+        
+        if(alarme_eau || alarme_huile || alarme_batterie || alarme_frein || alarme_cle || alarme_conducteur || alarme_choc)
+        {
+            vitesse = 0;
+        }
         //////////////////////////////////
         //Acquisition et actualisation sur boutons poussoirs batterie
             //BOUTON BATTERIE+
-        if((BATTERIE_PLUS==0) && (buffer_batterie_plus==1))      //Si appuie sur bp viteese plus
+        if(BATTERIE_PLUS==0 && batterie == 0)      //Si appuie sur bp viteese plus
         {
-            buffer_batterie_plus=0;
-            if(batterie < 100)
-            {
-                batterie++;
-            }
+            batterie = 100;
+            buffer_batterie = 10000;
         }
-        else if((BATTERIE_PLUS==1) && (buffer_batterie_plus==0))  //Si bp relach? alors raz buffer sur bouton
-        {
-            buffer_batterie_plus=1;
-        }
-            //BOUTON BATTERIE-
-        if((BATTERIE_MOINS==0) && (buffer_batterie_moins==1))      //Si appuie sur bp viteese moins
-        {
-            buffer_batterie_moins=0;
-            if(batterie > 0)
-            {
-                batterie--;
-            }
-        }
-        else if((BATTERIE_MOINS==1) && (buffer_batterie_moins==0))  //Si bp relach? alors raz buffer sur bouton
-        {
-            buffer_batterie_moins=1;
-        }
-        
+
         //LECTURE CLE?  => Voir ce que ?a implique en HW et en traitement SW pour voir si c'est plus pertinent de le mettre ici
         n=lecture_normale(badge);
         if (n>0)

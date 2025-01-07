@@ -1,35 +1,15 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F6524 `(v ~T0 @X0 0 tf ]
-"9800 /Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 9800:     struct {
-[s S442 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S442 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"9810
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 9810:     struct {
-[s S443 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S443 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
-"9799
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 9799: typedef union {
-[u S441 `S442 1 `S443 1 ]
-[n S441 . . . ]
-"9821
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 9821: extern volatile LATCbits_t LATCbits __attribute__((address(0xF8B)));
-[v _LATCbits `VS441 ~T0 @X0 0 e@3979 ]
-"10238
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 10238:     struct {
-[s S454 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S454 . LATG0 LATG1 LATG2 LATG3 LATG4 ]
-"10245
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 10245:     struct {
-[s S455 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S455 . LG0 LG1 LG2 LG3 LG4 ]
-"10237
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 10237: typedef union {
-[u S453 `S454 1 `S455 1 ]
-[n S453 . . . ]
-"10253
-[; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 10253: extern volatile LATGbits_t LATGbits __attribute__((address(0xF8F)));
-[v _LATGbits `VS453 ~T0 @X0 0 e@3983 ]
+[v F6547 `(v ~T0 @X0 0 tf ]
+"18 ./semaphore.h
+[; ;./semaphore.h: 18:     typedef struct {
+[s S828 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
+[n S828 . jetons max_jetons attente tache_util ]
+"38 ./eeprom.h
+[; ;./eeprom.h: 38: unsigned char EEPROM_Read(unsigned char addr);
+[v _EEPROM_Read `(uc ~T0 @X0 0 ef1`uc ]
+"37
+[; ;./eeprom.h: 37: void EEPROM_Write(unsigned char addr, unsigned char data);
+[v _EEPROM_Write `(v ~T0 @X0 0 ef2`uc`uc ]
 "54 /Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h
 [; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 54: __asm("PMD3 equ 0F16h");
 [; <" PMD3 equ 0F16h ;# ">
@@ -919,256 +899,299 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./variables_globales.h: 45: unsigned char vitesse __attribute__((address(0x73)));
 [v _vitesse `uc ~T0 @X0 1 e@115 ]
 "46
-[; ;./variables_globales.h: 46: unsigned char batterie __attribute__((address(0x74)));
-[v _batterie `uc ~T0 @X0 1 e@116 ]
-"48
-[; ;./variables_globales.h: 48: unsigned char badge[10] __attribute__((address(0x75)));
-[v _badge `uc ~T0 @X0 -> 10 `i e@117 ]
-"49
-[; ;./variables_globales.h: 49: unsigned char n_octet_badge __attribute__((address(0x7F)));
-[v _n_octet_badge `uc ~T0 @X0 1 e@127 ]
-"51
-[; ;./variables_globales.h: 51: unsigned char RXTX_libre __attribute__((address(0x80)));
-[v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
-"55
-[; ;./variables_globales.h: 55: void (*fptr)(void);
-[v _fptr `*F6524 ~T0 @X0 1 e ]
-"56
-[; ;./variables_globales.h: 56: unsigned short int val_tos;
-[v _val_tos `us ~T0 @X0 1 e ]
-"57
-[; ;./variables_globales.h: 57: unsigned char * puc;
-[v _puc `*uc ~T0 @X0 1 e ]
-"58
-[; ;./variables_globales.h: 58: unsigned char tc[3];
-[v _tc `uc ~T0 @X0 -> 3 `i e ]
-"66
-[; ;./variables_globales.h: 66: unsigned char contexte1[66] __attribute__((address(0x100)));
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
-"67
-[; ;./variables_globales.h: 67: unsigned char contexte2[66] __attribute__((address(0x200)));
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
-"68
-[; ;./variables_globales.h: 68: unsigned char contexte3[66] __attribute__((address(0x300)));
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
-"69
-[; ;./variables_globales.h: 69: unsigned char contexte4[66] __attribute__((address(0x400)));
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
-"70
-[; ;./variables_globales.h: 70: unsigned char contexte5[66] __attribute__((address(0x500)));
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
-"71
-[; ;./variables_globales.h: 71: unsigned char contexte6[66] __attribute__((address(0x600)));
-[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
-"74
-[; ;./variables_globales.h: 74: unsigned char STKPTR_T1 __attribute__((address(0x103)));
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
-"75
-[; ;./variables_globales.h: 75: unsigned char STKPTR_T2 __attribute__((address(0x203)));
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
-"76
-[; ;./variables_globales.h: 76: unsigned char STKPTR_T3 __attribute__((address(0x303)));
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
-"77
-[; ;./variables_globales.h: 77: unsigned char STKPTR_T4 __attribute__((address(0x403)));
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
-"78
-[; ;./variables_globales.h: 78: unsigned char STKPTR_T5 __attribute__((address(0x503)));
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
-"79
-[; ;./variables_globales.h: 79: unsigned char STKPTR_T6 __attribute__((address(0x603)));
-[v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
-"22 ./semaphore.h
-[; ;./semaphore.h: 22:     unsigned char Val_sem_cna;
-[v _Val_sem_cna `uc ~T0 @X0 1 e ]
-"23
-[; ;./semaphore.h: 23:     unsigned char Val_sem_rxtx;
-[v _Val_sem_rxtx `uc ~T0 @X0 1 e ]
-"37 ./main.h
-[p x CONFIG1L  =  0x15  ]
-"38
-[p x CONFIG1H  =  0x13  ]
-"39
-[p x CONFIG2L  =  0x61  ]
-"40
-[p x CONFIG2H  =  0x00  ]
-"41
-[p x CONFIG3L  =  0x30  ]
-"42
-[p x CONFIG3H  =  0x80  ]
-"43
-[p x CONFIG4L  =  0x81  ]
-"44
-[p x CONFIG5L  =  0xFF  ]
-"45
-[p x CONFIG5H  =  0xC0  ]
-"46
-[p x CONFIG6L  =  0xFF  ]
+[; ;./variables_globales.h: 46: unsigned char vitesse_1 __attribute__((address(0x87)));
+[v _vitesse_1 `uc ~T0 @X0 1 e@135 ]
 "47
-[p x CONFIG6H  =  0xE0  ]
-"48
-[p x CONFIG7L  =  0xFF  ]
+[; ;./variables_globales.h: 47: unsigned char batterie __attribute__((address(0x74)));
+[v _batterie `uc ~T0 @X0 1 e@116 ]
 "49
+[; ;./variables_globales.h: 49: unsigned char badge[10] __attribute__((address(0x75)));
+[v _badge `uc ~T0 @X0 -> 10 `i e@117 ]
+"50
+[; ;./variables_globales.h: 50: unsigned char n_octet_badge __attribute__((address(0x7F)));
+[v _n_octet_badge `uc ~T0 @X0 1 e@127 ]
+"52
+[; ;./variables_globales.h: 52: unsigned char RXTX_libre __attribute__((address(0x80)));
+[v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
+"54
+[; ;./variables_globales.h: 54: unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x81)));
+[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@129 ]
+"55
+[; ;./variables_globales.h: 55: unsigned char ANALOG_TEMP_EAU __attribute__((address(0x82)));
+[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@130 ]
+"56
+[; ;./variables_globales.h: 56: unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x83)));
+[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@131 ]
+"57
+[; ;./variables_globales.h: 57: unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x84)));
+[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@132 ]
+"59
+[; ;./variables_globales.h: 59: unsigned char semtask6FLAG __attribute__((address(0x85)));
+[v _semtask6FLAG `uc ~T0 @X0 1 e@133 ]
+"60
+[; ;./variables_globales.h: 60: unsigned char semtask1FLAG __attribute__((address(0x86)));
+[v _semtask1FLAG `uc ~T0 @X0 1 e@134 ]
+"62
+[; ;./variables_globales.h: 62: unsigned char alarme_frein __attribute__((address(0x150)));
+[v _alarme_frein `uc ~T0 @X0 1 e@336 ]
+"63
+[; ;./variables_globales.h: 63: unsigned char alarme_cle __attribute__((address(0x151)));
+[v _alarme_cle `uc ~T0 @X0 1 e@337 ]
+"64
+[; ;./variables_globales.h: 64: unsigned char alarme_eau __attribute__((address(0x152)));
+[v _alarme_eau `uc ~T0 @X0 1 e@338 ]
+"65
+[; ;./variables_globales.h: 65: unsigned char alarme_huile __attribute__((address(0x153)));
+[v _alarme_huile `uc ~T0 @X0 1 e@339 ]
+"66
+[; ;./variables_globales.h: 66: unsigned char alarme_batterie __attribute__((address(0x154)));
+[v _alarme_batterie `uc ~T0 @X0 1 e@340 ]
+"67
+[; ;./variables_globales.h: 67: unsigned char alarme_choc __attribute__((address(0x155)));
+[v _alarme_choc `uc ~T0 @X0 1 e@341 ]
+"68
+[; ;./variables_globales.h: 68: unsigned char alarme_conducteur __attribute__((address(0x156)));
+[v _alarme_conducteur `uc ~T0 @X0 1 e@342 ]
+"70
+[; ;./variables_globales.h: 70: unsigned int Tick_SaveT2 __attribute__((address(0x157)));
+[v _Tick_SaveT2 `ui ~T0 @X0 1 e@343 ]
+"72
+[; ;./variables_globales.h: 72: unsigned char BuzzerOn __attribute__((address(0x159)));
+[v _BuzzerOn `uc ~T0 @X0 1 e@345 ]
+"74
+[; ;./variables_globales.h: 74: unsigned char cptT5 __attribute__((address(0x568)));
+[v _cptT5 `uc ~T0 @X0 1 e@1384 ]
+"75
+[; ;./variables_globales.h: 75: unsigned char passageT5 __attribute__((address(0x569)));
+[v _passageT5 `uc ~T0 @X0 1 e@1385 ]
+"76
+[; ;./variables_globales.h: 76: unsigned int buffer_batterie __attribute__((address(0x570)));
+[v _buffer_batterie `ui ~T0 @X0 1 e@1392 ]
+"79
+[; ;./variables_globales.h: 79: unsigned char KM_0 __attribute__((address(0x369)));
+[v _KM_0 `uc ~T0 @X0 1 e@873 ]
+"80
+[; ;./variables_globales.h: 80: unsigned char KM_1 __attribute__((address(0x36A)));
+[v _KM_1 `uc ~T0 @X0 1 e@874 ]
+"81
+[; ;./variables_globales.h: 81: unsigned char KM_2 __attribute__((address(0x36B)));
+[v _KM_2 `uc ~T0 @X0 1 e@875 ]
+"82
+[; ;./variables_globales.h: 82: unsigned char KM_3 __attribute__((address(0x36C)));
+[v _KM_3 `uc ~T0 @X0 1 e@876 ]
+"89
+[; ;./variables_globales.h: 89: void (*fptr)(void);
+[v _fptr `*F6547 ~T0 @X0 1 e ]
+"90
+[; ;./variables_globales.h: 90: unsigned short int val_tos;
+[v _val_tos `us ~T0 @X0 1 e ]
+"91
+[; ;./variables_globales.h: 91: unsigned char * puc;
+[v _puc `*uc ~T0 @X0 1 e ]
+"92
+[; ;./variables_globales.h: 92: unsigned char tc[3];
+[v _tc `uc ~T0 @X0 -> 3 `i e ]
+"100
+[; ;./variables_globales.h: 100: unsigned char contexte1[66] __attribute__((address(0x100)));
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
+"101
+[; ;./variables_globales.h: 101: unsigned char contexte2[66] __attribute__((address(0x200)));
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+"102
+[; ;./variables_globales.h: 102: unsigned char contexte3[66] __attribute__((address(0x300)));
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+"103
+[; ;./variables_globales.h: 103: unsigned char contexte4[66] __attribute__((address(0x400)));
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
+"104
+[; ;./variables_globales.h: 104: unsigned char contexte5[66] __attribute__((address(0x500)));
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+"105
+[; ;./variables_globales.h: 105: unsigned char contexte6[66] __attribute__((address(0x600)));
+[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
+"108
+[; ;./variables_globales.h: 108: unsigned char STKPTR_T1 __attribute__((address(0x103)));
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
+"109
+[; ;./variables_globales.h: 109: unsigned char STKPTR_T2 __attribute__((address(0x203)));
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+"110
+[; ;./variables_globales.h: 110: unsigned char STKPTR_T3 __attribute__((address(0x303)));
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+"111
+[; ;./variables_globales.h: 111: unsigned char STKPTR_T4 __attribute__((address(0x403)));
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+"112
+[; ;./variables_globales.h: 112: unsigned char STKPTR_T5 __attribute__((address(0x503)));
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+"113
+[; ;./variables_globales.h: 113: unsigned char STKPTR_T6 __attribute__((address(0x603)));
+[v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
+"117
+[; ;./variables_globales.h: 117: unsigned char ANALOG_TEMP_HUILE;
+[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@129 ]
+"118
+[; ;./variables_globales.h: 118: unsigned char ANALOG_TEMP_EAU;
+[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@130 ]
+"119
+[; ;./variables_globales.h: 119: unsigned char ANALOG_JOYSTICK_X;
+[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@131 ]
+"120
+[; ;./variables_globales.h: 120: unsigned char ANALOG_JOYSTICK_Y;
+[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@132 ]
+"25 ./semaphore.h
+[; ;./semaphore.h: 25:     Semaphore semaphores __attribute__((address(0x90)));
+[v _semaphores `S828 ~T0 @X0 1 e@144 ]
+"39 ./main.h
+[p x CONFIG1L  =  0x15  ]
+"40
+[p x CONFIG1H  =  0x13  ]
+"41
+[p x CONFIG2L  =  0x61  ]
+"42
+[p x CONFIG2H  =  0x00  ]
+"43
+[p x CONFIG3L  =  0x30  ]
+"44
+[p x CONFIG3H  =  0x80  ]
+"45
+[p x CONFIG4L  =  0x81  ]
+"46
+[p x CONFIG5L  =  0xFF  ]
+"47
+[p x CONFIG5H  =  0xC0  ]
+"48
+[p x CONFIG6L  =  0xFF  ]
+"49
+[p x CONFIG6H  =  0xE0  ]
+"50
+[p x CONFIG7L  =  0xFF  ]
+"51
 [p x CONFIG7H  =  0x40  ]
 "3 T3.c
-[; ;T3.c: 3: void tache3(void)
+[; ;T3.c: 3: void tache3(void) {
 [v _tache3 `(v ~T0 @X0 1 ef ]
-"4
-[; ;T3.c: 4: {
 {
 [e :U _tache3 ]
 [f ]
-"5
-[; ;T3.c: 5:     while(1)
-[e :U 830 ]
+"4
+[; ;T3.c: 4:     unsigned char init = 0;
+[v _init `uc ~T0 @X0 1 a ]
+[e = _init -> -> 0 `i `uc ]
 "6
-[; ;T3.c: 6:     {
-{
+[; ;T3.c: 6:     while(1)
+[e :U 831 ]
 "7
-[; ;T3.c: 7:         if (TP_appui==1)
-[e $ ! == -> _TP_appui `i -> 1 `i 832  ]
+[; ;T3.c: 7:         {
+{
 "8
-[; ;T3.c: 8:         {
-{
+[; ;T3.c: 8:         char b;
+[v _b `uc ~T0 @X0 1 a ]
 "9
-[; ;T3.c: 9:             if ((TP_x>=203)&&(TP_x<209))
-[e $ ! && >= -> _TP_x `i -> 203 `i < -> _TP_x `i -> 209 `i 833  ]
+[; ;T3.c: 9:         b=0;
+[e = _b -> -> 0 `i `uc ]
 "10
-[; ;T3.c: 10:             {
-{
+[; ;T3.c: 10:         b++;
+[e ++ _b -> -> 1 `i `uc ]
 "11
-[; ;T3.c: 11:                 if ((TP_y>=113)&&(TP_y<121))
-[e $ ! && >= -> _TP_y `i -> 113 `i < -> _TP_y `i -> 121 `i 834  ]
-"12
-[; ;T3.c: 12:                 {
+[; ;T3.c: 11:             if (init == 0) {
+[e $ ! == -> _init `i -> 0 `i 833  ]
 {
 "13
-[; ;T3.c: 13:                     LATCbits.LATC2=1;
-[e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
-"14
-[; ;T3.c: 14:                 }
-}
-[e :U 834 ]
-"15
-[; ;T3.c: 15:                 if ((TP_y>=121)&&(TP_y<127))
-[e $ ! && >= -> _TP_y `i -> 121 `i < -> _TP_y `i -> 127 `i 835  ]
+[; ;T3.c: 13:                 if (EEPROM_Read(0x00) == 0xFF &&
+[e $ ! && && && == -> ( _EEPROM_Read (1 -> -> 0 `i `uc `i -> 255 `i == -> ( _EEPROM_Read (1 -> -> 1 `i `uc `i -> 255 `i == -> ( _EEPROM_Read (1 -> -> 2 `i `uc `i -> 255 `i == -> ( _EEPROM_Read (1 -> -> 3 `i `uc `i -> 255 `i 834  ]
 "16
-[; ;T3.c: 16:                 {
+[; ;T3.c: 16:                     EEPROM_Read(0x03) == 0xFF) {
 {
 "17
-[; ;T3.c: 17:                     LATCbits.LATC2=0;
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-"18
-[; ;T3.c: 18:                 }
+[; ;T3.c: 17:                     (*(unsigned long*)&KM_0) = 0;
+[e = *U -> &U _KM_0 `*ul -> -> -> 0 `i `l `ul ]
+"19
+[; ;T3.c: 19:                     EEPROM_Write(0x00, 0);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"20
+[; ;T3.c: 20:                     EEPROM_Write(0x01, 0);
+[e ( _EEPROM_Write (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"21
+[; ;T3.c: 21:                     EEPROM_Write(0x02, 0);
+[e ( _EEPROM_Write (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+"22
+[; ;T3.c: 22:                     EEPROM_Write(0x03, 0);
+[e ( _EEPROM_Write (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+"23
+[; ;T3.c: 23:                 } else {
+}
+[e $U 835  ]
+[e :U 834 ]
+{
+"24
+[; ;T3.c: 24:                     (*(unsigned long*)&KM_0) = 0;
+[e = *U -> &U _KM_0 `*ul -> -> -> 0 `i `l `ul ]
+"25
+[; ;T3.c: 25:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x00) << 24;
+[e =| *U -> &U _KM_0 `*ul << -> ( _EEPROM_Read (1 -> -> 0 `i `uc `ul -> 24 `i ]
+"26
+[; ;T3.c: 26:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x01) << 16;
+[e =| *U -> &U _KM_0 `*ul << -> ( _EEPROM_Read (1 -> -> 1 `i `uc `ul -> 16 `i ]
+"27
+[; ;T3.c: 27:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x02) << 8;
+[e =| *U -> &U _KM_0 `*ul << -> ( _EEPROM_Read (1 -> -> 2 `i `uc `ul -> 8 `i ]
+"28
+[; ;T3.c: 28:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x03);
+[e =| *U -> &U _KM_0 `*ul -> ( _EEPROM_Read (1 -> -> 3 `i `uc `ul ]
+"29
+[; ;T3.c: 29:                 }
 }
 [e :U 835 ]
-"19
-[; ;T3.c: 19:             }
+"30
+[; ;T3.c: 30:                 init = 1;
+[e = _init -> -> 1 `i `uc ]
+"31
+[; ;T3.c: 31:             }
 }
 [e :U 833 ]
-"20
-[; ;T3.c: 20:         }
-}
-[e :U 832 ]
-"21
-[; ;T3.c: 21:         if (TP_appui==1)
-[e $ ! == -> _TP_appui `i -> 1 `i 836  ]
-"22
-[; ;T3.c: 22:         {
-{
-"23
-[; ;T3.c: 23:             if ((TP_x>=215)&&(TP_x<221))
-[e $ ! && >= -> _TP_x `i -> 215 `i < -> _TP_x `i -> 221 `i 837  ]
-"24
-[; ;T3.c: 24:             {
-{
-"25
-[; ;T3.c: 25:                 if ((TP_y>=113)&&(TP_y<121))
-[e $ ! && >= -> _TP_y `i -> 113 `i < -> _TP_y `i -> 121 `i 838  ]
-"26
-[; ;T3.c: 26:                 {
-{
-"27
-[; ;T3.c: 27:                     LATCbits.LATC1=1;
-[e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
-"28
-[; ;T3.c: 28:                 }
-}
-[e :U 838 ]
-"29
-[; ;T3.c: 29:                 if ((TP_y>=121)&&(TP_y<127))
-[e $ ! && >= -> _TP_y `i -> 121 `i < -> _TP_y `i -> 127 `i 839  ]
-"30
-[; ;T3.c: 30:                 {
-{
-"31
-[; ;T3.c: 31:                     LATCbits.LATC1=0;
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-"32
-[; ;T3.c: 32:                 }
-}
-[e :U 839 ]
-"33
-[; ;T3.c: 33:             }
-}
-[e :U 837 ]
 "34
-[; ;T3.c: 34:         }
+[; ;T3.c: 34:             (*(unsigned long*)&KM_0) += vitesse;
+[e =+ *U -> &U _KM_0 `*ul -> _vitesse `ul ]
+"37
+[; ;T3.c: 37:             static unsigned int save_counter = 0;
+[v F6657 `ui ~T0 @X0 1 s save_counter ]
+[i F6657
+-> -> 0 `i `ui
+]
+"38
+[; ;T3.c: 38:             save_counter++;
+[e ++ F6657 -> -> 1 `i `ui ]
+"39
+[; ;T3.c: 39:             if (save_counter >= 1000) {
+[e $ ! >= F6657 -> -> 1000 `i `ui 836  ]
+{
+"40
+[; ;T3.c: 40:                 save_counter = 0;
+[e = F6657 -> -> 0 `i `ui ]
+"41
+[; ;T3.c: 41:                 EEPROM_Write(0x00, ((*(unsigned long*)&KM_0) >> 24) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc -> & >> *U -> &U _KM_0 `*ul -> 24 `i -> -> -> 255 `i `l `ul `uc ]
+"42
+[; ;T3.c: 42:                 EEPROM_Write(0x01, ((*(unsigned long*)&KM_0) >> 16) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 1 `i `uc -> & >> *U -> &U _KM_0 `*ul -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+"43
+[; ;T3.c: 43:                 EEPROM_Write(0x02, ((*(unsigned long*)&KM_0) >> 8) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 2 `i `uc -> & >> *U -> &U _KM_0 `*ul -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+"44
+[; ;T3.c: 44:                 EEPROM_Write(0x03, (*(unsigned long*)&KM_0) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 3 `i `uc -> & *U -> &U _KM_0 `*ul -> -> -> 255 `i `l `ul `uc ]
+"45
+[; ;T3.c: 45:             }
 }
 [e :U 836 ]
-"35
-[; ;T3.c: 35:         if (TP_appui==1)
-[e $ ! == -> _TP_appui `i -> 1 `i 840  ]
-"36
-[; ;T3.c: 36:         {
-{
-"37
-[; ;T3.c: 37:             if ((TP_x>=227)&&(TP_x<233))
-[e $ ! && >= -> _TP_x `i -> 227 `i < -> _TP_x `i -> 233 `i 841  ]
-"38
-[; ;T3.c: 38:             {
-{
-"39
-[; ;T3.c: 39:                 if ((TP_y>=113)&&(TP_y<121))
-[e $ ! && >= -> _TP_y `i -> 113 `i < -> _TP_y `i -> 121 `i 842  ]
-"40
-[; ;T3.c: 40:                 {
-{
-"41
-[; ;T3.c: 41:                     LATGbits.LATG0=1;
-[e = . . _LATGbits 0 0 -> -> 1 `i `uc ]
-"42
-[; ;T3.c: 42:                 }
-}
-[e :U 842 ]
-"43
-[; ;T3.c: 43:                 if ((TP_y>=121)&&(TP_y<127))
-[e $ ! && >= -> _TP_y `i -> 121 `i < -> _TP_y `i -> 127 `i 843  ]
-"44
-[; ;T3.c: 44:                 {
-{
-"45
-[; ;T3.c: 45:                     LATGbits.LATG0=0;
-[e = . . _LATGbits 0 0 -> -> 0 `i `uc ]
 "46
-[; ;T3.c: 46:                 }
+[; ;T3.c: 46:     }
 }
-[e :U 843 ]
+[e :U 830 ]
+[e $U 831  ]
+[e :U 832 ]
 "47
-[; ;T3.c: 47:             }
-}
-[e :U 841 ]
-"48
-[; ;T3.c: 48:         }
-}
-[e :U 840 ]
-"49
-[; ;T3.c: 49:     }
-}
-[e :U 829 ]
-[e $U 830  ]
-[e :U 831 ]
-"50
-[; ;T3.c: 50: }
-[e :UE 828 ]
+[; ;T3.c: 47: }
+[e :UE 829 ]
 }

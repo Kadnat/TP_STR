@@ -71,6 +71,18 @@ unsigned int Tick_SaveT2 __at(0x157);
 
 unsigned char BuzzerOn __at(0x159);
 
+unsigned char cptT5 __at(0x568);
+unsigned char passageT5 __at(0x569);
+unsigned int buffer_batterie __at(0x570);
+
+//Variable kilomÃ©trage (4 octets)
+unsigned char KM_0                 __at(0x369);  // Octet de poids fort
+unsigned char KM_1                 __at(0x36A);
+unsigned char KM_2                 __at(0x36B);
+unsigned char KM_3                 __at(0x36C); 
+
+#define kilometrage (*(unsigned long*)&KM_0)
+
 
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
@@ -80,11 +92,11 @@ unsigned char * puc;
 unsigned char tc[3];
 
 
-//Contexte = 18 registres SFR + 48 octet de 00h à 2Fh = 66 octets
-/* Réservation de la zone de 100h à 142h pour le contexte de la tache 1 */
-/* Réservation de la zone de 200h à 242h pour le contexte de la tache 2 */
+//Contexte = 18 registres SFR + 48 octet de 00h ï¿½ 2Fh = 66 octets
+/* Rï¿½servation de la zone de 100h ï¿½ 142h pour le contexte de la tache 1 */
+/* Rï¿½servation de la zone de 200h ï¿½ 242h pour le contexte de la tache 2 */
 /* Ainsi de suite ...*/
-/* Chaque contexte va utiliser 66 octets (0x42) au début de la banque correspondante */
+/* Chaque contexte va utiliser 66 octets (0x42) au dï¿½but de la banque correspondante */
 unsigned char contexte1[66] __at(0x100);
 unsigned char contexte2[66] __at(0x200);
 unsigned char contexte3[66] __at(0x300);

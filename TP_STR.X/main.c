@@ -6,9 +6,10 @@ void initialisation_des_ports(void);
 void main()
 {  
     initialisation_des_ports();
-    initialisation_afficheur();
-    gui_init();
+    //initialisation_afficheur();
     initialisation_du_systeme();
+    //gui_init();
+    //initialisation_afficheur(); 
     semaphore_init(1);
 
         // Démarrage du système
