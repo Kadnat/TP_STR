@@ -72,12 +72,12 @@ void __interrupt(high_priority) fonction_d_interruption(void)
 
         Tick_Count++;// Incr?mentation du compteur de tick
 
-        if (mutexT1Flag == 1) mutexT1Flag = 0; //Utilisation de flag pour les tasks sous s�maphore afin d'�viter
-        if (mutexT6Flag == 1) mutexT6Flag = 0; //que le process recommence la tache pendant les 10ms
+        if (mutexT1Flag == 1) mutexT1Flag = 0; //Utilisation de flag pour les tasks sous mutex afin d'�viter
+        if (mutexT6Flag == 1) mutexT6Flag = 0; //que le process recommence la tache et ne reprenne le mutex
         if (passageT5 == 1) passageT5 = 0;
         if (passageT3 == 1) passageT3 = 0;
         
-        // Update task readiness based on period
+        // Mise à jour de l'état de préparation de la tâche en fonction de la période
         for(uint8_t i = 0; i < NOMBRE_DE_TACHES; i++) {
             if(Tick_Count >= task_control[i].next_tick) {
                 task_control[i].is_ready = 1;
@@ -85,7 +85,7 @@ void __interrupt(high_priority) fonction_d_interruption(void)
             }
         }
 
-        // Find highest priority ready task not blocked by mutex
+        // Trouver la tâche prête la plus prioritaire qui n'est pas bloquée par le mutex
         uint8_t highest_prio = 0;
         tache_active = 0;
 

@@ -1,10 +1,16 @@
 #include "T3.h"
 
+/**
+ * Tâche 3: Gestion du kilométrage
+ * Cette tâche s'occupe du comptage kilométrique et de sa sauvegarde en EEPROM
+ */
 void tache3(void) {
+    // Initialisation des variables
     counter_T3 = 0;
     passageT3 = 0;
     unsigned long kilometrage = 0;
     
+    // Initialisation de l'EEPROM si nécessaire
     if (EEPROM_Read(0x00) == 0xFF && 
                     EEPROM_Read(0x01) == 0xFF && 
                     EEPROM_Read(0x02) == 0xFF && 
@@ -26,14 +32,16 @@ void tache3(void) {
     while(1)
         {
 
-            // Increment based on speed (0-6)
+            // Calcul du kilométrage basé sur la vitesse
             kilometrage += vitesse;
+            
+            // Mise à jour des octets du kilométrage
             km[0] = kilometrage & 0xFF;
             km[1] = (kilometrage >> 8) & 0xFF;
             km[2] = (kilometrage >> 16) & 0xFF;
             km[3] = (kilometrage >> 24) & 0xFF;
 
-            // Save to EEPROM periodically
+            // Sauvegarde périodique dans l'EEPROM
             if(passageT3 == 0)
             {
                 counter_T3++;
