@@ -12,10 +12,10 @@ void tache5(void)       //Gestion batterie & vitesse
     //unsigned char passageT5 = 0;
     
     batterie = 100;                                 //Initialiastion du niveau de batterie ? 100%
-    vitesse = 0;                                    //Initialisation de vitesse a 0
-    vitesse_1 = 0;                                  //Initialisation de vitesse n-1 a 0
+    vitesse = 0;                                    //Initialisation de vitesse a 0                              //Initialisation de vitesse n-1 a 0
       //image de la batterie en temps r?el sur 10 000 afin d'?viter d'utiliser des floats
     buffer_batterie = batterie * 100;
+    passageT5 = 0;
     
     while(1)
     {   
@@ -24,7 +24,6 @@ void tache5(void)       //Gestion batterie & vitesse
 
         if(batterie!=0) //Si la batterie n'est pas vide
         {
-            if(batterie >= 100)batterie = 100;
                 
             if(passageT5 == 0)
             {
@@ -38,8 +37,8 @@ void tache5(void)       //Gestion batterie & vitesse
                     average_speed = average_speed / sample_count;
                     //Actualisation du niveau de batterie selon l'equation b%=b-0,15x-0,1 o? x = average_speed
                     buffer_batterie = buffer_batterie - 15 * average_speed - 10;
+                    
                     batterie = buffer_batterie / 100;
-
                     cptT5 = 0;           //Raz du nombre de sample  
 
                 }

@@ -33,55 +33,56 @@ unsigned char FSR0H_TEMPORAIRE     __at(0x63);
 unsigned char FSR0L_TEMPORAIRE     __at(0x64);
 unsigned char DEMARRAGE            __at(0x65);
 
-//Variables touch pad
-unsigned char TP_appui             __at(0x66);
-unsigned char TP_x                 __at(0x67);
-unsigned char TP_y                 __at(0x68);
 
 unsigned char queue[NOMBRE_DE_TACHES]        __at(0x69);
 unsigned char tache_active         __at(0x6F);
 unsigned char pointeur_de_tache    __at(0x70);
 unsigned int Tick_Count            __at(0x71);
-unsigned char vitesse              __at(0x73);
-unsigned char vitesse_1             __at(0x87);  //sample de la valeur de vitesse n-1
-unsigned char batterie             __at(0x74);
-
-unsigned char badge[10]            __at(0x75);
-unsigned char n_octet_badge        __at(0x7F);
-
 unsigned char RXTX_libre        __at(0x80);
+unsigned char semtask1FLAG __at(0x81);
+unsigned char semtask6FLAG __at(0x82);
+unsigned char vitesse              __at(0x83);
+unsigned char batterie             __at(0x84);
 
-unsigned char ANALOG_TEMP_HUILE     __at(0x81);
-unsigned char ANALOG_TEMP_EAU       __at(0x82);
-unsigned char ANALOG_JOYSTICK_X     __at(0x83);
-unsigned char ANALOG_JOYSTICK_Y     __at(0x84);
+//var glob tache 1
 
-unsigned char semtask6FLAG __at(0x85);
-unsigned char semtask1FLAG __at(0x86);
+unsigned char n __at(0x745);
+unsigned char buffer_vitesse_plus __at(0x700);
+unsigned char buffer_vitesse_moins __at(0x701);
 
-unsigned char alarme_frein __at(0x150);
-unsigned char alarme_cle __at(0x151);
-unsigned char alarme_eau __at(0x152);
-unsigned char alarme_huile __at(0x153);
-unsigned char alarme_batterie __at(0x154);
-unsigned char alarme_choc __at(0x155);
-unsigned char alarme_conducteur __at(0x156);
 
-unsigned int Tick_SaveT2 __at(0x157);
+unsigned char badge[10]            __at(0x730);
 
-unsigned char BuzzerOn __at(0x159);
+unsigned char n_octet_badge        __at(0x705);
+unsigned char ANALOG_TEMP_HUILE     __at(0x706);
+unsigned char ANALOG_TEMP_EAU       __at(0x707);
+unsigned char ANALOG_JOYSTICK_X     __at(0x708);
+unsigned char ANALOG_JOYSTICK_Y     __at(0x709);
 
-unsigned char cptT5 __at(0x568);
-unsigned char passageT5 __at(0x569);
-unsigned int buffer_batterie __at(0x570);
+//var glob tache 2
+unsigned char alarme_frein __at(0x70A);
+unsigned char alarme_cle __at(0x70B);
+unsigned char alarme_eau __at(0x70C);
+unsigned char alarme_huile __at(0x70D);
+unsigned char alarme_batterie __at(0x70E);
+unsigned char alarme_choc __at(0x70F);
+unsigned char alarme_conducteur __at(0x710);
+
+//var glob tache 5
+unsigned char cptT5 __at(0x711);
+unsigned char passageT5 __at(0x712);
+unsigned int buffer_batterie __at(0x713);
+
+//var glob tache 6
+
 
 //Variable kilométrage (4 octets)
-unsigned char KM_0                 __at(0x369);  // Octet de poids fort
-unsigned char KM_1                 __at(0x36A);
-unsigned char KM_2                 __at(0x36B);
-unsigned char KM_3                 __at(0x36C); 
+//unsigned char KM_0                 __at(0x369);  // Octet de poids fort
+//unsigned char KM_1                 __at(0x36A);
+//unsigned char KM_2                 __at(0x36B);
+//unsigned char KM_3                 __at(0x36C); 
 
-#define kilometrage (*(unsigned long*)&KM_0)
+//#define kilometrage (*(unsigned long*)&KM_0)
 
 
     //pointeur de fonction
@@ -112,12 +113,6 @@ unsigned char STKPTR_T4             __at(0x403);
 unsigned char STKPTR_T5             __at(0x503);
 unsigned char STKPTR_T6             __at(0x603);
 
-
-//Variables globales hardware
-unsigned char ANALOG_TEMP_HUILE;
-unsigned char ANALOG_TEMP_EAU;
-unsigned char ANALOG_JOYSTICK_X;
-unsigned char ANALOG_JOYSTICK_Y;
 
 
 #ifdef	__cplusplus

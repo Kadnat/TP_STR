@@ -11227,58 +11227,45 @@ unsigned char FSR0L_TEMPORAIRE __attribute__((address(0x64)));
 unsigned char DEMARRAGE __attribute__((address(0x65)));
 
 
-unsigned char TP_appui __attribute__((address(0x66)));
-unsigned char TP_x __attribute__((address(0x67)));
-unsigned char TP_y __attribute__((address(0x68)));
-
 unsigned char queue[6] __attribute__((address(0x69)));
 unsigned char tache_active __attribute__((address(0x6F)));
 unsigned char pointeur_de_tache __attribute__((address(0x70)));
 unsigned int Tick_Count __attribute__((address(0x71)));
-unsigned char vitesse __attribute__((address(0x73)));
-unsigned char vitesse_1 __attribute__((address(0x87)));
-unsigned char batterie __attribute__((address(0x74)));
-
-unsigned char badge[10] __attribute__((address(0x75)));
-unsigned char n_octet_badge __attribute__((address(0x7F)));
-
 unsigned char RXTX_libre __attribute__((address(0x80)));
-
-unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x81)));
-unsigned char ANALOG_TEMP_EAU __attribute__((address(0x82)));
-unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x83)));
-unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x84)));
-
-unsigned char semtask6FLAG __attribute__((address(0x85)));
-unsigned char semtask1FLAG __attribute__((address(0x86)));
-
-unsigned char alarme_frein __attribute__((address(0x150)));
-unsigned char alarme_cle __attribute__((address(0x151)));
-unsigned char alarme_eau __attribute__((address(0x152)));
-unsigned char alarme_huile __attribute__((address(0x153)));
-unsigned char alarme_batterie __attribute__((address(0x154)));
-unsigned char alarme_choc __attribute__((address(0x155)));
-unsigned char alarme_conducteur __attribute__((address(0x156)));
-
-unsigned int Tick_SaveT2 __attribute__((address(0x157)));
-
-unsigned char BuzzerOn __attribute__((address(0x159)));
-
-unsigned char cptT5 __attribute__((address(0x568)));
-unsigned char passageT5 __attribute__((address(0x569)));
-unsigned int buffer_batterie __attribute__((address(0x570)));
-
-
-unsigned char KM_0 __attribute__((address(0x369)));
-unsigned char KM_1 __attribute__((address(0x36A)));
-unsigned char KM_2 __attribute__((address(0x36B)));
-unsigned char KM_3 __attribute__((address(0x36C)));
+unsigned char semtask1FLAG __attribute__((address(0x81)));
+unsigned char semtask6FLAG __attribute__((address(0x82)));
+unsigned char vitesse __attribute__((address(0x83)));
+unsigned char batterie __attribute__((address(0x84)));
 
 
 
+unsigned char n __attribute__((address(0x745)));
+unsigned char buffer_vitesse_plus __attribute__((address(0x700)));
+unsigned char buffer_vitesse_moins __attribute__((address(0x701)));
 
 
+unsigned char badge[10] __attribute__((address(0x730)));
 
+unsigned char n_octet_badge __attribute__((address(0x705)));
+unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x706)));
+unsigned char ANALOG_TEMP_EAU __attribute__((address(0x707)));
+unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x708)));
+unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x709)));
+
+
+unsigned char alarme_frein __attribute__((address(0x70A)));
+unsigned char alarme_cle __attribute__((address(0x70B)));
+unsigned char alarme_eau __attribute__((address(0x70C)));
+unsigned char alarme_huile __attribute__((address(0x70D)));
+unsigned char alarme_batterie __attribute__((address(0x70E)));
+unsigned char alarme_choc __attribute__((address(0x70F)));
+unsigned char alarme_conducteur __attribute__((address(0x710)));
+
+
+unsigned char cptT5 __attribute__((address(0x711)));
+unsigned char passageT5 __attribute__((address(0x712)));
+unsigned int buffer_batterie __attribute__((address(0x713)));
+# 90 "./variables_globales.h"
 void (*fptr)(void);
 unsigned short int val_tos;
 unsigned char * puc;
@@ -11304,13 +11291,6 @@ unsigned char STKPTR_T3 __attribute__((address(0x303)));
 unsigned char STKPTR_T4 __attribute__((address(0x403)));
 unsigned char STKPTR_T5 __attribute__((address(0x503)));
 unsigned char STKPTR_T6 __attribute__((address(0x603)));
-
-
-
-unsigned char ANALOG_TEMP_HUILE;
-unsigned char ANALOG_TEMP_EAU;
-unsigned char ANALOG_JOYSTICK_X;
-unsigned char ANALOG_JOYSTICK_Y;
 # 22 "./main.h" 2
 # 1 "./afficheur.h" 1
 # 15 "./afficheur.h"

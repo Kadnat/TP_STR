@@ -5,13 +5,16 @@
 void tache1(void)
 {   
     //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
-    
-    unsigned char ma_tache = TACHE1;  
-    unsigned char n; //nombre d'octet de la cle d'identification
-    unsigned char buffer_vitesse_plus = 1;   //sert a modifier la valeur de vitesse sur appuie unique et non continu
-    unsigned char buffer_vitesse_moins = 1;  //sert a modifier la valeur de vitesse sur appuie unique et non continu
-    unsigned char buffer_batterie_plus = 1;  //sert a modifier la valeur de batterie sur appuie unique et non continu
-    unsigned char buffer_batterie_moins = 1; //sert a modifier la valeur de batterie sur appuie unique et non continu
+
+       //sert a modifier la valeur de vitesse sur appuie unique et non continu
+      //sert a modifier la valeur de vitesse sur appuie unique et non continu
+     //sert a modifier la valeur de batterie sur appuie unique et non continu
+     //sert a modifier la valeur de batterie sur appuie unique et non continu
+    n =0;
+    buffer_vitesse_plus =1;
+    buffer_vitesse_moins =1;
+    buffer_batterie = batterie;
+
     di();                                   //disable interrupt
     initialisation_afficheur();             
     clear_text();
@@ -31,7 +34,7 @@ void tache1(void)
         //while (PIR1bits.TX1IF==0);   TXREG1='A';while (TXSTA1bits.TRMT==0);
         
         // Essaie d'acqu?rir le s?maphore
-        while (semaphore_tryacquire(ma_tache) == 0)
+        while (semaphore_tryacquire(TACHE1) == 0)
         {
         
             // Si le semaphore n'est pas disponible, 
@@ -83,7 +86,7 @@ void tache1(void)
             buffer_vitesse_moins=1;
         }
         
-        if(alarme_eau || alarme_huile || alarme_batterie || alarme_frein || alarme_cle || alarme_conducteur || alarme_choc)
+        if(alarme_eau || alarme_huile || alarme_batterie || alarme_frein || alarme_conducteur || alarme_choc)
         {
             vitesse = 0;
         }
@@ -117,7 +120,7 @@ void tache1(void)
         //while (PIR1bits.TX1IF==0);   TXREG1='G';while (TXSTA1bits.TRMT==0);
 
 
-        semaphore_release(ma_tache);
+        semaphore_release(TACHE1);
         semtask1FLAG = 1;
         
         T0IF = 1;

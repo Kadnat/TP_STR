@@ -1,10 +1,11 @@
 #include "T3.h"
 
 void tache3(void) {
-    unsigned char init = 0;
+    //unsigned char init = 0;
     
     while(1)
         {
+        /*
         char b;
         b=0;
         b++;
@@ -43,5 +44,6 @@ void tache3(void) {
                 EEPROM_Write(0x02, (kilometrage >> 8) & 0xFF);
                 EEPROM_Write(0x03, kilometrage & 0xFF);
             }
+          */
     }
 }

@@ -1,5 +1,5 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F6547 `(v ~T0 @X0 0 tf ]
+[v F6540 `(v ~T0 @X0 0 tf ]
 "18 ./semaphore.h
 [; ;./semaphore.h: 18:     typedef struct {
 [s S828 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
@@ -872,170 +872,137 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./variables_globales.h: 34: unsigned char DEMARRAGE __attribute__((address(0x65)));
 [v _DEMARRAGE `uc ~T0 @X0 1 e@101 ]
 "37
-[; ;./variables_globales.h: 37: unsigned char TP_appui __attribute__((address(0x66)));
-[v _TP_appui `uc ~T0 @X0 1 e@102 ]
-"38
-[; ;./variables_globales.h: 38: unsigned char TP_x __attribute__((address(0x67)));
-[v _TP_x `uc ~T0 @X0 1 e@103 ]
-"39
-[; ;./variables_globales.h: 39: unsigned char TP_y __attribute__((address(0x68)));
-[v _TP_y `uc ~T0 @X0 1 e@104 ]
-"41
-[; ;./variables_globales.h: 41: unsigned char queue[6] __attribute__((address(0x69)));
+[; ;./variables_globales.h: 37: unsigned char queue[6] __attribute__((address(0x69)));
 [v _queue `uc ~T0 @X0 -> 6 `i e@105 ]
-"42
-[; ;./variables_globales.h: 42: unsigned char tache_active __attribute__((address(0x6F)));
+"38
+[; ;./variables_globales.h: 38: unsigned char tache_active __attribute__((address(0x6F)));
 [v _tache_active `uc ~T0 @X0 1 e@111 ]
-"43
-[; ;./variables_globales.h: 43: unsigned char pointeur_de_tache __attribute__((address(0x70)));
+"39
+[; ;./variables_globales.h: 39: unsigned char pointeur_de_tache __attribute__((address(0x70)));
 [v _pointeur_de_tache `uc ~T0 @X0 1 e@112 ]
-"44
-[; ;./variables_globales.h: 44: unsigned int Tick_Count __attribute__((address(0x71)));
+"40
+[; ;./variables_globales.h: 40: unsigned int Tick_Count __attribute__((address(0x71)));
 [v _Tick_Count `ui ~T0 @X0 1 e@113 ]
-"45
-[; ;./variables_globales.h: 45: unsigned char vitesse __attribute__((address(0x73)));
-[v _vitesse `uc ~T0 @X0 1 e@115 ]
-"46
-[; ;./variables_globales.h: 46: unsigned char vitesse_1 __attribute__((address(0x87)));
-[v _vitesse_1 `uc ~T0 @X0 1 e@135 ]
-"47
-[; ;./variables_globales.h: 47: unsigned char batterie __attribute__((address(0x74)));
-[v _batterie `uc ~T0 @X0 1 e@116 ]
-"49
-[; ;./variables_globales.h: 49: unsigned char badge[10] __attribute__((address(0x75)));
-[v _badge `uc ~T0 @X0 -> 10 `i e@117 ]
-"50
-[; ;./variables_globales.h: 50: unsigned char n_octet_badge __attribute__((address(0x7F)));
-[v _n_octet_badge `uc ~T0 @X0 1 e@127 ]
-"52
-[; ;./variables_globales.h: 52: unsigned char RXTX_libre __attribute__((address(0x80)));
+"41
+[; ;./variables_globales.h: 41: unsigned char RXTX_libre __attribute__((address(0x80)));
 [v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
+"42
+[; ;./variables_globales.h: 42: unsigned char semtask1FLAG __attribute__((address(0x81)));
+[v _semtask1FLAG `uc ~T0 @X0 1 e@129 ]
+"43
+[; ;./variables_globales.h: 43: unsigned char semtask6FLAG __attribute__((address(0x82)));
+[v _semtask6FLAG `uc ~T0 @X0 1 e@130 ]
+"44
+[; ;./variables_globales.h: 44: unsigned char vitesse __attribute__((address(0x83)));
+[v _vitesse `uc ~T0 @X0 1 e@131 ]
+"45
+[; ;./variables_globales.h: 45: unsigned char batterie __attribute__((address(0x84)));
+[v _batterie `uc ~T0 @X0 1 e@132 ]
+"49
+[; ;./variables_globales.h: 49: unsigned char n __attribute__((address(0x745)));
+[v _n `uc ~T0 @X0 1 e@1861 ]
+"50
+[; ;./variables_globales.h: 50: unsigned char buffer_vitesse_plus __attribute__((address(0x700)));
+[v _buffer_vitesse_plus `uc ~T0 @X0 1 e@1792 ]
+"51
+[; ;./variables_globales.h: 51: unsigned char buffer_vitesse_moins __attribute__((address(0x701)));
+[v _buffer_vitesse_moins `uc ~T0 @X0 1 e@1793 ]
 "54
-[; ;./variables_globales.h: 54: unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x81)));
-[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@129 ]
-"55
-[; ;./variables_globales.h: 55: unsigned char ANALOG_TEMP_EAU __attribute__((address(0x82)));
-[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@130 ]
+[; ;./variables_globales.h: 54: unsigned char badge[10] __attribute__((address(0x730)));
+[v _badge `uc ~T0 @X0 -> 10 `i e@1840 ]
 "56
-[; ;./variables_globales.h: 56: unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x83)));
-[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@131 ]
+[; ;./variables_globales.h: 56: unsigned char n_octet_badge __attribute__((address(0x705)));
+[v _n_octet_badge `uc ~T0 @X0 1 e@1797 ]
 "57
-[; ;./variables_globales.h: 57: unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x84)));
-[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@132 ]
+[; ;./variables_globales.h: 57: unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x706)));
+[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@1798 ]
+"58
+[; ;./variables_globales.h: 58: unsigned char ANALOG_TEMP_EAU __attribute__((address(0x707)));
+[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@1799 ]
 "59
-[; ;./variables_globales.h: 59: unsigned char semtask6FLAG __attribute__((address(0x85)));
-[v _semtask6FLAG `uc ~T0 @X0 1 e@133 ]
+[; ;./variables_globales.h: 59: unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x708)));
+[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@1800 ]
 "60
-[; ;./variables_globales.h: 60: unsigned char semtask1FLAG __attribute__((address(0x86)));
-[v _semtask1FLAG `uc ~T0 @X0 1 e@134 ]
-"62
-[; ;./variables_globales.h: 62: unsigned char alarme_frein __attribute__((address(0x150)));
-[v _alarme_frein `uc ~T0 @X0 1 e@336 ]
+[; ;./variables_globales.h: 60: unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x709)));
+[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@1801 ]
 "63
-[; ;./variables_globales.h: 63: unsigned char alarme_cle __attribute__((address(0x151)));
-[v _alarme_cle `uc ~T0 @X0 1 e@337 ]
+[; ;./variables_globales.h: 63: unsigned char alarme_frein __attribute__((address(0x70A)));
+[v _alarme_frein `uc ~T0 @X0 1 e@1802 ]
 "64
-[; ;./variables_globales.h: 64: unsigned char alarme_eau __attribute__((address(0x152)));
-[v _alarme_eau `uc ~T0 @X0 1 e@338 ]
+[; ;./variables_globales.h: 64: unsigned char alarme_cle __attribute__((address(0x70B)));
+[v _alarme_cle `uc ~T0 @X0 1 e@1803 ]
 "65
-[; ;./variables_globales.h: 65: unsigned char alarme_huile __attribute__((address(0x153)));
-[v _alarme_huile `uc ~T0 @X0 1 e@339 ]
+[; ;./variables_globales.h: 65: unsigned char alarme_eau __attribute__((address(0x70C)));
+[v _alarme_eau `uc ~T0 @X0 1 e@1804 ]
 "66
-[; ;./variables_globales.h: 66: unsigned char alarme_batterie __attribute__((address(0x154)));
-[v _alarme_batterie `uc ~T0 @X0 1 e@340 ]
+[; ;./variables_globales.h: 66: unsigned char alarme_huile __attribute__((address(0x70D)));
+[v _alarme_huile `uc ~T0 @X0 1 e@1805 ]
 "67
-[; ;./variables_globales.h: 67: unsigned char alarme_choc __attribute__((address(0x155)));
-[v _alarme_choc `uc ~T0 @X0 1 e@341 ]
+[; ;./variables_globales.h: 67: unsigned char alarme_batterie __attribute__((address(0x70E)));
+[v _alarme_batterie `uc ~T0 @X0 1 e@1806 ]
 "68
-[; ;./variables_globales.h: 68: unsigned char alarme_conducteur __attribute__((address(0x156)));
-[v _alarme_conducteur `uc ~T0 @X0 1 e@342 ]
-"70
-[; ;./variables_globales.h: 70: unsigned int Tick_SaveT2 __attribute__((address(0x157)));
-[v _Tick_SaveT2 `ui ~T0 @X0 1 e@343 ]
+[; ;./variables_globales.h: 68: unsigned char alarme_choc __attribute__((address(0x70F)));
+[v _alarme_choc `uc ~T0 @X0 1 e@1807 ]
+"69
+[; ;./variables_globales.h: 69: unsigned char alarme_conducteur __attribute__((address(0x710)));
+[v _alarme_conducteur `uc ~T0 @X0 1 e@1808 ]
 "72
-[; ;./variables_globales.h: 72: unsigned char BuzzerOn __attribute__((address(0x159)));
-[v _BuzzerOn `uc ~T0 @X0 1 e@345 ]
+[; ;./variables_globales.h: 72: unsigned char cptT5 __attribute__((address(0x711)));
+[v _cptT5 `uc ~T0 @X0 1 e@1809 ]
+"73
+[; ;./variables_globales.h: 73: unsigned char passageT5 __attribute__((address(0x712)));
+[v _passageT5 `uc ~T0 @X0 1 e@1810 ]
 "74
-[; ;./variables_globales.h: 74: unsigned char cptT5 __attribute__((address(0x568)));
-[v _cptT5 `uc ~T0 @X0 1 e@1384 ]
-"75
-[; ;./variables_globales.h: 75: unsigned char passageT5 __attribute__((address(0x569)));
-[v _passageT5 `uc ~T0 @X0 1 e@1385 ]
-"76
-[; ;./variables_globales.h: 76: unsigned int buffer_batterie __attribute__((address(0x570)));
-[v _buffer_batterie `ui ~T0 @X0 1 e@1392 ]
-"79
-[; ;./variables_globales.h: 79: unsigned char KM_0 __attribute__((address(0x369)));
-[v _KM_0 `uc ~T0 @X0 1 e@873 ]
-"80
-[; ;./variables_globales.h: 80: unsigned char KM_1 __attribute__((address(0x36A)));
-[v _KM_1 `uc ~T0 @X0 1 e@874 ]
-"81
-[; ;./variables_globales.h: 81: unsigned char KM_2 __attribute__((address(0x36B)));
-[v _KM_2 `uc ~T0 @X0 1 e@875 ]
-"82
-[; ;./variables_globales.h: 82: unsigned char KM_3 __attribute__((address(0x36C)));
-[v _KM_3 `uc ~T0 @X0 1 e@876 ]
-"89
-[; ;./variables_globales.h: 89: void (*fptr)(void);
-[v _fptr `*F6547 ~T0 @X0 1 e ]
+[; ;./variables_globales.h: 74: unsigned int buffer_batterie __attribute__((address(0x713)));
+[v _buffer_batterie `ui ~T0 @X0 1 e@1811 ]
 "90
-[; ;./variables_globales.h: 90: unsigned short int val_tos;
-[v _val_tos `us ~T0 @X0 1 e ]
+[; ;./variables_globales.h: 90: void (*fptr)(void);
+[v _fptr `*F6540 ~T0 @X0 1 e ]
 "91
-[; ;./variables_globales.h: 91: unsigned char * puc;
-[v _puc `*uc ~T0 @X0 1 e ]
+[; ;./variables_globales.h: 91: unsigned short int val_tos;
+[v _val_tos `us ~T0 @X0 1 e ]
 "92
-[; ;./variables_globales.h: 92: unsigned char tc[3];
+[; ;./variables_globales.h: 92: unsigned char * puc;
+[v _puc `*uc ~T0 @X0 1 e ]
+"93
+[; ;./variables_globales.h: 93: unsigned char tc[3];
 [v _tc `uc ~T0 @X0 -> 3 `i e ]
-"100
-[; ;./variables_globales.h: 100: unsigned char contexte1[66] __attribute__((address(0x100)));
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
 "101
-[; ;./variables_globales.h: 101: unsigned char contexte2[66] __attribute__((address(0x200)));
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+[; ;./variables_globales.h: 101: unsigned char contexte1[66] __attribute__((address(0x100)));
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
 "102
-[; ;./variables_globales.h: 102: unsigned char contexte3[66] __attribute__((address(0x300)));
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+[; ;./variables_globales.h: 102: unsigned char contexte2[66] __attribute__((address(0x200)));
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
 "103
-[; ;./variables_globales.h: 103: unsigned char contexte4[66] __attribute__((address(0x400)));
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
+[; ;./variables_globales.h: 103: unsigned char contexte3[66] __attribute__((address(0x300)));
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
 "104
-[; ;./variables_globales.h: 104: unsigned char contexte5[66] __attribute__((address(0x500)));
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+[; ;./variables_globales.h: 104: unsigned char contexte4[66] __attribute__((address(0x400)));
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
 "105
-[; ;./variables_globales.h: 105: unsigned char contexte6[66] __attribute__((address(0x600)));
+[; ;./variables_globales.h: 105: unsigned char contexte5[66] __attribute__((address(0x500)));
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+"106
+[; ;./variables_globales.h: 106: unsigned char contexte6[66] __attribute__((address(0x600)));
 [v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
-"108
-[; ;./variables_globales.h: 108: unsigned char STKPTR_T1 __attribute__((address(0x103)));
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
 "109
-[; ;./variables_globales.h: 109: unsigned char STKPTR_T2 __attribute__((address(0x203)));
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+[; ;./variables_globales.h: 109: unsigned char STKPTR_T1 __attribute__((address(0x103)));
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
 "110
-[; ;./variables_globales.h: 110: unsigned char STKPTR_T3 __attribute__((address(0x303)));
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+[; ;./variables_globales.h: 110: unsigned char STKPTR_T2 __attribute__((address(0x203)));
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
 "111
-[; ;./variables_globales.h: 111: unsigned char STKPTR_T4 __attribute__((address(0x403)));
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+[; ;./variables_globales.h: 111: unsigned char STKPTR_T3 __attribute__((address(0x303)));
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
 "112
-[; ;./variables_globales.h: 112: unsigned char STKPTR_T5 __attribute__((address(0x503)));
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+[; ;./variables_globales.h: 112: unsigned char STKPTR_T4 __attribute__((address(0x403)));
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
 "113
-[; ;./variables_globales.h: 113: unsigned char STKPTR_T6 __attribute__((address(0x603)));
+[; ;./variables_globales.h: 113: unsigned char STKPTR_T5 __attribute__((address(0x503)));
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+"114
+[; ;./variables_globales.h: 114: unsigned char STKPTR_T6 __attribute__((address(0x603)));
 [v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
-"117
-[; ;./variables_globales.h: 117: unsigned char ANALOG_TEMP_HUILE;
-[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@129 ]
-"118
-[; ;./variables_globales.h: 118: unsigned char ANALOG_TEMP_EAU;
-[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@130 ]
-"119
-[; ;./variables_globales.h: 119: unsigned char ANALOG_JOYSTICK_X;
-[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@131 ]
-"120
-[; ;./variables_globales.h: 120: unsigned char ANALOG_JOYSTICK_Y;
-[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@132 ]
 "39 ./main.h
 [p x CONFIG1L  =  0x15  ]
 "40
