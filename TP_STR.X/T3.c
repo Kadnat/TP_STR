@@ -1,49 +1,52 @@
 #include "T3.h"
 
 void tache3(void) {
-    //unsigned char init = 0;
+    counter_T3 = 0;
+    passageT3 = 0;
+    unsigned long kilometrage = 0;
     
-    while(1)
-        {
-        /*
-        char b;
-        b=0;
-        b++;
-            if (init == 0) {
-                // Check if EEPROM is fresh (all 0xFF)
-                if (EEPROM_Read(0x00) == 0xFF && 
+    if (EEPROM_Read(0x00) == 0xFF && 
                     EEPROM_Read(0x01) == 0xFF && 
                     EEPROM_Read(0x02) == 0xFF && 
                     EEPROM_Read(0x03) == 0xFF) {
-                    kilometrage = 0;
+                    km = {0};
                     // Write initial 0 value
                     EEPROM_Write(0x00, 0);
                     EEPROM_Write(0x01, 0);
                     EEPROM_Write(0x02, 0);
                     EEPROM_Write(0x03, 0);
                 } else {
-                    kilometrage = 0;
-                    kilometrage |= (unsigned long)EEPROM_Read(0x00) << 24;
-                    kilometrage |= (unsigned long)EEPROM_Read(0x01) << 16;
-                    kilometrage |= (unsigned long)EEPROM_Read(0x02) << 8;
-                    kilometrage |= (unsigned long)EEPROM_Read(0x03);
+                    km = {0};
+                    km[0] = EEPROM_Read(0x00);
+                    km[1] = EEPROM_Read(0x01);
+                    km[2] = EEPROM_Read(0x02);
+                    km[3] = EEPROM_Read(0x03);
                 }
-                init = 1;
-            }
+    
+    while(1)
+        {
 
             // Increment based on speed (0-6)
             kilometrage += vitesse;
+            km[0] = kilometrage & 0xFF;
+            km[1] = (kilometrage >> 8) & 0xFF;
+            km[2] = (kilometrage >> 16) & 0xFF;
+            km[3] = (kilometrage >> 24) & 0xFF;
 
             // Save to EEPROM periodically
-            static unsigned int save_counter = 0;
-            save_counter++;
-            if (save_counter >= 1000) {
-                save_counter = 0;
-                EEPROM_Write(0x00, (kilometrage >> 24) & 0xFF);
-                EEPROM_Write(0x01, (kilometrage >> 16) & 0xFF);
-                EEPROM_Write(0x02, (kilometrage >> 8) & 0xFF);
-                EEPROM_Write(0x03, kilometrage & 0xFF);
+            if(passageT3 == 0)
+            {
+                counter_T3++;
+                if (counter_T3 >= 10) {
+                    counter_T3 = 0;
+                    EEPROM_Write(0x00, km[0]);
+                    EEPROM_Write(0x01, km[1]);
+                    EEPROM_Write(0x02, km[2]);
+                    EEPROM_Write(0x03, km[3]);
+                }
+                passageT3 = 1;
             }
-          */
+
+          
     }
 }

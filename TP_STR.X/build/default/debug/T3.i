@@ -11259,7 +11259,25 @@ unsigned char alarme_conducteur __attribute__((address(0x710)));
 unsigned char cptT5 __attribute__((address(0x711)));
 unsigned char passageT5 __attribute__((address(0x712)));
 unsigned int buffer_batterie __attribute__((address(0x713)));
-# 90 "./variables_globales.h"
+
+unsigned char passageT3 __attribute__((address(0x715)));
+
+unsigned int counter_T3 __attribute__((address(0x760)));
+
+
+
+
+
+unsigned char KM_0 __attribute__((address(0x801)));
+unsigned char KM_1 __attribute__((address(0x802)));
+unsigned char KM_2 __attribute__((address(0x803)));
+unsigned char KM_3 __attribute__((address(0x804)));
+
+
+
+
+
+
 void (*fptr)(void);
 unsigned short int val_tos;
 unsigned char * puc;
@@ -11424,10 +11442,47 @@ unsigned char lecture_8bit_analogique(unsigned char channel);
 # 2 "T3.c" 2
 
 void tache3(void) {
+    counter_T3 = 0;
+    passageT3 = 0;
 
+    if (EEPROM_Read(0x00) == 0xFF &&
+                    EEPROM_Read(0x01) == 0xFF &&
+                    EEPROM_Read(0x02) == 0xFF &&
+                    EEPROM_Read(0x03) == 0xFF) {
+                    (*(unsigned long*)&KM_0) = 0;
+
+                    EEPROM_Write(0x00, 0);
+                    EEPROM_Write(0x01, 0);
+                    EEPROM_Write(0x02, 0);
+                    EEPROM_Write(0x03, 0);
+                } else {
+                    (*(unsigned long*)&KM_0) = 0;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x00) << 24;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x01) << 16;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x02) << 8;
+                    (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x03);
+                }
 
     while(1)
         {
-# 48 "T3.c"
+
+
+            (*(unsigned long*)&KM_0) += vitesse;
+
+
+            if(passageT3 == 0)
+            {
+                counter_T3++;
+                if (counter_T3 >= 10) {
+                    counter_T3 = 0;
+                    EEPROM_Write(0x00, ((*(unsigned long*)&KM_0) >> 24) & 0xFF);
+                    EEPROM_Write(0x01, ((*(unsigned long*)&KM_0) >> 16) & 0xFF);
+                    EEPROM_Write(0x02, ((*(unsigned long*)&KM_0) >> 8) & 0xFF);
+                    EEPROM_Write(0x03, (*(unsigned long*)&KM_0) & 0xFF);
+                }
+                passageT3 = 1;
+            }
+
+
     }
 }

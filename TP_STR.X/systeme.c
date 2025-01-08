@@ -66,6 +66,7 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         if (semtask6FLAG == 1) semtask6FLAG = 0; //Utilisation de flag pour les tasks sous sémaphore afin d'éviter
         if (semtask1FLAG == 1) semtask1FLAG = 0; //que le process recommence la tache pendant les 10ms
         if (passageT5 == 1) passageT5 = 0;
+        if (passageT3 == 1) passageT3 = 0;
         
         pointeur_de_tache++;                        
         if (pointeur_de_tache == NOMBRE_DE_TACHES)    
@@ -76,9 +77,6 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         
         // Vérification si la tâche est en attente du sémaphore
         if (semaphores.attente & (1 << tache_active)) {
-        //while (semaphores.attente & (1 << tache_active)) {
-            // Si la tâche est en attente, on passe à la suivante
-            //semaphores.attente &= ~(1 << tache_active);
             pointeur_de_tache++;                        
             if (pointeur_de_tache == NOMBRE_DE_TACHES)    
                 pointeur_de_tache = 0;

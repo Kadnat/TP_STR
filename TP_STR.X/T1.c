@@ -4,18 +4,13 @@
 //alors que l'envoie UART n'est pas finie (puisque l'uart envoie les valeurs de ces dernières)
 void tache1(void)
 {   
-    //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
 
-       //sert a modifier la valeur de vitesse sur appuie unique et non continu
-      //sert a modifier la valeur de vitesse sur appuie unique et non continu
-     //sert a modifier la valeur de batterie sur appuie unique et non continu
-     //sert a modifier la valeur de batterie sur appuie unique et non continu
     n =0;
     buffer_vitesse_plus =1;
     buffer_vitesse_moins =1;
     buffer_batterie = batterie;
 
-    di();                                   //disable interrupt
+    di();                                  
     initialisation_afficheur();             
     clear_text();
     clear_graphics();

@@ -61,6 +61,10 @@
 [v _clear_text clear_text `(v  1 e 1 0 ]
 "318
 [v _clear_graphics clear_graphics `(v  1 e 1 0 ]
+"11 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/eeprom.c
+[v _EEPROM_Write EEPROM_Write `(v  1 e 1 0 ]
+"37
+[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
 "6 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/main.c
 [v _main main `(v  1 e 1 0 ]
 "26
@@ -81,7 +85,7 @@
 [v _stid_delai_us stid_delai_us `(v  1 e 1 0 ]
 "17 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.c
 [v _fonction_d_interruption fonction_d_interruption `IIH(v  1 e 1 0 ]
-"152
+"153
 [v _initialisation_du_systeme initialisation_du_systeme `(v  1 e 1 0 ]
 "5 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T1.c
 [v _tache1 tache1 `(v  1 e 1 0 ]
@@ -166,35 +170,47 @@
 [v _passageT5 passageT5 `uc  1 e 1 @1810 ]
 "74
 [v _buffer_batterie buffer_batterie `ui  1 e 2 @1811 ]
-"90
+"76
+[v _passageT3 passageT3 `uc  1 e 1 @1813 ]
+"78
+[v _counter_T3 counter_T3 `ui  1 e 2 @1888 ]
+"84
+[v _KM_0 KM_0 `uc  1 e 1 @2049 ]
+"85
+[v _KM_1 KM_1 `uc  1 e 1 @2050 ]
+"86
+[v _KM_2 KM_2 `uc  1 e 1 @2051 ]
+"87
+[v _KM_3 KM_3 `uc  1 e 1 @2052 ]
+"94
 [v _fptr fptr `*.38(v  1 e 3 0 ]
-"91
+"95
 [v _val_tos val_tos `us  1 e 2 0 ]
-"92
+"96
 [v _puc puc `*.30uc  1 e 1 0 ]
-"101
-[v _contexte1 contexte1 `[66]uc  1 e 66 @256 ]
-"102
-[v _contexte2 contexte2 `[66]uc  1 e 66 @512 ]
-"103
-[v _contexte3 contexte3 `[66]uc  1 e 66 @768 ]
-"104
-[v _contexte4 contexte4 `[66]uc  1 e 66 @1024 ]
 "105
-[v _contexte5 contexte5 `[66]uc  1 e 66 @1280 ]
+[v _contexte1 contexte1 `[66]uc  1 e 66 @256 ]
 "106
-[v _contexte6 contexte6 `[66]uc  1 e 66 @1536 ]
+[v _contexte2 contexte2 `[66]uc  1 e 66 @512 ]
+"107
+[v _contexte3 contexte3 `[66]uc  1 e 66 @768 ]
+"108
+[v _contexte4 contexte4 `[66]uc  1 e 66 @1024 ]
 "109
-[v _STKPTR_T1 STKPTR_T1 `uc  1 e 1 @259 ]
+[v _contexte5 contexte5 `[66]uc  1 e 66 @1280 ]
 "110
-[v _STKPTR_T2 STKPTR_T2 `uc  1 e 1 @515 ]
-"111
-[v _STKPTR_T3 STKPTR_T3 `uc  1 e 1 @771 ]
-"112
-[v _STKPTR_T4 STKPTR_T4 `uc  1 e 1 @1027 ]
+[v _contexte6 contexte6 `[66]uc  1 e 66 @1536 ]
 "113
-[v _STKPTR_T5 STKPTR_T5 `uc  1 e 1 @1283 ]
+[v _STKPTR_T1 STKPTR_T1 `uc  1 e 1 @259 ]
 "114
+[v _STKPTR_T2 STKPTR_T2 `uc  1 e 1 @515 ]
+"115
+[v _STKPTR_T3 STKPTR_T3 `uc  1 e 1 @771 ]
+"116
+[v _STKPTR_T4 STKPTR_T4 `uc  1 e 1 @1027 ]
+"117
+[v _STKPTR_T5 STKPTR_T5 `uc  1 e 1 @1283 ]
+"118
 [v _STKPTR_T6 STKPTR_T6 `uc  1 e 1 @1539 ]
 "1081 /Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h
 [v _ANCON2 ANCON2 `VEuc  1 e 1 @3875 ]
@@ -268,7 +284,7 @@
 [v _BAUDCON1 BAUDCON1 `VEuc  1 e 1 @3941 ]
 "7612
 [v _EECON2 EECON2 `VEuc  1 e 1 @3966 ]
-[s S2475 . 1 `uc 1 RD 1 0 :1:0 
+[s S2558 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -278,12 +294,12 @@
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "7653
-[s S2484 . 1 `uc 1 . 1 0 :6:0 
+[s S2567 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S2487 . 1 `S2475 1 . 1 0 `S2484 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES2487  1 e 1 @3967 ]
-[s S1132 . 1 `uc 1 RB0 1 0 :1:0 
+[u S2570 . 1 `S2558 1 . 1 0 `S2567 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES2570  1 e 1 @3967 ]
+[s S1150 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -293,7 +309,7 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "7941
-[s S1141 . 1 `uc 1 INT0 1 0 :1:0 
+[s S1159 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 INT3 1 0 :1:3 
@@ -302,29 +318,29 @@
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S1150 . 1 `uc 1 FLT0 1 0 :1:0 
+[s S1168 . 1 `uc 1 FLT0 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 CTED1 1 0 :1:2 
 `uc 1 CTED2 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 T3CKI 1 0 :1:5 
 ]
-[s S1157 . 1 `uc 1 . 1 0 :3:0 
+[s S1175 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_P2A 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 T1G 1 0 :1:5 
 ]
-[s S1162 . 1 `uc 1 . 1 0 :5:0 
+[s S1180 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 PGM 1 0 :1:5 
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S1167 . 1 `uc 1 . 1 0 :3:0 
+[s S1185 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S1170 . 1 `S1132 1 . 1 0 `S1141 1 . 1 0 `S1150 1 . 1 0 `S1157 1 . 1 0 `S1162 1 . 1 0 `S1167 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES1170  1 e 1 @3969 ]
-[s S2215 . 1 `uc 1 RD0 1 0 :1:0 
+[u S1188 . 1 `S1150 1 . 1 0 `S1159 1 . 1 0 `S1168 1 . 1 0 `S1175 1 . 1 0 `S1180 1 . 1 0 `S1185 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1188  1 e 1 @3969 ]
+[s S2286 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -334,7 +350,7 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "8319
-[s S2224 . 1 `uc 1 AD0 1 0 :1:0 
+[s S2295 . 1 `uc 1 AD0 1 0 :1:0 
 `uc 1 AD1 1 0 :1:1 
 `uc 1 AD2 1 0 :1:2 
 `uc 1 AD3 1 0 :1:3 
@@ -343,7 +359,7 @@
 `uc 1 AD6 1 0 :1:6 
 `uc 1 AD7 1 0 :1:7 
 ]
-[s S2233 . 1 `uc 1 PSP0 1 0 :1:0 
+[s S2304 . 1 `uc 1 PSP0 1 0 :1:0 
 `uc 1 PSP1 1 0 :1:1 
 `uc 1 PSP2 1 0 :1:2 
 `uc 1 PSP3 1 0 :1:3 
@@ -352,10 +368,10 @@
 `uc 1 PSP6 1 0 :1:6 
 `uc 1 PSP7 1 0 :1:7 
 ]
-[s S2242 . 1 `uc 1 . 1 0 :7:0 
+[s S2313 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_SS2 1 0 :1:7 
 ]
-[s S2245 . 1 `uc 1 CTPLS 1 0 :1:0 
+[s S2316 . 1 `uc 1 CTPLS 1 0 :1:0 
 `uc 1 T5CKI 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 SDO2 1 0 :1:4 
@@ -363,18 +379,18 @@
 `uc 1 SCK2 1 0 :1:6 
 `uc 1 nSS2 1 0 :1:7 
 ]
-[s S2253 . 1 `uc 1 . 1 0 :1:0 
+[s S2324 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 T7G 1 0 :1:1 
 `uc 1 . 1 0 :3:2 
 `uc 1 SDA2 1 0 :1:5 
 `uc 1 SCL2 1 0 :1:6 
 ]
-[s S2259 . 1 `uc 1 . 1 0 :7:0 
+[s S2330 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
-[u S2262 . 1 `S2215 1 . 1 0 `S2224 1 . 1 0 `S2233 1 . 1 0 `S2242 1 . 1 0 `S2245 1 . 1 0 `S2253 1 . 1 0 `S2259 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES2262  1 e 1 @3971 ]
-[s S832 . 1 `uc 1 RE0 1 0 :1:0 
+[u S2333 . 1 `S2286 1 . 1 0 `S2295 1 . 1 0 `S2304 1 . 1 0 `S2313 1 . 1 0 `S2316 1 . 1 0 `S2324 1 . 1 0 `S2330 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES2333  1 e 1 @3971 ]
+[s S844 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
@@ -384,7 +400,7 @@
 `uc 1 RE7 1 0 :1:7 
 ]
 "8582
-[s S841 . 1 `uc 1 AD8 1 0 :1:0 
+[s S853 . 1 `uc 1 AD8 1 0 :1:0 
 `uc 1 AD9 1 0 :1:1 
 `uc 1 AD10 1 0 :1:2 
 `uc 1 AD11 1 0 :1:3 
@@ -393,7 +409,7 @@
 `uc 1 AD14 1 0 :1:6 
 `uc 1 AD15 1 0 :1:7 
 ]
-[s S850 . 1 `uc 1 P2D 1 0 :1:0 
+[s S862 . 1 `uc 1 P2D 1 0 :1:0 
 `uc 1 P2C 1 0 :1:1 
 `uc 1 P2B 1 0 :1:2 
 `uc 1 P3C 1 0 :1:3 
@@ -402,7 +418,7 @@
 `uc 1 P1B 1 0 :1:6 
 `uc 1 P2A 1 0 :1:7 
 ]
-[s S859 . 1 `uc 1 . 1 0 :2:0 
+[s S871 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 CCP10 1 0 :1:2 
 `uc 1 CCP9 1 0 :1:3 
 `uc 1 CCP8 1 0 :1:4 
@@ -410,20 +426,20 @@
 `uc 1 CCP6 1 0 :1:6 
 `uc 1 CCP2 1 0 :1:7 
 ]
-[s S867 . 1 `uc 1 NOT_RD 1 0 :1:0 
+[s S879 . 1 `uc 1 NOT_RD 1 0 :1:0 
 ]
-[s S869 . 1 `uc 1 . 1 0 :1:0 
+[s S881 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_WR 1 0 :1:1 
 ]
-[s S872 . 1 `uc 1 . 1 0 :2:0 
+[s S884 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_CS 1 0 :1:2 
 ]
-[s S875 . 1 `uc 1 nRD 1 0 :1:0 
+[s S887 . 1 `uc 1 nRD 1 0 :1:0 
 `uc 1 nWR 1 0 :1:1 
 `uc 1 nCS 1 0 :1:2 
 `uc 1 REFO 1 0 :1:3 
 ]
-[s S880 . 1 `uc 1 PD2 1 0 :1:0 
+[s S892 . 1 `uc 1 PD2 1 0 :1:0 
 `uc 1 PC2 1 0 :1:1 
 `uc 1 CS 1 0 :1:2 
 `uc 1 CCP9E 1 0 :1:3 
@@ -432,7 +448,7 @@
 `uc 1 CCP6E 1 0 :1:6 
 `uc 1 CCP2E 1 0 :1:7 
 ]
-[s S889 . 1 `uc 1 RDE 1 0 :1:0 
+[s S901 . 1 `uc 1 RDE 1 0 :1:0 
 `uc 1 WRE 1 0 :1:1 
 `uc 1 PB2 1 0 :1:2 
 `uc 1 PC3E 1 0 :1:3 
@@ -441,8 +457,8 @@
 `uc 1 PB1E 1 0 :1:6 
 `uc 1 PA2E 1 0 :1:7 
 ]
-[u S898 . 1 `S832 1 . 1 0 `S841 1 . 1 0 `S850 1 . 1 0 `S859 1 . 1 0 `S867 1 . 1 0 `S869 1 . 1 0 `S872 1 . 1 0 `S875 1 . 1 0 `S880 1 . 1 0 `S889 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES898  1 e 1 @3972 ]
+[u S910 . 1 `S844 1 . 1 0 `S853 1 . 1 0 `S862 1 . 1 0 `S871 1 . 1 0 `S879 1 . 1 0 `S881 1 . 1 0 `S884 1 . 1 0 `S887 1 . 1 0 `S892 1 . 1 0 `S901 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES910  1 e 1 @3972 ]
 "9248
 [v _PORTH PORTH `VEuc  1 e 1 @3975 ]
 [s S207 . 1 `uc 1 LATC0 1 0 :1:0 
@@ -466,7 +482,7 @@
 ]
 [u S225 . 1 `S207 1 . 1 0 `S216 1 . 1 0 ]
 [v _LATCbits LATCbits `VES225  1 e 1 @3979 ]
-[s S2170 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S2241 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -476,7 +492,7 @@
 `uc 1 LATD7 1 0 :1:7 
 ]
 "9933
-[s S2179 . 1 `uc 1 LD0 1 0 :1:0 
+[s S2250 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -485,8 +501,8 @@
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S2188 . 1 `S2170 1 . 1 0 `S2179 1 . 1 0 ]
-[v _LATDbits LATDbits `VES2188  1 e 1 @3980 ]
+[u S2259 . 1 `S2241 1 . 1 0 `S2250 1 . 1 0 ]
+[v _LATDbits LATDbits `VES2259  1 e 1 @3980 ]
 [s S247 . 1 `uc 1 LATG0 1 0 :1:0 
 `uc 1 LATG1 1 0 :1:1 
 `uc 1 LATG2 1 0 :1:2 
@@ -506,7 +522,7 @@
 [v _LATH LATH `VEuc  1 e 1 @3984 ]
 "10420
 [v _LATJ LATJ `VEuc  1 e 1 @3985 ]
-[s S1232 . 1 `uc 1 LATJ0 1 0 :1:0 
+[s S1250 . 1 `uc 1 LATJ0 1 0 :1:0 
 `uc 1 LATJ1 1 0 :1:1 
 `uc 1 LATJ2 1 0 :1:2 
 `uc 1 LATJ3 1 0 :1:3 
@@ -516,7 +532,7 @@
 `uc 1 LATJ7 1 0 :1:7 
 ]
 "10447
-[s S1241 . 1 `uc 1 LJ0 1 0 :1:0 
+[s S1259 . 1 `uc 1 LJ0 1 0 :1:0 
 `uc 1 LJ1 1 0 :1:1 
 `uc 1 LJ2 1 0 :1:2 
 `uc 1 LJ3 1 0 :1:3 
@@ -525,8 +541,8 @@
 `uc 1 LJ6 1 0 :1:6 
 `uc 1 LJ7 1 0 :1:7 
 ]
-[u S1250 . 1 `S1232 1 . 1 0 `S1241 1 . 1 0 ]
-[v _LATJbits LATJbits `VES1250  1 e 1 @3985 ]
+[u S1268 . 1 `S1250 1 . 1 0 `S1259 1 . 1 0 ]
+[v _LATJbits LATJbits `VES1268  1 e 1 @3985 ]
 [s S275 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
@@ -564,7 +580,7 @@
 [v _TRISH TRISH `VEuc  1 e 1 @3993 ]
 "11005
 [v _TRISJ TRISJ `VEuc  1 e 1 @3994 ]
-[s S1691 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S1744 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 TMR1GIF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -574,18 +590,18 @@
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "11309
-[s S1700 . 1 `uc 1 . 1 0 :3:0 
+[s S1753 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S1705 . 1 `S1691 1 . 1 0 `S1700 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES1705  1 e 1 @3998 ]
+[u S1758 . 1 `S1744 1 . 1 0 `S1753 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES1758  1 e 1 @3998 ]
 "12210
 [v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
 "12548
 [v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
-[s S1724 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S1777 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -595,17 +611,17 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "12593
-[s S1733 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S1786 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S1737 . 1 `uc 1 . 1 0 :6:0 
+[s S1790 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_TX8 1 0 :1:6 
 ]
-[s S1740 . 1 `uc 1 . 1 0 :6:0 
+[s S1793 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S1743 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S1796 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -614,8 +630,8 @@
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[u S1752 . 1 `S1724 1 . 1 0 `S1733 1 . 1 0 `S1737 1 . 1 0 `S1740 1 . 1 0 `S1743 1 . 1 0 ]
-[v _TXSTA1bits TXSTA1bits `VES1752  1 e 1 @4012 ]
+[u S1805 . 1 `S1777 1 . 1 0 `S1786 1 . 1 0 `S1790 1 . 1 0 `S1793 1 . 1 0 `S1796 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES1805  1 e 1 @4012 ]
 "12836
 [v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
 "12912
@@ -792,12 +808,12 @@
 [v semaphore_init@jetons_initiaux jetons_initiaux `uc  1 p 1 0 ]
 "10
 } 0
-"152 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.c
+"153 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.c
 [v _initialisation_du_systeme initialisation_du_systeme `(v  1 e 1 0 ]
 {
-"154
+"155
 [v initialisation_du_systeme@temp temp `uc  1 a 1 0 ]
-"198
+"199
 } 0
 "26 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/main.c
 [v _initialisation_des_ports initialisation_des_ports `(v  1 e 1 0 ]
@@ -807,7 +823,7 @@
 "17 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.c
 [v _fonction_d_interruption fonction_d_interruption `IIH(v  1 e 1 0 ]
 {
-"150
+"151
 } 0
 "5 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T6.c
 [v _tache6 tache6 `(v  1 e 1 0 ]
@@ -838,10 +854,10 @@
 "3 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T5.c
 [v _tache5 tache5 `(v  1 e 1 0 ]
 {
-"32
+"33
 [v tache5@i i `uc  1 a 1 33 ]
-"59
-[v tache5@i_1559 i `uc  1 a 1 34 ]
+"58
+[v tache5@i_1612 i `uc  1 a 1 34 ]
 "8
 [v tache5@sample_vitesse sample_vitesse `[20]uc  1 a 20 11 ]
 "6
@@ -850,7 +866,7 @@
 [v tache5@sample_count sample_count `uc  1 a 1 36 ]
 "10
 [v tache5@average_speed average_speed `uc  1 a 1 35 ]
-"69
+"68
 } 0
 "7 /Applications/microchip/xc8/v2.50/pic/sources/c99/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
@@ -930,7 +946,26 @@
 "3 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T3.c
 [v _tache3 tache3 `(v  1 e 1 0 ]
 {
-"49
+"47
+} 0
+"11 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/eeprom.c
+[v _EEPROM_Write EEPROM_Write `(v  1 e 1 0 ]
+{
+[v EEPROM_Write@addr addr `uc  1 p 1 wreg ]
+[v EEPROM_Write@addr addr `uc  1 p 1 wreg ]
+[v EEPROM_Write@data data `uc  1 p 1 0 ]
+"14
+[v EEPROM_Write@addr addr `uc  1 p 1 1 ]
+"35
+} 0
+"37
+[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
+{
+[v EEPROM_Read@addr addr `uc  1 p 1 wreg ]
+[v EEPROM_Read@addr addr `uc  1 p 1 wreg ]
+"40
+[v EEPROM_Read@addr addr `uc  1 p 1 0 ]
+"51
 } 0
 "3 /Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T2.c
 [v _tache2 tache2 `(v  1 e 1 0 ]

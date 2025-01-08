@@ -1,5 +1,5 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F6540 `(v ~T0 @X0 0 tf ]
+[v F6546 `(v ~T0 @X0 0 tf ]
 "18 ./semaphore.h
 [; ;./semaphore.h: 18:     typedef struct {
 [s S828 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
@@ -952,53 +952,71 @@ Version 4.0 HI-TECH Software Intermediate Code
 "74
 [; ;./variables_globales.h: 74: unsigned int buffer_batterie __attribute__((address(0x713)));
 [v _buffer_batterie `ui ~T0 @X0 1 e@1811 ]
-"90
-[; ;./variables_globales.h: 90: void (*fptr)(void);
-[v _fptr `*F6540 ~T0 @X0 1 e ]
-"91
-[; ;./variables_globales.h: 91: unsigned short int val_tos;
+"76
+[; ;./variables_globales.h: 76: unsigned char passageT3 __attribute__((address(0x715)));
+[v _passageT3 `uc ~T0 @X0 1 e@1813 ]
+"78
+[; ;./variables_globales.h: 78: unsigned int counter_T3 __attribute__((address(0x760)));
+[v _counter_T3 `ui ~T0 @X0 1 e@1888 ]
+"84
+[; ;./variables_globales.h: 84: unsigned char KM_0 __attribute__((address(0x801)));
+[v _KM_0 `uc ~T0 @X0 1 e@2049 ]
+"85
+[; ;./variables_globales.h: 85: unsigned char KM_1 __attribute__((address(0x802)));
+[v _KM_1 `uc ~T0 @X0 1 e@2050 ]
+"86
+[; ;./variables_globales.h: 86: unsigned char KM_2 __attribute__((address(0x803)));
+[v _KM_2 `uc ~T0 @X0 1 e@2051 ]
+"87
+[; ;./variables_globales.h: 87: unsigned char KM_3 __attribute__((address(0x804)));
+[v _KM_3 `uc ~T0 @X0 1 e@2052 ]
+"94
+[; ;./variables_globales.h: 94: void (*fptr)(void);
+[v _fptr `*F6546 ~T0 @X0 1 e ]
+"95
+[; ;./variables_globales.h: 95: unsigned short int val_tos;
 [v _val_tos `us ~T0 @X0 1 e ]
-"92
-[; ;./variables_globales.h: 92: unsigned char * puc;
+"96
+[; ;./variables_globales.h: 96: unsigned char * puc;
 [v _puc `*uc ~T0 @X0 1 e ]
-"93
-[; ;./variables_globales.h: 93: unsigned char tc[3];
+"97
+[; ;./variables_globales.h: 97: unsigned char tc[3];
 [v _tc `uc ~T0 @X0 -> 3 `i e ]
-"101
-[; ;./variables_globales.h: 101: unsigned char contexte1[66] __attribute__((address(0x100)));
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
-"102
-[; ;./variables_globales.h: 102: unsigned char contexte2[66] __attribute__((address(0x200)));
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
-"103
-[; ;./variables_globales.h: 103: unsigned char contexte3[66] __attribute__((address(0x300)));
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
-"104
-[; ;./variables_globales.h: 104: unsigned char contexte4[66] __attribute__((address(0x400)));
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
 "105
-[; ;./variables_globales.h: 105: unsigned char contexte5[66] __attribute__((address(0x500)));
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+[; ;./variables_globales.h: 105: unsigned char contexte1[66] __attribute__((address(0x100)));
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
 "106
-[; ;./variables_globales.h: 106: unsigned char contexte6[66] __attribute__((address(0x600)));
-[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
+[; ;./variables_globales.h: 106: unsigned char contexte2[66] __attribute__((address(0x200)));
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+"107
+[; ;./variables_globales.h: 107: unsigned char contexte3[66] __attribute__((address(0x300)));
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+"108
+[; ;./variables_globales.h: 108: unsigned char contexte4[66] __attribute__((address(0x400)));
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
 "109
-[; ;./variables_globales.h: 109: unsigned char STKPTR_T1 __attribute__((address(0x103)));
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
+[; ;./variables_globales.h: 109: unsigned char contexte5[66] __attribute__((address(0x500)));
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
 "110
-[; ;./variables_globales.h: 110: unsigned char STKPTR_T2 __attribute__((address(0x203)));
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
-"111
-[; ;./variables_globales.h: 111: unsigned char STKPTR_T3 __attribute__((address(0x303)));
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
-"112
-[; ;./variables_globales.h: 112: unsigned char STKPTR_T4 __attribute__((address(0x403)));
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+[; ;./variables_globales.h: 110: unsigned char contexte6[66] __attribute__((address(0x600)));
+[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
 "113
-[; ;./variables_globales.h: 113: unsigned char STKPTR_T5 __attribute__((address(0x503)));
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+[; ;./variables_globales.h: 113: unsigned char STKPTR_T1 __attribute__((address(0x103)));
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
 "114
-[; ;./variables_globales.h: 114: unsigned char STKPTR_T6 __attribute__((address(0x603)));
+[; ;./variables_globales.h: 114: unsigned char STKPTR_T2 __attribute__((address(0x203)));
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+"115
+[; ;./variables_globales.h: 115: unsigned char STKPTR_T3 __attribute__((address(0x303)));
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+"116
+[; ;./variables_globales.h: 116: unsigned char STKPTR_T4 __attribute__((address(0x403)));
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+"117
+[; ;./variables_globales.h: 117: unsigned char STKPTR_T5 __attribute__((address(0x503)));
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+"118
+[; ;./variables_globales.h: 118: unsigned char STKPTR_T6 __attribute__((address(0x603)));
 [v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
 "25 ./semaphore.h
 [; ;./semaphore.h: 25:     Semaphore semaphores __attribute__((address(0x90)));
@@ -1121,81 +1139,81 @@ Version 4.0 HI-TECH Software Intermediate Code
 "41
 [; ;T5.c: 41:                     batterie = buffer_batterie / 100;
 [e = _batterie -> / _buffer_batterie -> -> 100 `i `ui `uc ]
-"44
-[; ;T5.c: 44:                     cptT5 = 0;
+"42
+[; ;T5.c: 42:                     cptT5 = 0;
 [e = _cptT5 -> -> 0 `i `uc ]
-"46
-[; ;T5.c: 46:                 }
+"44
+[; ;T5.c: 44:                 }
 }
 [e $U 840  ]
-"47
-[; ;T5.c: 47:                 else
+"45
+[; ;T5.c: 45:                 else
 [e :U 835 ]
-"48
-[; ;T5.c: 48:                 {
+"46
+[; ;T5.c: 46:                 {
 {
-"49
-[; ;T5.c: 49:                     sample_vitesse[cptT5] = vitesse;
+"47
+[; ;T5.c: 47:                     sample_vitesse[cptT5] = vitesse;
 [e = *U + &U _sample_vitesse * -> _cptT5 `ux -> -> # *U &U _sample_vitesse `ui `ux _vitesse ]
-"50
-[; ;T5.c: 50:                     cptT5++;
+"48
+[; ;T5.c: 48:                     cptT5++;
 [e ++ _cptT5 -> -> 1 `i `uc ]
-"52
-[; ;T5.c: 52:                 }
+"50
+[; ;T5.c: 50:                 }
 }
 [e :U 840 ]
-"53
-[; ;T5.c: 53:                passageT5 = 1;
+"51
+[; ;T5.c: 51:                passageT5 = 1;
 [e = _passageT5 -> -> 1 `i `uc ]
-"54
-[; ;T5.c: 54:             }
+"52
+[; ;T5.c: 52:             }
 }
 [e :U 834 ]
-"56
-[; ;T5.c: 56:         }
+"54
+[; ;T5.c: 54:         }
 }
 [e $U 841  ]
-"58
-[; ;T5.c: 58:         else
+"56
+[; ;T5.c: 56:         else
 [e :U 833 ]
-"59
-[; ;T5.c: 59:         {
+"57
+[; ;T5.c: 57:         {
 {
-"60
-[; ;T5.c: 60:             for(char i = 0; i<sample_count; i++)
+"58
+[; ;T5.c: 58:             for(char i = 0; i<sample_count; i++)
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 845  ]
 [e :U 842 ]
-"61
-[; ;T5.c: 61:             {
+"59
+[; ;T5.c: 59:             {
 {
-"62
-[; ;T5.c: 62:                 sample_vitesse[i]=0;
+"60
+[; ;T5.c: 60:                 sample_vitesse[i]=0;
 [e = *U + &U _sample_vitesse * -> _i `ux -> -> # *U &U _sample_vitesse `ui `ux -> -> 0 `i `uc ]
-"63
-[; ;T5.c: 63:             }
+"61
+[; ;T5.c: 61:             }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 845 ]
 [e $ < -> _i `i -> _sample_count `i 842  ]
 [e :U 843 ]
 }
-"64
-[; ;T5.c: 64:             average_speed = 0;
+"62
+[; ;T5.c: 62:             average_speed = 0;
 [e = _average_speed -> -> 0 `i `uc ]
-"65
-[; ;T5.c: 65:         }
+"63
+[; ;T5.c: 63:         }
 }
 [e :U 841 ]
-"69
-[; ;T5.c: 69:     }
+"67
+[; ;T5.c: 67:     }
 }
 [e :U 830 ]
 [e $U 831  ]
 [e :U 832 ]
-"70
-[; ;T5.c: 70: }
+"68
+[; ;T5.c: 68: }
 [e :UE 829 ]
 }

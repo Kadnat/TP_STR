@@ -1,9 +1,15 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F6540 `(v ~T0 @X0 0 tf ]
+[v F6546 `(v ~T0 @X0 0 tf ]
 "18 ./semaphore.h
 [; ;./semaphore.h: 18:     typedef struct {
 [s S828 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
 [n S828 . jetons max_jetons attente tache_util ]
+"38 ./eeprom.h
+[; ;./eeprom.h: 38: unsigned char EEPROM_Read(unsigned char addr);
+[v _EEPROM_Read `(uc ~T0 @X0 0 ef1`uc ]
+"37
+[; ;./eeprom.h: 37: void EEPROM_Write(unsigned char addr, unsigned char data);
+[v _EEPROM_Write `(v ~T0 @X0 0 ef2`uc`uc ]
 "54 /Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h
 [; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 54: __asm("PMD3 equ 0F16h");
 [; <" PMD3 equ 0F16h ;# ">
@@ -952,53 +958,71 @@ Version 4.0 HI-TECH Software Intermediate Code
 "74
 [; ;./variables_globales.h: 74: unsigned int buffer_batterie __attribute__((address(0x713)));
 [v _buffer_batterie `ui ~T0 @X0 1 e@1811 ]
-"90
-[; ;./variables_globales.h: 90: void (*fptr)(void);
-[v _fptr `*F6540 ~T0 @X0 1 e ]
-"91
-[; ;./variables_globales.h: 91: unsigned short int val_tos;
+"76
+[; ;./variables_globales.h: 76: unsigned char passageT3 __attribute__((address(0x715)));
+[v _passageT3 `uc ~T0 @X0 1 e@1813 ]
+"78
+[; ;./variables_globales.h: 78: unsigned int counter_T3 __attribute__((address(0x760)));
+[v _counter_T3 `ui ~T0 @X0 1 e@1888 ]
+"84
+[; ;./variables_globales.h: 84: unsigned char KM_0 __attribute__((address(0x801)));
+[v _KM_0 `uc ~T0 @X0 1 e@2049 ]
+"85
+[; ;./variables_globales.h: 85: unsigned char KM_1 __attribute__((address(0x802)));
+[v _KM_1 `uc ~T0 @X0 1 e@2050 ]
+"86
+[; ;./variables_globales.h: 86: unsigned char KM_2 __attribute__((address(0x803)));
+[v _KM_2 `uc ~T0 @X0 1 e@2051 ]
+"87
+[; ;./variables_globales.h: 87: unsigned char KM_3 __attribute__((address(0x804)));
+[v _KM_3 `uc ~T0 @X0 1 e@2052 ]
+"94
+[; ;./variables_globales.h: 94: void (*fptr)(void);
+[v _fptr `*F6546 ~T0 @X0 1 e ]
+"95
+[; ;./variables_globales.h: 95: unsigned short int val_tos;
 [v _val_tos `us ~T0 @X0 1 e ]
-"92
-[; ;./variables_globales.h: 92: unsigned char * puc;
+"96
+[; ;./variables_globales.h: 96: unsigned char * puc;
 [v _puc `*uc ~T0 @X0 1 e ]
-"93
-[; ;./variables_globales.h: 93: unsigned char tc[3];
+"97
+[; ;./variables_globales.h: 97: unsigned char tc[3];
 [v _tc `uc ~T0 @X0 -> 3 `i e ]
-"101
-[; ;./variables_globales.h: 101: unsigned char contexte1[66] __attribute__((address(0x100)));
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
-"102
-[; ;./variables_globales.h: 102: unsigned char contexte2[66] __attribute__((address(0x200)));
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
-"103
-[; ;./variables_globales.h: 103: unsigned char contexte3[66] __attribute__((address(0x300)));
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
-"104
-[; ;./variables_globales.h: 104: unsigned char contexte4[66] __attribute__((address(0x400)));
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
 "105
-[; ;./variables_globales.h: 105: unsigned char contexte5[66] __attribute__((address(0x500)));
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+[; ;./variables_globales.h: 105: unsigned char contexte1[66] __attribute__((address(0x100)));
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
 "106
-[; ;./variables_globales.h: 106: unsigned char contexte6[66] __attribute__((address(0x600)));
-[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
+[; ;./variables_globales.h: 106: unsigned char contexte2[66] __attribute__((address(0x200)));
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+"107
+[; ;./variables_globales.h: 107: unsigned char contexte3[66] __attribute__((address(0x300)));
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+"108
+[; ;./variables_globales.h: 108: unsigned char contexte4[66] __attribute__((address(0x400)));
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
 "109
-[; ;./variables_globales.h: 109: unsigned char STKPTR_T1 __attribute__((address(0x103)));
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
+[; ;./variables_globales.h: 109: unsigned char contexte5[66] __attribute__((address(0x500)));
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
 "110
-[; ;./variables_globales.h: 110: unsigned char STKPTR_T2 __attribute__((address(0x203)));
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
-"111
-[; ;./variables_globales.h: 111: unsigned char STKPTR_T3 __attribute__((address(0x303)));
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
-"112
-[; ;./variables_globales.h: 112: unsigned char STKPTR_T4 __attribute__((address(0x403)));
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+[; ;./variables_globales.h: 110: unsigned char contexte6[66] __attribute__((address(0x600)));
+[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
 "113
-[; ;./variables_globales.h: 113: unsigned char STKPTR_T5 __attribute__((address(0x503)));
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+[; ;./variables_globales.h: 113: unsigned char STKPTR_T1 __attribute__((address(0x103)));
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
 "114
-[; ;./variables_globales.h: 114: unsigned char STKPTR_T6 __attribute__((address(0x603)));
+[; ;./variables_globales.h: 114: unsigned char STKPTR_T2 __attribute__((address(0x203)));
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+"115
+[; ;./variables_globales.h: 115: unsigned char STKPTR_T3 __attribute__((address(0x303)));
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+"116
+[; ;./variables_globales.h: 116: unsigned char STKPTR_T4 __attribute__((address(0x403)));
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+"117
+[; ;./variables_globales.h: 117: unsigned char STKPTR_T5 __attribute__((address(0x503)));
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+"118
+[; ;./variables_globales.h: 118: unsigned char STKPTR_T6 __attribute__((address(0x603)));
 [v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
 "25 ./semaphore.h
 [; ;./semaphore.h: 25:     Semaphore semaphores __attribute__((address(0x90)));
@@ -1035,19 +1059,113 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _tache3 ]
 [f ]
-"6
-[; ;T3.c: 6:     while(1)
-[e :U 831 ]
+"4
+[; ;T3.c: 4:     counter_T3 = 0;
+[e = _counter_T3 -> -> 0 `i `ui ]
+"5
+[; ;T3.c: 5:     passageT3 = 0;
+[e = _passageT3 -> -> 0 `i `uc ]
 "7
-[; ;T3.c: 7:         {
+[; ;T3.c: 7:     if (EEPROM_Read(0x00) == 0xFF &&
+[e $ ! && && && == -> ( _EEPROM_Read (1 -> -> 0 `i `uc `i -> 255 `i == -> ( _EEPROM_Read (1 -> -> 1 `i `uc `i -> 255 `i == -> ( _EEPROM_Read (1 -> -> 2 `i `uc `i -> 255 `i == -> ( _EEPROM_Read (1 -> -> 3 `i `uc `i -> 255 `i 830  ]
+"10
+[; ;T3.c: 10:                     EEPROM_Read(0x03) == 0xFF) {
 {
-"48
-[; ;T3.c: 48:     }
+"11
+[; ;T3.c: 11:                     (*(unsigned long*)&KM_0) = 0;
+[e = *U -> &U _KM_0 `*ul -> -> -> 0 `i `l `ul ]
+"13
+[; ;T3.c: 13:                     EEPROM_Write(0x00, 0);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"14
+[; ;T3.c: 14:                     EEPROM_Write(0x01, 0);
+[e ( _EEPROM_Write (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"15
+[; ;T3.c: 15:                     EEPROM_Write(0x02, 0);
+[e ( _EEPROM_Write (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
+"16
+[; ;T3.c: 16:                     EEPROM_Write(0x03, 0);
+[e ( _EEPROM_Write (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+"17
+[; ;T3.c: 17:                 } else {
 }
-[e :U 830 ]
 [e $U 831  ]
+[e :U 830 ]
+{
+"18
+[; ;T3.c: 18:                     (*(unsigned long*)&KM_0) = 0;
+[e = *U -> &U _KM_0 `*ul -> -> -> 0 `i `l `ul ]
+"19
+[; ;T3.c: 19:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x00) << 24;
+[e =| *U -> &U _KM_0 `*ul << -> ( _EEPROM_Read (1 -> -> 0 `i `uc `ul -> 24 `i ]
+"20
+[; ;T3.c: 20:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x01) << 16;
+[e =| *U -> &U _KM_0 `*ul << -> ( _EEPROM_Read (1 -> -> 1 `i `uc `ul -> 16 `i ]
+"21
+[; ;T3.c: 21:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x02) << 8;
+[e =| *U -> &U _KM_0 `*ul << -> ( _EEPROM_Read (1 -> -> 2 `i `uc `ul -> 8 `i ]
+"22
+[; ;T3.c: 22:                     (*(unsigned long*)&KM_0) |= (unsigned long)EEPROM_Read(0x03);
+[e =| *U -> &U _KM_0 `*ul -> ( _EEPROM_Read (1 -> -> 3 `i `uc `ul ]
+"23
+[; ;T3.c: 23:                 }
+}
+[e :U 831 ]
+"25
+[; ;T3.c: 25:     while(1)
+[e :U 833 ]
+"26
+[; ;T3.c: 26:         {
+{
+"29
+[; ;T3.c: 29:             (*(unsigned long*)&KM_0) += vitesse;
+[e =+ *U -> &U _KM_0 `*ul -> _vitesse `ul ]
+"32
+[; ;T3.c: 32:             if(passageT3 == 0)
+[e $ ! == -> _passageT3 `i -> 0 `i 835  ]
+"33
+[; ;T3.c: 33:             {
+{
+"34
+[; ;T3.c: 34:                 counter_T3++;
+[e ++ _counter_T3 -> -> 1 `i `ui ]
+"35
+[; ;T3.c: 35:                 if (counter_T3 >= 10) {
+[e $ ! >= _counter_T3 -> -> 10 `i `ui 836  ]
+{
+"36
+[; ;T3.c: 36:                     counter_T3 = 0;
+[e = _counter_T3 -> -> 0 `i `ui ]
+"37
+[; ;T3.c: 37:                     EEPROM_Write(0x00, ((*(unsigned long*)&KM_0) >> 24) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc -> & >> *U -> &U _KM_0 `*ul -> 24 `i -> -> -> 255 `i `l `ul `uc ]
+"38
+[; ;T3.c: 38:                     EEPROM_Write(0x01, ((*(unsigned long*)&KM_0) >> 16) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 1 `i `uc -> & >> *U -> &U _KM_0 `*ul -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+"39
+[; ;T3.c: 39:                     EEPROM_Write(0x02, ((*(unsigned long*)&KM_0) >> 8) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 2 `i `uc -> & >> *U -> &U _KM_0 `*ul -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+"40
+[; ;T3.c: 40:                     EEPROM_Write(0x03, (*(unsigned long*)&KM_0) & 0xFF);
+[e ( _EEPROM_Write (2 , -> -> 3 `i `uc -> & *U -> &U _KM_0 `*ul -> -> -> 255 `i `l `ul `uc ]
+"41
+[; ;T3.c: 41:                 }
+}
+[e :U 836 ]
+"42
+[; ;T3.c: 42:                 passageT3 = 1;
+[e = _passageT3 -> -> 1 `i `uc ]
+"43
+[; ;T3.c: 43:             }
+}
+[e :U 835 ]
+"46
+[; ;T3.c: 46:     }
+}
 [e :U 832 ]
-"49
-[; ;T3.c: 49: }
+[e $U 833  ]
+[e :U 834 ]
+"47
+[; ;T3.c: 47: }
 [e :UE 829 ]
 }

@@ -11252,7 +11252,25 @@ unsigned char alarme_conducteur __attribute__((address(0x710)));
 unsigned char cptT5 __attribute__((address(0x711)));
 unsigned char passageT5 __attribute__((address(0x712)));
 unsigned int buffer_batterie __attribute__((address(0x713)));
-# 90 "./variables_globales.h"
+
+unsigned char passageT3 __attribute__((address(0x715)));
+
+unsigned int counter_T3 __attribute__((address(0x760)));
+
+
+
+
+
+unsigned char KM_0 __attribute__((address(0x801)));
+unsigned char KM_1 __attribute__((address(0x802)));
+unsigned char KM_2 __attribute__((address(0x803)));
+unsigned char KM_3 __attribute__((address(0x804)));
+
+
+
+
+
+
 void (*fptr)(void);
 unsigned short int val_tos;
 unsigned char * puc;
@@ -11477,6 +11495,7 @@ void __attribute__((picinterrupt(("high_priority")))) fonction_d_interruption(vo
         if (semtask6FLAG == 1) semtask6FLAG = 0;
         if (semtask1FLAG == 1) semtask1FLAG = 0;
         if (passageT5 == 1) passageT5 = 0;
+        if (passageT3 == 1) passageT3 = 0;
 
         pointeur_de_tache++;
         if (pointeur_de_tache == 6)

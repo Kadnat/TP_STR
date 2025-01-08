@@ -14,8 +14,6 @@ void tache2(void)
 
     while(1)
     {
-        //while (PIR1bits.TX1IF==0);   TXREG1='B';while (TXSTA1bits.TRMT==0);
-
         //Gestion des alarmes
 
         alarme_frein = (~(FREIN_A_MAIN)) & 0x1;

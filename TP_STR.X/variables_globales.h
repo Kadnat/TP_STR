@@ -41,18 +41,16 @@ unsigned int Tick_Count            __at(0x71);
 unsigned char RXTX_libre        __at(0x80);
 unsigned char semtask1FLAG __at(0x81);
 unsigned char semtask6FLAG __at(0x82);
-unsigned char vitesse              __at(0x83);
-unsigned char batterie             __at(0x84);
+
 
 //var glob tache 1
 
 unsigned char n __at(0x745);
 unsigned char buffer_vitesse_plus __at(0x700);
 unsigned char buffer_vitesse_moins __at(0x701);
-
-
+unsigned char vitesse              __at(0x703);
+unsigned char batterie             __at(0x704);
 unsigned char badge[10]            __at(0x730);
-
 unsigned char n_octet_badge        __at(0x705);
 unsigned char ANALOG_TEMP_HUILE     __at(0x706);
 unsigned char ANALOG_TEMP_EAU       __at(0x707);
@@ -68,21 +66,22 @@ unsigned char alarme_batterie __at(0x70E);
 unsigned char alarme_choc __at(0x70F);
 unsigned char alarme_conducteur __at(0x710);
 
+//var glob tache 3
+unsigned char passageT3 __at(0x711);
+unsigned int counter_T3 __at(0x712);
+
 //var glob tache 5
-unsigned char cptT5 __at(0x711);
-unsigned char passageT5 __at(0x712);
-unsigned int buffer_batterie __at(0x713);
+unsigned char cptT5 __at(0x714);
+unsigned char passageT5 __at(0x715);
+unsigned int buffer_batterie __at(0x716);
+
+
 
 //var glob tache 6
 
 
-//Variable kilométrage (4 octets)
-//unsigned char KM_0                 __at(0x369);  // Octet de poids fort
-//unsigned char KM_1                 __at(0x36A);
-//unsigned char KM_2                 __at(0x36B);
-//unsigned char KM_3                 __at(0x36C); 
-
-//#define kilometrage (*(unsigned long*)&KM_0)
+//Variable kilometrage (4 octets)
+unsigned char km[4]                 __at(0x801);
 
 
     //pointeur de fonction

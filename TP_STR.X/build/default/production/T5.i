@@ -11259,7 +11259,25 @@ unsigned char alarme_conducteur __attribute__((address(0x710)));
 unsigned char cptT5 __attribute__((address(0x711)));
 unsigned char passageT5 __attribute__((address(0x712)));
 unsigned int buffer_batterie __attribute__((address(0x713)));
-# 90 "./variables_globales.h"
+
+unsigned char passageT3 __attribute__((address(0x715)));
+
+unsigned int counter_T3 __attribute__((address(0x760)));
+
+
+
+
+
+unsigned char KM_0 __attribute__((address(0x801)));
+unsigned char KM_1 __attribute__((address(0x802)));
+unsigned char KM_2 __attribute__((address(0x803)));
+unsigned char KM_3 __attribute__((address(0x804)));
+
+
+
+
+
+
 void (*fptr)(void);
 unsigned short int val_tos;
 unsigned char * puc;
@@ -11462,8 +11480,6 @@ void tache5(void)
                     buffer_batterie = buffer_batterie - 15 * average_speed - 10;
 
                     batterie = buffer_batterie / 100;
-
-
                     cptT5 = 0;
 
                 }
