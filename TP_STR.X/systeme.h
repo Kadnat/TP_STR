@@ -14,7 +14,13 @@ extern "C" {
 
 #include "main.h"
 
-
+typedef struct {
+    uint8_t priority;
+    uint16_t period;    // multiple de 10ms
+    uint16_t next_tick;
+    uint8_t is_ready;
+} TaskControl;
+extern TaskControl task_control[NOMBRE_DE_TACHES];
 
 // Prototypes
     void __interrupt(high_priority) fonction_d_interruption(void);

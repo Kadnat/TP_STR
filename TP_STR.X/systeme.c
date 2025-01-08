@@ -14,6 +14,15 @@
                         TOSU=*puc
 
 
+TaskControl task_control[NOMBRE_DE_TACHES] = {
+    {4, 1,  0, 1},   // T1: Collecte données, 10ms
+    {5, 10, 0, 1},   // T2: Alarmes, 100ms
+    {2, 50, 0, 1},   // T3: EEPROM, 500ms
+    {1, 100,0, 1},   // T4: IHM, 1000ms
+    {3, 5,  0, 1},   // T5: gestion batterie, 50ms
+    {3, 10, 0, 1}    // T6: UART, 100ms
+};
+
 void __interrupt(high_priority) fonction_d_interruption(void)
 {
 // Sauvegarde de registres sensibles (ils sont modifi�s au cours du changement de tache)
@@ -68,21 +77,28 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         if (passageT5 == 1) passageT5 = 0;
         if (passageT3 == 1) passageT3 = 0;
         
-        pointeur_de_tache++;                        
-        if (pointeur_de_tache == NOMBRE_DE_TACHES)    
-            pointeur_de_tache = 0;                    
-        
-        // Nouvelle logique pour g�rer les t�ches en attente
-        tache_active = queue[pointeur_de_tache];
-        
-        // V�rification si la t�che est en attente du s�maphore
-        if (mutex.attente & (1 << tache_active)) {
-            // Passe à la tâche suivante
-            pointeur_de_tache++;                        
-            if (pointeur_de_tache == NOMBRE_DE_TACHES)    
-                pointeur_de_tache = 0;
-            tache_active = queue[pointeur_de_tache];
+        // Update task readiness based on period
+        for(uint8_t i = 0; i < NOMBRE_DE_TACHES; i++) {
+            if(Tick_Count >= task_control[i].next_tick) {
+                task_control[i].is_ready = 1;
+                task_control[i].next_tick = Tick_Count + task_control[i].period;
+            }
         }
+
+        // Find highest priority ready task not blocked by mutex
+        uint8_t highest_prio = 0;
+        tache_active = 0;
+
+        for(uint8_t i = 0; i < NOMBRE_DE_TACHES; i++) {
+            if(task_control[i].is_ready && 
+               !(mutex.attente & (1 << i)) &&
+               task_control[i].priority > highest_prio) {
+                highest_prio = task_control[i].priority;
+                tache_active = i;
+            }
+        }
+
+        task_control[tache_active].is_ready = 0;
 
  // Restauration du contexte de la tache active
 // Debut de restauration des zones utilis�es par le compilateur
