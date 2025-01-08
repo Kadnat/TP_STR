@@ -39,8 +39,19 @@ unsigned char tache_active         __at(0x6F);
 unsigned char pointeur_de_tache    __at(0x70);
 unsigned int Tick_Count            __at(0x71);
 unsigned char RXTX_libre        __at(0x80);
-unsigned char semtask1FLAG __at(0x81);
-unsigned char semtask6FLAG __at(0x82);
+unsigned char mutexT1Flag __at(0x81);
+unsigned char mutexT6Flag __at(0x82);
+
+typedef union {
+    unsigned char val; // Repr�sentation brute (8 bits) du mutex
+    struct {
+        unsigned libre:1;      // Bit 0 : 1 si mutex libre, 0 si pris
+        unsigned attente:7;    // Bits 1-7 : bitmap des t�ches en attente (une t�che par bit)
+    };
+} Mutex_t;
+unsigned char Mutex_t mutex __at(0x83);
+
+
 
 
 //var glob tache 1
