@@ -19,8 +19,10 @@ extern "C" {
 // Include du projet
 #include "systeme.h"
 #include "variables_globales.h"
+#include "stdint.h"
 #include "afficheur.h"
 #include "eeprom.h"
+#include "mutex.h"
 #include "stid.h"
 #include "rxtx.h"
 #include "gui.h"

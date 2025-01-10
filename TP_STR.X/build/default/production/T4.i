@@ -11204,15 +11204,14 @@ unsigned char __t3rd16on(void);
 
 
 
-
     void __attribute__((picinterrupt(("high_priority")))) fonction_d_interruption(void);
     void initialisation_du_systeme(void);
 # 21 "./main.h" 2
 # 1 "./variables_globales.h" 1
-# 15 "./variables_globales.h"
+# 33 "./variables_globales.h"
 # 1 "./main.h" 1
-# 16 "./variables_globales.h" 2
-# 29 "./variables_globales.h"
+# 34 "./variables_globales.h" 2
+# 45 "./variables_globales.h"
 unsigned char W_TEMPORAIRE __attribute__((address(0x60)));
 unsigned char STATUS_TEMPORAIRE __attribute__((address(0x61)));
 unsigned char BSR_TEMPORAIRE __attribute__((address(0x62)));
@@ -11225,21 +11224,27 @@ unsigned char queue[6] __attribute__((address(0x69)));
 unsigned char tache_active __attribute__((address(0x6F)));
 unsigned char pointeur_de_tache __attribute__((address(0x70)));
 unsigned int Tick_Count __attribute__((address(0x71)));
-unsigned char RXTX_libre __attribute__((address(0x80)));
-unsigned char semtask1FLAG __attribute__((address(0x81)));
-unsigned char semtask6FLAG __attribute__((address(0x82)));
-unsigned char vitesse __attribute__((address(0x83)));
-unsigned char batterie __attribute__((address(0x84)));
 
+
+unsigned char RXTX_libre __attribute__((address(0x80)));
+unsigned char mutexT1Flag __attribute__((address(0x81)));
+unsigned char mutexT6Flag __attribute__((address(0x82)));
+typedef union {
+    unsigned char val;
+    struct {
+        unsigned libre:1;
+        unsigned attente:7;
+    };
+} Mutex_t;
+Mutex_t mutex __attribute__((address(0x83)));
 
 
 unsigned char n __attribute__((address(0x745)));
 unsigned char buffer_vitesse_plus __attribute__((address(0x700)));
 unsigned char buffer_vitesse_moins __attribute__((address(0x701)));
-
-
+unsigned char vitesse __attribute__((address(0x703)));
+unsigned char batterie __attribute__((address(0x704)));
 unsigned char badge[10] __attribute__((address(0x730)));
-
 unsigned char n_octet_badge __attribute__((address(0x705)));
 unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x706)));
 unsigned char ANALOG_TEMP_EAU __attribute__((address(0x707)));
@@ -11256,37 +11261,26 @@ unsigned char alarme_choc __attribute__((address(0x70F)));
 unsigned char alarme_conducteur __attribute__((address(0x710)));
 
 
-unsigned char cptT5 __attribute__((address(0x711)));
-unsigned char passageT5 __attribute__((address(0x712)));
-unsigned int buffer_batterie __attribute__((address(0x713)));
-
-unsigned char passageT3 __attribute__((address(0x715)));
-
-unsigned int counter_T3 __attribute__((address(0x760)));
+unsigned char passageT3 __attribute__((address(0x711)));
+unsigned int counter_T3 __attribute__((address(0x712)));
 
 
+unsigned char cptT5 __attribute__((address(0x714)));
+unsigned char passageT5 __attribute__((address(0x715)));
+unsigned int buffer_batterie __attribute__((address(0x716)));
 
 
+unsigned char km[4] __attribute__((address(0x801)));
+typedef struct {
+    uint8_t priority;
+    uint16_t period;
+    uint16_t next_tick;
+    uint8_t is_ready;
+} TaskControl;
+TaskControl task_control[6] __attribute__((address(0x805)));
 
-unsigned char KM_0 __attribute__((address(0x801)));
-unsigned char KM_1 __attribute__((address(0x802)));
-unsigned char KM_2 __attribute__((address(0x803)));
-unsigned char KM_3 __attribute__((address(0x804)));
-
-
-
-
-
-
-void (*fptr)(void);
-unsigned short int val_tos;
-unsigned char * puc;
-unsigned char tc[3];
-
-
-
-
-
+uint8_t i_m __attribute__((address(0x900)));
+uint8_t i_mutex2 __attribute__((address(0x901)));
 
 
 unsigned char contexte1[66] __attribute__((address(0x100)));
@@ -11303,7 +11297,15 @@ unsigned char STKPTR_T3 __attribute__((address(0x303)));
 unsigned char STKPTR_T4 __attribute__((address(0x403)));
 unsigned char STKPTR_T5 __attribute__((address(0x503)));
 unsigned char STKPTR_T6 __attribute__((address(0x603)));
+
+
+
+void (*fptr)(void);
+unsigned short int val_tos;
+unsigned char * puc;
+unsigned char tc[3];
 # 22 "./main.h" 2
+
 # 1 "./afficheur.h" 1
 # 15 "./afficheur.h"
 # 1 "./main.h" 1
@@ -11328,32 +11330,18 @@ unsigned char STKPTR_T6 __attribute__((address(0x603)));
     void clear_cgram(void);
     void plot1(unsigned char x, unsigned char y);
     void plot0(unsigned char x, unsigned char y);
-# 23 "./main.h" 2
-# 1 "./semaphore.h" 1
-# 15 "./semaphore.h"
-# 1 "./main.h" 1
-# 16 "./semaphore.h" 2
-
-
-    typedef struct {
-        volatile unsigned char jetons;
-        volatile unsigned char max_jetons;
-        volatile unsigned char attente;
-        volatile unsigned char tache_util;
-    } Semaphore;
-
-    Semaphore semaphores __attribute__((address(0x90)));
-
-
-    void semaphore_init(unsigned char jetons_initiaux);
-    unsigned char semaphore_tryacquire(unsigned char tache);
-    void semaphore_release(unsigned char tache);
 # 24 "./main.h" 2
 # 1 "./eeprom.h" 1
 # 37 "./eeprom.h"
 void EEPROM_Write(unsigned char addr, unsigned char data);
 unsigned char EEPROM_Read(unsigned char addr);
 # 25 "./main.h" 2
+# 1 "./mutex.h" 1
+# 36 "./mutex.h"
+void mutex_init(void);
+char mutex_acquire(char tache);
+void mutex_release(char tache);
+# 26 "./main.h" 2
 # 1 "./stid.h" 1
 # 15 "./stid.h"
 # 1 "./main.h" 1
@@ -11361,7 +11349,7 @@ unsigned char EEPROM_Read(unsigned char addr);
 
 unsigned char lecture_normale(unsigned char * stid_id);
 void stid_delai_us(unsigned int isdu);
-# 26 "./main.h" 2
+# 27 "./main.h" 2
 # 1 "./rxtx.h" 1
 # 15 "./rxtx.h"
 # 1 "./main.h" 1
@@ -11369,7 +11357,7 @@ void stid_delai_us(unsigned int isdu);
 
 
 void init_rxtx(void);
-# 27 "./main.h" 2
+# 28 "./main.h" 2
 # 1 "./gui.h" 1
 # 15 "./gui.h"
 # 1 "./main.h" 1
@@ -11382,13 +11370,13 @@ void gui_draw_aiguille_vitesse(char vit);
 void gui_erase_aiguille_vitesse(char vit);
 void gui_update_temperature(char t_eau, char t_huile);
 void gui_temp_alert(unsigned char t_eau, unsigned char t_huile);
-# 28 "./main.h" 2
+# 29 "./main.h" 2
 # 1 "./T1.h" 1
 # 15 "./T1.h"
 # 1 "./main.h" 1
 # 16 "./T1.h" 2
 void tache1(void);
-# 29 "./main.h" 2
+# 30 "./main.h" 2
 # 1 "./T2.h" 1
 # 15 "./T2.h"
 # 1 "./main.h" 1
@@ -11396,27 +11384,27 @@ void tache1(void);
 
 void tache2(void);
 void tp_delai(unsigned int itpd);
-# 30 "./main.h" 2
+# 31 "./main.h" 2
 # 1 "./T3.h" 1
 # 15 "./T3.h"
 # 1 "./main.h" 1
 # 16 "./T3.h" 2
  void tache3(void);
-# 31 "./main.h" 2
-# 1 "./T4.h" 1
 # 32 "./main.h" 2
+# 1 "./T4.h" 1
+# 33 "./main.h" 2
 # 1 "./T5.h" 1
 # 15 "./T5.h"
 # 1 "./main.h" 1
 # 16 "./T5.h" 2
  void tache5(void);
-# 33 "./main.h" 2
+# 34 "./main.h" 2
 # 1 "./T6.h" 1
 # 15 "./T6.h"
 # 1 "./main.h" 1
 # 16 "./T6.h" 2
  void tache6(void);
-# 34 "./main.h" 2
+# 35 "./main.h" 2
 
 
 
@@ -11435,7 +11423,7 @@ void tp_delai(unsigned int itpd);
 #pragma config CONFIG6H = 0xE0
 #pragma config CONFIG7L = 0xFF
 #pragma config CONFIG7H = 0x40
-# 145 "./main.h"
+# 146 "./main.h"
 unsigned char lecture_8bit_analogique(unsigned char channel);
 # 16 "./T4.h" 2
  void tache4(void);
@@ -11443,40 +11431,143 @@ unsigned char lecture_8bit_analogique(unsigned char channel);
 
 void tache4(void)
 {
-    unsigned char passage = 0;
 
+
+    for(unsigned char i = 2 ; i < 37 ; i++)
+        {
+            if( (i < 11) ||
+                ((i > 14) && (i < 24)) ||
+                ((i > 27) && (i < 37))
+              )
+            {
+                goto_lico(12, i);draw_char('*');
+            }
+        }
+    for(unsigned char i = 15; i >= 13 ; i--)
+    {
+        goto_lico(i, 1); draw_char('*');goto_lico(i, 11); draw_char('*');
+        goto_lico(i, 14); draw_char('*');goto_lico(i, 24); draw_char('*');
+        goto_lico(i, 27); draw_char('*');goto_lico(i, 37); draw_char('*');
+    }
+
+
+    goto_lico(11, 2); draw_char('T');goto_lico(11, 3); draw_char('e');goto_lico(11, 4); draw_char('m');goto_lico(11, 5); draw_char('p');
+    goto_lico(11, 7); draw_char('E');goto_lico(11, 8); draw_char('a');goto_lico(11, 9); draw_char('u');
+
+    goto_lico(11, 28); draw_char('T');goto_lico(11, 29); draw_char('e');goto_lico(11, 30); draw_char('m');goto_lico(11, 31); draw_char('p');
+    goto_lico(11, 33); draw_char('H');goto_lico(11, 34); draw_char('u');goto_lico(11, 35); draw_char('i');goto_lico(11, 36); draw_char('l');goto_lico(11, 37); draw_char('e');
+
+    goto_lico(11, 16); draw_char('V');goto_lico(11, 17); draw_char('i');goto_lico(11, 18); draw_char('t');
+    goto_lico(11, 19); draw_char('e');goto_lico(11, 20); draw_char('s');goto_lico(11, 21); draw_char('s');goto_lico(11, 22); draw_char('e');
+
+
+    goto_lico(14, 19);draw_char('k');goto_lico(14, 20);draw_char('m');goto_lico(14, 21);draw_char('/');goto_lico(14, 22);draw_char('h');
+    goto_lico(14, 8);draw_char('C');goto_lico(14, 34);draw_char('C');
+
+    goto_lico(0, 36); draw_char('%');
+
+
+    unsigned char y = 0;
+    for(unsigned char i = 1 ; i <= 38 ; i++)
+    {
+        if( (i == 13) || (i == 26) ){}
+        else
+        {
+            goto_lico(2, i);draw_char('*');
+            goto_lico(9, i);draw_char('*');
+        }
+    }
+    for(unsigned char i = 8 ; i >= 3 ; i--)
+    {
+        goto_lico(i, 1); draw_char('*');goto_lico(i, 12); draw_char('*');
+        goto_lico(i, 14); draw_char('*');goto_lico(i, 25); draw_char('*');
+        goto_lico(i, 27); draw_char('*');goto_lico(i, 38); draw_char('*');
+    }
+
+
+    goto_lico(3, 16); draw_char('A');goto_lico(3, 17); draw_char('L');goto_lico(3, 18); draw_char('A');goto_lico(3, 19); draw_char('R');goto_lico(3, 20); draw_char('M');goto_lico(3, 21); draw_char('E');goto_lico(3, 22); draw_char('S');
+
+
+    goto_lico(3, 4); draw_char('M');goto_lico(3, 5); draw_char('O');goto_lico(3, 6); draw_char('T');goto_lico(3, 7); draw_char('E');goto_lico(3, 8); draw_char('U');goto_lico(3, 9); draw_char('R');
+    goto_lico(5, 2); draw_char('M');goto_lico(5, 3); draw_char('A');goto_lico(5, 4); draw_char('R');goto_lico(5, 5); draw_char('C');goto_lico(5, 6); draw_char('H');goto_lico(5, 7); draw_char('E');
+    goto_lico(7, 2); draw_char('K');goto_lico(7, 3); draw_char('M');goto_lico(7, 4); draw_char('a');goto_lico(7, 5); draw_char('g');goto_lico(7, 6); draw_char('e');
+
+
+    goto_lico(3, 30); draw_char('P');goto_lico(3, 31); draw_char('I');goto_lico(3, 32); draw_char('L');goto_lico(3, 33); draw_char('O');goto_lico(3, 34); draw_char('T');goto_lico(3, 35); draw_char('E');
+    goto_lico(5, 28); draw_char('S');goto_lico(5, 29); draw_char('I');goto_lico(5, 30); draw_char('E');goto_lico(5, 31); draw_char('G');goto_lico(5, 32); draw_char('E');
+    goto_lico(7, 29); draw_char('C');goto_lico(7, 30); draw_char('L');goto_lico(7, 31); draw_char('E');
+
+
+    goto_lico(0,0);draw_char('F');goto_lico(0,1);draw_char('O');goto_lico(0,2);draw_char('R');goto_lico(0,3);draw_char('K');goto_lico(0,4);draw_char('L');goto_lico(0,5);draw_char('I');goto_lico(0,6);draw_char('F');goto_lico(0,7);draw_char('T');goto_lico(0,8);draw_char(' ');
+    goto_lico(0,9);draw_char('S');goto_lico(0,10);draw_char('I');goto_lico(0,11);draw_char('M');goto_lico(0,12);draw_char('U');goto_lico(0,13);draw_char('L');goto_lico(0,14);draw_char('A');goto_lico(0,15);draw_char('T');goto_lico(0,16);draw_char('O');goto_lico(0,17);draw_char('R');
+
+    __nop();
+    __nop();
 
     while(1)
     {
 
+        goto_lico(14, 16); draw_hex8(vitesse);
+        goto_lico(14, 4); draw_hex8(ANALOG_TEMP_EAU);
+        goto_lico(14, 30); draw_hex8(ANALOG_TEMP_HUILE);
+        goto_lico(0, 33); draw_hex8(batterie);
+        goto_lico(7, 8);draw_char(km[3]); goto_lico(7, 9);draw_char(km[2]);
+        goto_lico(7, 10);draw_char(km[1]); goto_lico(7, 11);draw_char(km[0]);
 
 
-        goto_lico(6,0);
+        if(alarme_batterie)
+        {
+            goto_lico(5, 15);draw_char('B');goto_lico(5, 16);draw_char('A');goto_lico(5, 17);draw_char('T');goto_lico(5, 19);draw_char('F');goto_lico(5, 20);draw_char('A');
+            goto_lico(5, 21);draw_char('I');goto_lico(5, 22);draw_char('B');goto_lico(5, 23);draw_char('L');goto_lico(5, 24);draw_char('E');
+        }
+        else
+        {
+            for(unsigned char i = 15; i <= 24 ; i++ )
+            {
+                goto_lico(5, i); draw_char(' ');
+            }
+        }
 
+        if(alarme_eau)
+        {
+            goto_lico(6, 15);draw_char('T');goto_lico(6, 17);draw_char('E');goto_lico(6, 18);draw_char('A');goto_lico(6, 19);draw_char('U');
+            goto_lico(6, 21);draw_char('E');goto_lico(6, 22);draw_char('R');goto_lico(6, 23);draw_char('R');
+        }
+        else
+        {
+            goto_lico(6, 15);draw_char('T');goto_lico(6, 17);draw_char('E');goto_lico(6, 18);draw_char('A');goto_lico(6, 19);draw_char('U');
+            goto_lico(6, 21);draw_char('O');goto_lico(6, 22);draw_char('K');
 
-        draw_dec8(batterie);
+        }
 
-        goto_lico(8,0);
+        if(alarme_huile)
+        {
+            goto_lico(7, 15);draw_char('T');goto_lico(7, 17);draw_char('O');goto_lico(7, 18);draw_char('I');goto_lico(7, 19);draw_char('L');
+            goto_lico(7, 21);draw_char('E');goto_lico(7, 22);draw_char('R');goto_lico(7, 23);draw_char('R');
+        }
+        else
+        {
+            goto_lico(7, 15);draw_char('T');goto_lico(7, 17);draw_char('O');goto_lico(7, 18);draw_char('I');goto_lico(7, 19);draw_char('L');
+            goto_lico(7, 21);draw_char('O');goto_lico(7, 22);draw_char('K');
 
-        draw_dec8(vitesse);
+        }
 
+        if(alarme_choc)
+        {
+            goto_lico(8, 15);draw_char('C');goto_lico(8, 16);draw_char('H');goto_lico(8, 17);draw_char('O');goto_lico(8, 18);draw_char('C');goto_lico(8, 19);draw_char('>');
+            goto_lico(8, 20);draw_char('A');goto_lico(8, 21);draw_char('R');goto_lico(8, 22);draw_char('R');goto_lico(8, 23);draw_char('E');goto_lico(8, 24);draw_char('T');
+        }
+        else
+        {
+           for(unsigned char i = 15; i <= 24 ; i++ )
+            {
+                goto_lico(8, i); draw_char(' ');
+            }
+        }
 
-        goto_lico(10,0);
-
-        draw_dec8(ANALOG_JOYSTICK_Y);
-
-
-        goto_lico(12,0);
-        draw_dec8(((*(unsigned long*)&KM_0) >> 24) & 0xFF);
-
-        goto_lico(13,0);
-        draw_dec8(((*(unsigned long*)&KM_0) >> 16) & 0xFF);
-
-        goto_lico(14,0);
-        draw_dec8(((*(unsigned long*)&KM_0) >> 8) & 0xFF);
-
-        goto_lico(15,0);
-        draw_dec8((*(unsigned long*)&KM_0) & 0xFF);
+        if(alarme_frein){goto_lico(5, 9);draw_char('(');goto_lico(5, 10);draw_char('P');goto_lico(5, 10);draw_char(')');}
+        else if(PORTBbits.RB0){goto_lico(5, 9);draw_char('A');goto_lico(5, 10);draw_char('v');goto_lico(5, 10);draw_char(' ');}
+        else if(PORTBbits.RB1){goto_lico(5, 9);draw_char('A');goto_lico(5, 10);draw_char('r');goto_lico(5, 10);draw_char(' ');}
+        else{goto_lico(5, 9);draw_char(' ');goto_lico(5, 10);draw_char('N');goto_lico(5, 10);draw_char(' ');}
     }
-
 }

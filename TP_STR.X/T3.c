@@ -15,14 +15,17 @@ void tache3(void) {
                     EEPROM_Read(0x01) == 0xFF && 
                     EEPROM_Read(0x02) == 0xFF && 
                     EEPROM_Read(0x03) == 0xFF) {
-                    km = {0};
+
+                    for(int i = 0;i<4;i++)
+                        km[i]=0;
                     // Write initial 0 value
                     EEPROM_Write(0x00, 0);
                     EEPROM_Write(0x01, 0);
                     EEPROM_Write(0x02, 0);
                     EEPROM_Write(0x03, 0);
                 } else {
-                    km = {0};
+                    for(int i = 0;i<4;i++)
+                        km[i]=0;
                     km[0] = EEPROM_Read(0x00);
                     km[1] = EEPROM_Read(0x01);
                     km[2] = EEPROM_Read(0x02);

@@ -31,7 +31,6 @@ extern "C" {
 #endif
 
 #include "main.h"
-#include "systeme.h"
 
             /* Constantes */
 #define     NOMBRE_DE_TACHES        6
@@ -67,7 +66,7 @@ typedef union {
         unsigned attente:7;    // Bits 1-7 : bitmap des t�ches en attente (une t�che par bit)
     };
 } Mutex_t;
-unsigned char Mutex_t mutex __at(0x83);
+Mutex_t mutex __at(0x83);
 
 /* Variables Tâche 1 - Gestion des entrées */
 unsigned char n                       __at(0x745);    // Compteur général
@@ -102,6 +101,16 @@ unsigned int buffer_batterie          __at(0x716);    // Buffer niveau batterie
 
 /* Variables système - Kilométrage */
 unsigned char km[4]                   __at(0x801);    // Compteur kilométrage
+typedef struct {
+    uint8_t priority;
+    uint16_t period;    // multiple de 10ms
+    uint16_t next_tick;
+    uint8_t is_ready;
+} TaskControl;
+TaskControl task_control[NOMBRE_DE_TACHES] __at(0x805);
+
+uint8_t i_m __at(0x900);
+uint8_t i_mutex2 __at(0x901);
 
 /* Contextes des tâches */
 unsigned char contexte1[66] __at(0x100);    // Contexte tâche 1

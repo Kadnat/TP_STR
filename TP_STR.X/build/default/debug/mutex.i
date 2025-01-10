@@ -1,4 +1,4 @@
-# 1 "semaphore.c"
+# 1 "mutex.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -18,9 +18,13 @@ extern char * __inthi_stack_hi;
 extern char * __intlo_stack_lo;
 extern char * __intlo_stack_hi;
 # 2 "<built-in>" 2
-# 1 "semaphore.c" 2
-# 1 "./semaphore.h" 1
-# 15 "./semaphore.h"
+# 1 "mutex.c" 2
+
+
+
+
+
+
 # 1 "./main.h" 1
 # 16 "./main.h"
 # 1 "/Applications/microchip/xc8/v2.50/pic/include/xc.h" 1 3
@@ -11204,15 +11208,14 @@ unsigned char __t3rd16on(void);
 
 
 
-
     void __attribute__((picinterrupt(("high_priority")))) fonction_d_interruption(void);
     void initialisation_du_systeme(void);
 # 21 "./main.h" 2
 # 1 "./variables_globales.h" 1
-# 15 "./variables_globales.h"
+# 33 "./variables_globales.h"
 # 1 "./main.h" 1
-# 16 "./variables_globales.h" 2
-# 29 "./variables_globales.h"
+# 34 "./variables_globales.h" 2
+# 45 "./variables_globales.h"
 unsigned char W_TEMPORAIRE __attribute__((address(0x60)));
 unsigned char STATUS_TEMPORAIRE __attribute__((address(0x61)));
 unsigned char BSR_TEMPORAIRE __attribute__((address(0x62)));
@@ -11225,21 +11228,27 @@ unsigned char queue[6] __attribute__((address(0x69)));
 unsigned char tache_active __attribute__((address(0x6F)));
 unsigned char pointeur_de_tache __attribute__((address(0x70)));
 unsigned int Tick_Count __attribute__((address(0x71)));
-unsigned char RXTX_libre __attribute__((address(0x80)));
-unsigned char semtask1FLAG __attribute__((address(0x81)));
-unsigned char semtask6FLAG __attribute__((address(0x82)));
-unsigned char vitesse __attribute__((address(0x83)));
-unsigned char batterie __attribute__((address(0x84)));
 
+
+unsigned char RXTX_libre __attribute__((address(0x80)));
+unsigned char mutexT1Flag __attribute__((address(0x81)));
+unsigned char mutexT6Flag __attribute__((address(0x82)));
+typedef union {
+    unsigned char val;
+    struct {
+        unsigned libre:1;
+        unsigned attente:7;
+    };
+} Mutex_t;
+Mutex_t mutex __attribute__((address(0x83)));
 
 
 unsigned char n __attribute__((address(0x745)));
 unsigned char buffer_vitesse_plus __attribute__((address(0x700)));
 unsigned char buffer_vitesse_moins __attribute__((address(0x701)));
-
-
+unsigned char vitesse __attribute__((address(0x703)));
+unsigned char batterie __attribute__((address(0x704)));
 unsigned char badge[10] __attribute__((address(0x730)));
-
 unsigned char n_octet_badge __attribute__((address(0x705)));
 unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x706)));
 unsigned char ANALOG_TEMP_EAU __attribute__((address(0x707)));
@@ -11256,37 +11265,25 @@ unsigned char alarme_choc __attribute__((address(0x70F)));
 unsigned char alarme_conducteur __attribute__((address(0x710)));
 
 
-unsigned char cptT5 __attribute__((address(0x711)));
-unsigned char passageT5 __attribute__((address(0x712)));
-unsigned int buffer_batterie __attribute__((address(0x713)));
-
-unsigned char passageT3 __attribute__((address(0x715)));
-
-unsigned int counter_T3 __attribute__((address(0x760)));
+unsigned char passageT3 __attribute__((address(0x711)));
+unsigned int counter_T3 __attribute__((address(0x712)));
 
 
+unsigned char cptT5 __attribute__((address(0x714)));
+unsigned char passageT5 __attribute__((address(0x715)));
+unsigned int buffer_batterie __attribute__((address(0x716)));
 
 
+unsigned char km[4] __attribute__((address(0x801)));
+typedef struct {
+    uint8_t priority;
+    uint16_t period;
+    uint16_t next_tick;
+    uint8_t is_ready;
+} TaskControl;
+TaskControl task_control[6] __attribute__((address(0x805)));
 
-unsigned char KM_0 __attribute__((address(0x801)));
-unsigned char KM_1 __attribute__((address(0x802)));
-unsigned char KM_2 __attribute__((address(0x803)));
-unsigned char KM_3 __attribute__((address(0x804)));
-
-
-
-
-
-
-void (*fptr)(void);
-unsigned short int val_tos;
-unsigned char * puc;
-unsigned char tc[3];
-
-
-
-
-
+uint8_t i_m __attribute__((address(0x900)));
 
 
 unsigned char contexte1[66] __attribute__((address(0x100)));
@@ -11303,7 +11300,15 @@ unsigned char STKPTR_T3 __attribute__((address(0x303)));
 unsigned char STKPTR_T4 __attribute__((address(0x403)));
 unsigned char STKPTR_T5 __attribute__((address(0x503)));
 unsigned char STKPTR_T6 __attribute__((address(0x603)));
+
+
+
+void (*fptr)(void);
+unsigned short int val_tos;
+unsigned char * puc;
+unsigned char tc[3];
 # 22 "./main.h" 2
+
 # 1 "./afficheur.h" 1
 # 15 "./afficheur.h"
 # 1 "./main.h" 1
@@ -11328,14 +11333,18 @@ unsigned char STKPTR_T6 __attribute__((address(0x603)));
     void clear_cgram(void);
     void plot1(unsigned char x, unsigned char y);
     void plot0(unsigned char x, unsigned char y);
-# 23 "./main.h" 2
-# 1 "./semaphore.h" 1
 # 24 "./main.h" 2
 # 1 "./eeprom.h" 1
 # 37 "./eeprom.h"
 void EEPROM_Write(unsigned char addr, unsigned char data);
 unsigned char EEPROM_Read(unsigned char addr);
 # 25 "./main.h" 2
+# 1 "./mutex.h" 1
+# 36 "./mutex.h"
+void mutex_init(void);
+char mutex_acquire(char tache);
+void mutex_release(char tache);
+# 26 "./main.h" 2
 # 1 "./stid.h" 1
 # 15 "./stid.h"
 # 1 "./main.h" 1
@@ -11343,7 +11352,7 @@ unsigned char EEPROM_Read(unsigned char addr);
 
 unsigned char lecture_normale(unsigned char * stid_id);
 void stid_delai_us(unsigned int isdu);
-# 26 "./main.h" 2
+# 27 "./main.h" 2
 # 1 "./rxtx.h" 1
 # 15 "./rxtx.h"
 # 1 "./main.h" 1
@@ -11351,7 +11360,7 @@ void stid_delai_us(unsigned int isdu);
 
 
 void init_rxtx(void);
-# 27 "./main.h" 2
+# 28 "./main.h" 2
 # 1 "./gui.h" 1
 # 15 "./gui.h"
 # 1 "./main.h" 1
@@ -11364,13 +11373,13 @@ void gui_draw_aiguille_vitesse(char vit);
 void gui_erase_aiguille_vitesse(char vit);
 void gui_update_temperature(char t_eau, char t_huile);
 void gui_temp_alert(unsigned char t_eau, unsigned char t_huile);
-# 28 "./main.h" 2
+# 29 "./main.h" 2
 # 1 "./T1.h" 1
 # 15 "./T1.h"
 # 1 "./main.h" 1
 # 16 "./T1.h" 2
 void tache1(void);
-# 29 "./main.h" 2
+# 30 "./main.h" 2
 # 1 "./T2.h" 1
 # 15 "./T2.h"
 # 1 "./main.h" 1
@@ -11378,31 +11387,31 @@ void tache1(void);
 
 void tache2(void);
 void tp_delai(unsigned int itpd);
-# 30 "./main.h" 2
+# 31 "./main.h" 2
 # 1 "./T3.h" 1
 # 15 "./T3.h"
 # 1 "./main.h" 1
 # 16 "./T3.h" 2
  void tache3(void);
-# 31 "./main.h" 2
+# 32 "./main.h" 2
 # 1 "./T4.h" 1
 # 15 "./T4.h"
 # 1 "./main.h" 1
 # 16 "./T4.h" 2
  void tache4(void);
-# 32 "./main.h" 2
+# 33 "./main.h" 2
 # 1 "./T5.h" 1
 # 15 "./T5.h"
 # 1 "./main.h" 1
 # 16 "./T5.h" 2
  void tache5(void);
-# 33 "./main.h" 2
+# 34 "./main.h" 2
 # 1 "./T6.h" 1
 # 15 "./T6.h"
 # 1 "./main.h" 1
 # 16 "./T6.h" 2
  void tache6(void);
-# 34 "./main.h" 2
+# 35 "./main.h" 2
 
 
 
@@ -11421,66 +11430,26 @@ void tp_delai(unsigned int itpd);
 #pragma config CONFIG6H = 0xE0
 #pragma config CONFIG7L = 0xFF
 #pragma config CONFIG7H = 0x40
-# 145 "./main.h"
+# 146 "./main.h"
 unsigned char lecture_8bit_analogique(unsigned char channel);
-# 16 "./semaphore.h" 2
+# 8 "mutex.c" 2
 
-
-    typedef struct {
-        volatile unsigned char jetons;
-        volatile unsigned char max_jetons;
-        volatile unsigned char attente;
-        volatile unsigned char tache_util;
-    } Semaphore;
-
-    Semaphore semaphores __attribute__((address(0x90)));
-
-
-    void semaphore_init(unsigned char jetons_initiaux);
-    unsigned char semaphore_tryacquire(unsigned char tache);
-    void semaphore_release(unsigned char tache);
-# 2 "semaphore.c" 2
-
-
-
-void semaphore_init(unsigned char jetons_initiaux) {
-    semaphores.jetons = jetons_initiaux;
-    semaphores.max_jetons = jetons_initiaux;
-    semaphores.attente = 0;
-    semaphores.tache_util = 0;
+void mutex_init(void) {
+    mutex.val = 0x01;
+    mutexT1Flag = 0;
+    mutexT6Flag = 0;
 }
 
-
-unsigned char semaphore_tryacquire(unsigned char tache) {
-    if(semaphores.jetons > 0) {
-        semaphores.jetons--;
-        semaphores.tache_util |= (1 << tache);
+char mutex_acquire(char tache) {
+    if(mutex.libre) {
+        mutex.libre = 0;
         return 1;
     }
-
-
-    semaphores.jetons = 0;
-    semaphores.attente |= (1 << tache);
-    T0IF = 1;
+    mutex.attente |= (1 << tache);
     return 0;
 }
 
-
-void semaphore_release(unsigned char tache) {
-    unsigned char nb_tsk = 6 +1;
-
-    if (semaphores.jetons < semaphores.max_jetons) {
-        semaphores.jetons++;
-        semaphores.tache_util &= ~(1 << tache);
-
-
-        for (unsigned char i = 0; i < nb_tsk; i++) {
-            if (semaphores.attente & (1 << i)) {
-
-                semaphores.attente &= ~(1 << i);
-                break;
-            }
-        }
-    }
-
+void mutex_release(char tache) {
+    mutex.libre = 1;
+    mutex.attente = 0;
 }

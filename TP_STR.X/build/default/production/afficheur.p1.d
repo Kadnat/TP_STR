@@ -4,8 +4,8 @@ afficheur.h  \
 main.h  \
 systeme.h  \
 variables_globales.h  \
-semaphore.h  \
 eeprom.h  \
+mutex.h  \
 stid.h  \
 rxtx.h  \
 gui.h  \

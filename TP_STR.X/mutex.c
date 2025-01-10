@@ -4,7 +4,6 @@
  *
  * Created on January 8, 2025, 10:18 PM
  */
-#include "mutex.h"
 #include "main.h"
 
 void mutex_init(void) {

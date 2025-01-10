@@ -1,9 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F6546 `(v ~T0 @X0 0 tf ]
-"18 ./semaphore.h
-[; ;./semaphore.h: 18:     typedef struct {
-[s S828 `Vuc 1 `Vuc 1 `Vuc 1 `Vuc 1 ]
-[n S828 . jetons max_jetons attente tache_util ]
+"64 ./variables_globales.h
+[; ;./variables_globales.h: 64:     struct {
+[s S829 :1 `uc 1 :7 `uc 1 ]
+[n S829 . libre attente ]
+"62
+[; ;./variables_globales.h: 62: typedef union {
+[u S828 `uc 1 `S829 1 ]
+[n S828 . val . ]
+"104
+[; ;./variables_globales.h: 104: typedef struct {
+[s S830 `uc 1 `us 1 `us 1 `uc 1 ]
+[n S830 . priority period next_tick is_ready ]
+[v F6571 `(v ~T0 @X0 0 tf ]
 "10308 /Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h
 [; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 10308: extern volatile unsigned char LATH __attribute__((address(0xF90)));
 [v _LATH `Vuc ~T0 @X0 0 e@3984 ]
@@ -935,202 +943,199 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17970
 [; ;/Applications/microchip/xc8/v2.50/pic/include/proc/pic18f87k22.h: 17970: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"29 ./variables_globales.h
-[; ;./variables_globales.h: 29: unsigned char W_TEMPORAIRE __attribute__((address(0x60)));
+"45 ./variables_globales.h
+[; ;./variables_globales.h: 45: unsigned char W_TEMPORAIRE __attribute__((address(0x60)));
 [v _W_TEMPORAIRE `uc ~T0 @X0 1 e@96 ]
-"30
-[; ;./variables_globales.h: 30: unsigned char STATUS_TEMPORAIRE __attribute__((address(0x61)));
-[v _STATUS_TEMPORAIRE `uc ~T0 @X0 1 e@97 ]
-"31
-[; ;./variables_globales.h: 31: unsigned char BSR_TEMPORAIRE __attribute__((address(0x62)));
-[v _BSR_TEMPORAIRE `uc ~T0 @X0 1 e@98 ]
-"32
-[; ;./variables_globales.h: 32: unsigned char FSR0H_TEMPORAIRE __attribute__((address(0x63)));
-[v _FSR0H_TEMPORAIRE `uc ~T0 @X0 1 e@99 ]
-"33
-[; ;./variables_globales.h: 33: unsigned char FSR0L_TEMPORAIRE __attribute__((address(0x64)));
-[v _FSR0L_TEMPORAIRE `uc ~T0 @X0 1 e@100 ]
-"34
-[; ;./variables_globales.h: 34: unsigned char DEMARRAGE __attribute__((address(0x65)));
-[v _DEMARRAGE `uc ~T0 @X0 1 e@101 ]
-"37
-[; ;./variables_globales.h: 37: unsigned char queue[6] __attribute__((address(0x69)));
-[v _queue `uc ~T0 @X0 -> 6 `i e@105 ]
-"38
-[; ;./variables_globales.h: 38: unsigned char tache_active __attribute__((address(0x6F)));
-[v _tache_active `uc ~T0 @X0 1 e@111 ]
-"39
-[; ;./variables_globales.h: 39: unsigned char pointeur_de_tache __attribute__((address(0x70)));
-[v _pointeur_de_tache `uc ~T0 @X0 1 e@112 ]
-"40
-[; ;./variables_globales.h: 40: unsigned int Tick_Count __attribute__((address(0x71)));
-[v _Tick_Count `ui ~T0 @X0 1 e@113 ]
-"41
-[; ;./variables_globales.h: 41: unsigned char RXTX_libre __attribute__((address(0x80)));
-[v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
-"42
-[; ;./variables_globales.h: 42: unsigned char semtask1FLAG __attribute__((address(0x81)));
-[v _semtask1FLAG `uc ~T0 @X0 1 e@129 ]
-"43
-[; ;./variables_globales.h: 43: unsigned char semtask6FLAG __attribute__((address(0x82)));
-[v _semtask6FLAG `uc ~T0 @X0 1 e@130 ]
-"44
-[; ;./variables_globales.h: 44: unsigned char vitesse __attribute__((address(0x83)));
-[v _vitesse `uc ~T0 @X0 1 e@131 ]
-"45
-[; ;./variables_globales.h: 45: unsigned char batterie __attribute__((address(0x84)));
-[v _batterie `uc ~T0 @X0 1 e@132 ]
-"49
-[; ;./variables_globales.h: 49: unsigned char n __attribute__((address(0x745)));
-[v _n `uc ~T0 @X0 1 e@1861 ]
-"50
-[; ;./variables_globales.h: 50: unsigned char buffer_vitesse_plus __attribute__((address(0x700)));
-[v _buffer_vitesse_plus `uc ~T0 @X0 1 e@1792 ]
-"51
-[; ;./variables_globales.h: 51: unsigned char buffer_vitesse_moins __attribute__((address(0x701)));
-[v _buffer_vitesse_moins `uc ~T0 @X0 1 e@1793 ]
-"54
-[; ;./variables_globales.h: 54: unsigned char badge[10] __attribute__((address(0x730)));
-[v _badge `uc ~T0 @X0 -> 10 `i e@1840 ]
-"56
-[; ;./variables_globales.h: 56: unsigned char n_octet_badge __attribute__((address(0x705)));
-[v _n_octet_badge `uc ~T0 @X0 1 e@1797 ]
-"57
-[; ;./variables_globales.h: 57: unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x706)));
-[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@1798 ]
-"58
-[; ;./variables_globales.h: 58: unsigned char ANALOG_TEMP_EAU __attribute__((address(0x707)));
-[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@1799 ]
-"59
-[; ;./variables_globales.h: 59: unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x708)));
-[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@1800 ]
-"60
-[; ;./variables_globales.h: 60: unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x709)));
-[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@1801 ]
-"63
-[; ;./variables_globales.h: 63: unsigned char alarme_frein __attribute__((address(0x70A)));
-[v _alarme_frein `uc ~T0 @X0 1 e@1802 ]
-"64
-[; ;./variables_globales.h: 64: unsigned char alarme_cle __attribute__((address(0x70B)));
-[v _alarme_cle `uc ~T0 @X0 1 e@1803 ]
-"65
-[; ;./variables_globales.h: 65: unsigned char alarme_eau __attribute__((address(0x70C)));
-[v _alarme_eau `uc ~T0 @X0 1 e@1804 ]
-"66
-[; ;./variables_globales.h: 66: unsigned char alarme_huile __attribute__((address(0x70D)));
-[v _alarme_huile `uc ~T0 @X0 1 e@1805 ]
-"67
-[; ;./variables_globales.h: 67: unsigned char alarme_batterie __attribute__((address(0x70E)));
-[v _alarme_batterie `uc ~T0 @X0 1 e@1806 ]
-"68
-[; ;./variables_globales.h: 68: unsigned char alarme_choc __attribute__((address(0x70F)));
-[v _alarme_choc `uc ~T0 @X0 1 e@1807 ]
-"69
-[; ;./variables_globales.h: 69: unsigned char alarme_conducteur __attribute__((address(0x710)));
-[v _alarme_conducteur `uc ~T0 @X0 1 e@1808 ]
-"72
-[; ;./variables_globales.h: 72: unsigned char cptT5 __attribute__((address(0x711)));
-[v _cptT5 `uc ~T0 @X0 1 e@1809 ]
-"73
-[; ;./variables_globales.h: 73: unsigned char passageT5 __attribute__((address(0x712)));
-[v _passageT5 `uc ~T0 @X0 1 e@1810 ]
-"74
-[; ;./variables_globales.h: 74: unsigned int buffer_batterie __attribute__((address(0x713)));
-[v _buffer_batterie `ui ~T0 @X0 1 e@1811 ]
-"76
-[; ;./variables_globales.h: 76: unsigned char passageT3 __attribute__((address(0x715)));
-[v _passageT3 `uc ~T0 @X0 1 e@1813 ]
-"78
-[; ;./variables_globales.h: 78: unsigned int counter_T3 __attribute__((address(0x760)));
-[v _counter_T3 `ui ~T0 @X0 1 e@1888 ]
-"84
-[; ;./variables_globales.h: 84: unsigned char KM_0 __attribute__((address(0x801)));
-[v _KM_0 `uc ~T0 @X0 1 e@2049 ]
-"85
-[; ;./variables_globales.h: 85: unsigned char KM_1 __attribute__((address(0x802)));
-[v _KM_1 `uc ~T0 @X0 1 e@2050 ]
-"86
-[; ;./variables_globales.h: 86: unsigned char KM_2 __attribute__((address(0x803)));
-[v _KM_2 `uc ~T0 @X0 1 e@2051 ]
-"87
-[; ;./variables_globales.h: 87: unsigned char KM_3 __attribute__((address(0x804)));
-[v _KM_3 `uc ~T0 @X0 1 e@2052 ]
-"94
-[; ;./variables_globales.h: 94: void (*fptr)(void);
-[v _fptr `*F6546 ~T0 @X0 1 e ]
-"95
-[; ;./variables_globales.h: 95: unsigned short int val_tos;
-[v _val_tos `us ~T0 @X0 1 e ]
-"96
-[; ;./variables_globales.h: 96: unsigned char * puc;
-[v _puc `*uc ~T0 @X0 1 e ]
-"97
-[; ;./variables_globales.h: 97: unsigned char tc[3];
-[v _tc `uc ~T0 @X0 -> 3 `i e ]
-"105
-[; ;./variables_globales.h: 105: unsigned char contexte1[66] __attribute__((address(0x100)));
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
-"106
-[; ;./variables_globales.h: 106: unsigned char contexte2[66] __attribute__((address(0x200)));
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
-"107
-[; ;./variables_globales.h: 107: unsigned char contexte3[66] __attribute__((address(0x300)));
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
-"108
-[; ;./variables_globales.h: 108: unsigned char contexte4[66] __attribute__((address(0x400)));
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
-"109
-[; ;./variables_globales.h: 109: unsigned char contexte5[66] __attribute__((address(0x500)));
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
-"110
-[; ;./variables_globales.h: 110: unsigned char contexte6[66] __attribute__((address(0x600)));
-[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
-"113
-[; ;./variables_globales.h: 113: unsigned char STKPTR_T1 __attribute__((address(0x103)));
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
-"114
-[; ;./variables_globales.h: 114: unsigned char STKPTR_T2 __attribute__((address(0x203)));
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
-"115
-[; ;./variables_globales.h: 115: unsigned char STKPTR_T3 __attribute__((address(0x303)));
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
-"116
-[; ;./variables_globales.h: 116: unsigned char STKPTR_T4 __attribute__((address(0x403)));
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
-"117
-[; ;./variables_globales.h: 117: unsigned char STKPTR_T5 __attribute__((address(0x503)));
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
-"118
-[; ;./variables_globales.h: 118: unsigned char STKPTR_T6 __attribute__((address(0x603)));
-[v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
-"25 ./semaphore.h
-[; ;./semaphore.h: 25:     Semaphore semaphores __attribute__((address(0x90)));
-[v _semaphores `S828 ~T0 @X0 1 e@144 ]
-"39 ./main.h
-[p x CONFIG1L  =  0x15  ]
-"40
-[p x CONFIG1H  =  0x13  ]
-"41
-[p x CONFIG2L  =  0x61  ]
-"42
-[p x CONFIG2H  =  0x00  ]
-"43
-[p x CONFIG3L  =  0x30  ]
-"44
-[p x CONFIG3H  =  0x80  ]
-"45
-[p x CONFIG4L  =  0x81  ]
 "46
-[p x CONFIG5L  =  0xFF  ]
+[; ;./variables_globales.h: 46: unsigned char STATUS_TEMPORAIRE __attribute__((address(0x61)));
+[v _STATUS_TEMPORAIRE `uc ~T0 @X0 1 e@97 ]
 "47
-[p x CONFIG5H  =  0xC0  ]
+[; ;./variables_globales.h: 47: unsigned char BSR_TEMPORAIRE __attribute__((address(0x62)));
+[v _BSR_TEMPORAIRE `uc ~T0 @X0 1 e@98 ]
 "48
-[p x CONFIG6L  =  0xFF  ]
+[; ;./variables_globales.h: 48: unsigned char FSR0H_TEMPORAIRE __attribute__((address(0x63)));
+[v _FSR0H_TEMPORAIRE `uc ~T0 @X0 1 e@99 ]
 "49
-[p x CONFIG6H  =  0xE0  ]
+[; ;./variables_globales.h: 49: unsigned char FSR0L_TEMPORAIRE __attribute__((address(0x64)));
+[v _FSR0L_TEMPORAIRE `uc ~T0 @X0 1 e@100 ]
 "50
-[p x CONFIG7L  =  0xFF  ]
+[; ;./variables_globales.h: 50: unsigned char DEMARRAGE __attribute__((address(0x65)));
+[v _DEMARRAGE `uc ~T0 @X0 1 e@101 ]
+"53
+[; ;./variables_globales.h: 53: unsigned char queue[6] __attribute__((address(0x69)));
+[v _queue `uc ~T0 @X0 -> 6 `i e@105 ]
+"54
+[; ;./variables_globales.h: 54: unsigned char tache_active __attribute__((address(0x6F)));
+[v _tache_active `uc ~T0 @X0 1 e@111 ]
+"55
+[; ;./variables_globales.h: 55: unsigned char pointeur_de_tache __attribute__((address(0x70)));
+[v _pointeur_de_tache `uc ~T0 @X0 1 e@112 ]
+"56
+[; ;./variables_globales.h: 56: unsigned int Tick_Count __attribute__((address(0x71)));
+[v _Tick_Count `ui ~T0 @X0 1 e@113 ]
+"59
+[; ;./variables_globales.h: 59: unsigned char RXTX_libre __attribute__((address(0x80)));
+[v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
+"60
+[; ;./variables_globales.h: 60: unsigned char mutexT1Flag __attribute__((address(0x81)));
+[v _mutexT1Flag `uc ~T0 @X0 1 e@129 ]
+"61
+[; ;./variables_globales.h: 61: unsigned char mutexT6Flag __attribute__((address(0x82)));
+[v _mutexT6Flag `uc ~T0 @X0 1 e@130 ]
+"69
+[; ;./variables_globales.h: 69: Mutex_t mutex __attribute__((address(0x83)));
+[v _mutex `S828 ~T0 @X0 1 e@131 ]
+"72
+[; ;./variables_globales.h: 72: unsigned char n __attribute__((address(0x745)));
+[v _n `uc ~T0 @X0 1 e@1861 ]
+"73
+[; ;./variables_globales.h: 73: unsigned char buffer_vitesse_plus __attribute__((address(0x700)));
+[v _buffer_vitesse_plus `uc ~T0 @X0 1 e@1792 ]
+"74
+[; ;./variables_globales.h: 74: unsigned char buffer_vitesse_moins __attribute__((address(0x701)));
+[v _buffer_vitesse_moins `uc ~T0 @X0 1 e@1793 ]
+"75
+[; ;./variables_globales.h: 75: unsigned char vitesse __attribute__((address(0x703)));
+[v _vitesse `uc ~T0 @X0 1 e@1795 ]
+"76
+[; ;./variables_globales.h: 76: unsigned char batterie __attribute__((address(0x704)));
+[v _batterie `uc ~T0 @X0 1 e@1796 ]
+"77
+[; ;./variables_globales.h: 77: unsigned char badge[10] __attribute__((address(0x730)));
+[v _badge `uc ~T0 @X0 -> 10 `i e@1840 ]
+"78
+[; ;./variables_globales.h: 78: unsigned char n_octet_badge __attribute__((address(0x705)));
+[v _n_octet_badge `uc ~T0 @X0 1 e@1797 ]
+"79
+[; ;./variables_globales.h: 79: unsigned char ANALOG_TEMP_HUILE __attribute__((address(0x706)));
+[v _ANALOG_TEMP_HUILE `uc ~T0 @X0 1 e@1798 ]
+"80
+[; ;./variables_globales.h: 80: unsigned char ANALOG_TEMP_EAU __attribute__((address(0x707)));
+[v _ANALOG_TEMP_EAU `uc ~T0 @X0 1 e@1799 ]
+"81
+[; ;./variables_globales.h: 81: unsigned char ANALOG_JOYSTICK_X __attribute__((address(0x708)));
+[v _ANALOG_JOYSTICK_X `uc ~T0 @X0 1 e@1800 ]
+"82
+[; ;./variables_globales.h: 82: unsigned char ANALOG_JOYSTICK_Y __attribute__((address(0x709)));
+[v _ANALOG_JOYSTICK_Y `uc ~T0 @X0 1 e@1801 ]
+"85
+[; ;./variables_globales.h: 85: unsigned char alarme_frein __attribute__((address(0x70A)));
+[v _alarme_frein `uc ~T0 @X0 1 e@1802 ]
+"86
+[; ;./variables_globales.h: 86: unsigned char alarme_cle __attribute__((address(0x70B)));
+[v _alarme_cle `uc ~T0 @X0 1 e@1803 ]
+"87
+[; ;./variables_globales.h: 87: unsigned char alarme_eau __attribute__((address(0x70C)));
+[v _alarme_eau `uc ~T0 @X0 1 e@1804 ]
+"88
+[; ;./variables_globales.h: 88: unsigned char alarme_huile __attribute__((address(0x70D)));
+[v _alarme_huile `uc ~T0 @X0 1 e@1805 ]
+"89
+[; ;./variables_globales.h: 89: unsigned char alarme_batterie __attribute__((address(0x70E)));
+[v _alarme_batterie `uc ~T0 @X0 1 e@1806 ]
+"90
+[; ;./variables_globales.h: 90: unsigned char alarme_choc __attribute__((address(0x70F)));
+[v _alarme_choc `uc ~T0 @X0 1 e@1807 ]
+"91
+[; ;./variables_globales.h: 91: unsigned char alarme_conducteur __attribute__((address(0x710)));
+[v _alarme_conducteur `uc ~T0 @X0 1 e@1808 ]
+"94
+[; ;./variables_globales.h: 94: unsigned char passageT3 __attribute__((address(0x711)));
+[v _passageT3 `uc ~T0 @X0 1 e@1809 ]
+"95
+[; ;./variables_globales.h: 95: unsigned int counter_T3 __attribute__((address(0x712)));
+[v _counter_T3 `ui ~T0 @X0 1 e@1810 ]
+"98
+[; ;./variables_globales.h: 98: unsigned char cptT5 __attribute__((address(0x714)));
+[v _cptT5 `uc ~T0 @X0 1 e@1812 ]
+"99
+[; ;./variables_globales.h: 99: unsigned char passageT5 __attribute__((address(0x715)));
+[v _passageT5 `uc ~T0 @X0 1 e@1813 ]
+"100
+[; ;./variables_globales.h: 100: unsigned int buffer_batterie __attribute__((address(0x716)));
+[v _buffer_batterie `ui ~T0 @X0 1 e@1814 ]
+"103
+[; ;./variables_globales.h: 103: unsigned char km[4] __attribute__((address(0x801)));
+[v _km `uc ~T0 @X0 -> 4 `i e@2049 ]
+"110
+[; ;./variables_globales.h: 110: TaskControl task_control[6] __attribute__((address(0x805)));
+[v _task_control `S830 ~T0 @X0 -> 6 `i e@2053 ]
+"112
+[; ;./variables_globales.h: 112: uint8_t i_m __attribute__((address(0x900)));
+[v _i_m `uc ~T0 @X0 1 e@2304 ]
+"115
+[; ;./variables_globales.h: 115: unsigned char contexte1[66] __attribute__((address(0x100)));
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
+"116
+[; ;./variables_globales.h: 116: unsigned char contexte2[66] __attribute__((address(0x200)));
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+"117
+[; ;./variables_globales.h: 117: unsigned char contexte3[66] __attribute__((address(0x300)));
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+"118
+[; ;./variables_globales.h: 118: unsigned char contexte4[66] __attribute__((address(0x400)));
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
+"119
+[; ;./variables_globales.h: 119: unsigned char contexte5[66] __attribute__((address(0x500)));
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+"120
+[; ;./variables_globales.h: 120: unsigned char contexte6[66] __attribute__((address(0x600)));
+[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
+"123
+[; ;./variables_globales.h: 123: unsigned char STKPTR_T1 __attribute__((address(0x103)));
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
+"124
+[; ;./variables_globales.h: 124: unsigned char STKPTR_T2 __attribute__((address(0x203)));
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+"125
+[; ;./variables_globales.h: 125: unsigned char STKPTR_T3 __attribute__((address(0x303)));
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+"126
+[; ;./variables_globales.h: 126: unsigned char STKPTR_T4 __attribute__((address(0x403)));
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+"127
+[; ;./variables_globales.h: 127: unsigned char STKPTR_T5 __attribute__((address(0x503)));
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+"128
+[; ;./variables_globales.h: 128: unsigned char STKPTR_T6 __attribute__((address(0x603)));
+[v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
+"132
+[; ;./variables_globales.h: 132: void (*fptr)(void);
+[v _fptr `*F6571 ~T0 @X0 1 e ]
+"133
+[; ;./variables_globales.h: 133: unsigned short int val_tos;
+[v _val_tos `us ~T0 @X0 1 e ]
+"134
+[; ;./variables_globales.h: 134: unsigned char * puc;
+[v _puc `*uc ~T0 @X0 1 e ]
+"135
+[; ;./variables_globales.h: 135: unsigned char tc[3];
+[v _tc `uc ~T0 @X0 -> 3 `i e ]
+"40 ./main.h
+[p x CONFIG1L  =  0x15  ]
+"41
+[p x CONFIG1H  =  0x13  ]
+"42
+[p x CONFIG2L  =  0x61  ]
+"43
+[p x CONFIG2H  =  0x00  ]
+"44
+[p x CONFIG3L  =  0x30  ]
+"45
+[p x CONFIG3H  =  0x80  ]
+"46
+[p x CONFIG4L  =  0x81  ]
+"47
+[p x CONFIG5L  =  0xFF  ]
+"48
+[p x CONFIG5H  =  0xC0  ]
+"49
+[p x CONFIG6L  =  0xFF  ]
+"50
+[p x CONFIG6H  =  0xE0  ]
 "51
+[p x CONFIG7L  =  0xFF  ]
+"52
 [p x CONFIG7H  =  0x40  ]
 "4 afficheur.c
 [; ;afficheur.c: 4: void write_d_aff(unsigned char data)
@@ -1174,7 +1179,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATJbits 0 3 -> -> 1 `i `uc ]
 "15
 [; ;afficheur.c: 15: }
-[e :UE 829 ]
+[e :UE 831 ]
 }
 "17
 [; ;afficheur.c: 17: void write_c_aff(unsigned char command)
@@ -1218,7 +1223,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATJbits 0 3 -> -> 1 `i `uc ]
 "28
 [; ;afficheur.c: 28: }
-[e :UE 830 ]
+[e :UE 832 ]
 }
 "30
 [; ;afficheur.c: 30: unsigned char check_status_ok(void)
@@ -1263,25 +1268,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _LATJbits 0 3 -> -> 1 `i `uc ]
 "46
 [; ;afficheur.c: 46:     if ((res&0x03)==0x03)
-[e $ ! == & -> _res `i -> 3 `i -> 3 `i 832  ]
+[e $ ! == & -> _res `i -> 3 `i -> 3 `i 834  ]
 "47
 [; ;afficheur.c: 47:         res=1;
 [e = _res -> -> 1 `i `uc ]
-[e $U 833  ]
+[e $U 835  ]
 "48
 [; ;afficheur.c: 48:     else
-[e :U 832 ]
+[e :U 834 ]
 "49
 [; ;afficheur.c: 49:         res=0;
 [e = _res -> -> 0 `i `uc ]
-[e :U 833 ]
+[e :U 835 ]
 "50
 [; ;afficheur.c: 50:     return res;
 [e ) _res ]
-[e $UE 831  ]
+[e $UE 833  ]
 "51
 [; ;afficheur.c: 51: }
-[e :UE 831 ]
+[e :UE 833 ]
 }
 "53
 [; ;afficheur.c: 53: unsigned char wait_status_ok(void)
@@ -1304,8 +1309,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _res -> -> 2 `i `uc ]
 "59
 [; ;afficheur.c: 59:     while (res==2)
-[e $U 835  ]
-[e :U 836 ]
+[e $U 837  ]
+[e :U 838 ]
 "60
 [; ;afficheur.c: 60:     {
 {
@@ -1338,7 +1343,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _status -> & -> _status `i -> 3 `i `uc ]
 "71
 [; ;afficheur.c: 71:         if (status!=0x03)
-[e $ ! != -> _status `i -> 3 `i 838  ]
+[e $ ! != -> _status `i -> 3 `i 840  ]
 "72
 [; ;afficheur.c: 72:         {
 {
@@ -1350,7 +1355,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _delai_us_char (1 -> -> 12 `i `uc ]
 "75
 [; ;afficheur.c: 75:             if (err>=250)
-[e $ ! >= -> _err `i -> 250 `i 839  ]
+[e $ ! >= -> _err `i -> 250 `i 841  ]
 "76
 [; ;afficheur.c: 76:             {
 {
@@ -1368,14 +1373,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "80
 [; ;afficheur.c: 80:             }
 }
-[e :U 839 ]
+[e :U 841 ]
 "81
 [; ;afficheur.c: 81:         }
 }
-[e $U 840  ]
+[e $U 842  ]
 "82
 [; ;afficheur.c: 82:         else
-[e :U 838 ]
+[e :U 840 ]
 "83
 [; ;afficheur.c: 83:         {
 {
@@ -1385,22 +1390,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "85
 [; ;afficheur.c: 85:         }
 }
-[e :U 840 ]
+[e :U 842 ]
 "86
 [; ;afficheur.c: 86:     }
 }
-[e :U 835 ]
+[e :U 837 ]
 "59
 [; ;afficheur.c: 59:     while (res==2)
-[e $ == -> _res `i -> 2 `i 836  ]
-[e :U 837 ]
+[e $ == -> _res `i -> 2 `i 838  ]
+[e :U 839 ]
 "87
 [; ;afficheur.c: 87:     return res;
 [e ) _res ]
-[e $UE 834  ]
+[e $UE 836  ]
 "88
 [; ;afficheur.c: 88: }
-[e :UE 834 ]
+[e :UE 836 ]
 }
 "90
 [; ;afficheur.c: 90: unsigned char command(unsigned char cmd)
@@ -1423,7 +1428,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _res -> -> 0 `i `uc ]
 "96
 [; ;afficheur.c: 96:     if(wait_status_ok()==1)
-[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 842  ]
+[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 844  ]
 "97
 [; ;afficheur.c: 97:     {
 {
@@ -1439,14 +1444,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "101
 [; ;afficheur.c: 101:     }
 }
-[e :U 842 ]
+[e :U 844 ]
 "103
 [; ;afficheur.c: 103:     return res;
 [e ) _res ]
-[e $UE 841  ]
+[e $UE 843  ]
 "104
 [; ;afficheur.c: 104: }
-[e :UE 841 ]
+[e :UE 843 ]
 }
 "106
 [; ;afficheur.c: 106: unsigned char d1command(unsigned char d1, unsigned char cmd)
@@ -1470,7 +1475,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _res -> -> 0 `i `uc ]
 "112
 [; ;afficheur.c: 112:     if (wait_status_ok()==1)
-[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 844  ]
+[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 846  ]
 "113
 [; ;afficheur.c: 113:     {
 {
@@ -1482,7 +1487,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _write_d_aff (1 _d1 ]
 "116
 [; ;afficheur.c: 116:         if (wait_status_ok()==1)
-[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 845  ]
+[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 847  ]
 "117
 [; ;afficheur.c: 117:         {
 {
@@ -1498,18 +1503,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "122
 [; ;afficheur.c: 122:         }
 }
-[e :U 845 ]
+[e :U 847 ]
 "124
 [; ;afficheur.c: 124:     }
 }
-[e :U 844 ]
+[e :U 846 ]
 "125
 [; ;afficheur.c: 125:     return res;
 [e ) _res ]
-[e $UE 843  ]
+[e $UE 845  ]
 "126
 [; ;afficheur.c: 126: }
-[e :UE 843 ]
+[e :UE 845 ]
 }
 "128
 [; ;afficheur.c: 128: unsigned char d2command(unsigned char d1, unsigned char d2, unsigned char cmd)
@@ -1534,7 +1539,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _res -> -> 0 `i `uc ]
 "134
 [; ;afficheur.c: 134:     if (wait_status_ok()==1)
-[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 847  ]
+[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 849  ]
 "135
 [; ;afficheur.c: 135:     {
 {
@@ -1546,7 +1551,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _write_d_aff (1 _d1 ]
 "138
 [; ;afficheur.c: 138:         if (wait_status_ok()==1)
-[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 848  ]
+[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 850  ]
 "139
 [; ;afficheur.c: 139:         {
 {
@@ -1558,7 +1563,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _write_d_aff (1 _d2 ]
 "142
 [; ;afficheur.c: 142:             if (wait_status_ok()==1)
-[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 849  ]
+[e $ ! == -> ( _wait_status_ok ..  `i -> 1 `i 851  ]
 "143
 [; ;afficheur.c: 143:             {
 {
@@ -1574,22 +1579,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "148
 [; ;afficheur.c: 148:             }
 }
-[e :U 849 ]
+[e :U 851 ]
 "149
 [; ;afficheur.c: 149:         }
 }
-[e :U 848 ]
+[e :U 850 ]
 "150
 [; ;afficheur.c: 150:     }
 }
-[e :U 847 ]
+[e :U 849 ]
 "151
 [; ;afficheur.c: 151:     return res;
 [e ) _res ]
-[e $UE 846  ]
+[e $UE 848  ]
 "152
 [; ;afficheur.c: 152: }
-[e :UE 846 ]
+[e :UE 848 ]
 }
 "154
 [; ;afficheur.c: 154: void delai_us_char(unsigned char ucdelai)
@@ -1606,8 +1611,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "157
 [; ;afficheur.c: 157:     while (ucdelai>0)
-[e $U 851  ]
-[e :U 852 ]
+[e $U 853  ]
+[e :U 854 ]
 "158
 [; ;afficheur.c: 158:     {
 {
@@ -1629,14 +1634,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "161
 [; ;afficheur.c: 161:     }
 }
-[e :U 851 ]
+[e :U 853 ]
 "157
 [; ;afficheur.c: 157:     while (ucdelai>0)
-[e $ > -> _ucdelai `i -> 0 `i 852  ]
-[e :U 853 ]
+[e $ > -> _ucdelai `i -> 0 `i 854  ]
+[e :U 855 ]
 "162
 [; ;afficheur.c: 162: }
-[e :UE 850 ]
+[e :UE 852 ]
 }
 "164
 [; ;afficheur.c: 164: void initialisation_afficheur(void)
@@ -1684,8 +1689,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _delai_us_char (1 -> -> 12 `i `uc ]
 "191
 [; ;afficheur.c: 191:     while(check_status_ok()==00)
-[e $U 855  ]
-[e :U 856 ]
+[e $U 857  ]
+[e :U 858 ]
 "192
 [; ;afficheur.c: 192:     {
 {
@@ -1697,7 +1702,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _delai_us_char (1 -> -> 12 `i `uc ]
 "195
 [; ;afficheur.c: 195:         if (error_count>200)
-[e $ ! > -> _error_count `i -> 200 `i 858  ]
+[e $ ! > -> _error_count `i -> 200 `i 860  ]
 "196
 [; ;afficheur.c: 196:         {
 {
@@ -1711,25 +1716,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
 "199
 [; ;afficheur.c: 199:             while(1);
-[e :U 860 ]
-[e :U 859 ]
-[e $U 860  ]
+[e :U 862 ]
 [e :U 861 ]
+[e $U 862  ]
+[e :U 863 ]
 "200
 [; ;afficheur.c: 200:             error_count=0;
 [e = _error_count -> -> 0 `i `uc ]
 "201
 [; ;afficheur.c: 201:         }
 }
-[e :U 858 ]
+[e :U 860 ]
 "202
 [; ;afficheur.c: 202:     }
 }
-[e :U 855 ]
+[e :U 857 ]
 "191
 [; ;afficheur.c: 191:     while(check_status_ok()==00)
-[e $ == -> ( _check_status_ok ..  `i -> 0 `i 856  ]
-[e :U 857 ]
+[e $ == -> ( _check_status_ok ..  `i -> 0 `i 858  ]
+[e :U 859 ]
 "205
 [; ;afficheur.c: 205:     d2command(39,15,0x21);
 [e ( _d2command (3 , , -> -> 39 `i `uc -> -> 15 `i `uc -> -> 33 `i `uc ]
@@ -1765,7 +1770,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _d1command (2 , -> -> 2 `i `uc -> -> 112 `i `uc ]
 "226
 [; ;afficheur.c: 226: }
-[e :UE 854 ]
+[e :UE 856 ]
 }
 "228
 [; ;afficheur.c: 228: void draw_char(unsigned char dccar)
@@ -1782,7 +1787,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "230
 [; ;afficheur.c: 230:     if (dccar<32)
-[e $ ! < -> _dccar `i -> 32 `i 863  ]
+[e $ ! < -> _dccar `i -> 32 `i 865  ]
 "231
 [; ;afficheur.c: 231:     {
 {
@@ -1792,10 +1797,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "233
 [; ;afficheur.c: 233:     }
 }
-[e :U 863 ]
+[e :U 865 ]
 "234
 [; ;afficheur.c: 234:     if (dccar>0x9F)
-[e $ ! > -> _dccar `i -> 159 `i 864  ]
+[e $ ! > -> _dccar `i -> 159 `i 866  ]
 "235
 [; ;afficheur.c: 235:     {
 {
@@ -1805,21 +1810,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "237
 [; ;afficheur.c: 237:     }
 }
-[e :U 864 ]
+[e :U 866 ]
 "238
 [; ;afficheur.c: 238:     dccar=dccar-32;
 [e = _dccar -> - -> _dccar `i -> 32 `i `uc ]
 "239
 [; ;afficheur.c: 239:     while(d1command(dccar,0xC0)==0) __nop();
-[e $U 865  ]
-[e :U 866 ]
+[e $U 867  ]
+[e :U 868 ]
 [e ( ___nop ..  ]
-[e :U 865 ]
-[e $ == -> ( _d1command (2 , _dccar -> -> 192 `i `uc `i -> 0 `i 866  ]
 [e :U 867 ]
+[e $ == -> ( _d1command (2 , _dccar -> -> 192 `i `uc `i -> 0 `i 868  ]
+[e :U 869 ]
 "240
 [; ;afficheur.c: 240: }
-[e :UE 862 ]
+[e :UE 864 ]
 }
 "242
 [; ;afficheur.c: 242: void draw_string(unsigned char * tableau)
@@ -1836,37 +1841,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "244
 [; ;afficheur.c: 244:     while( (tableau[0]!=0) && (tableau[0]!='\0') )
-[e $U 869  ]
-[e :U 870 ]
+[e $U 871  ]
+[e :U 872 ]
 "245
 [; ;afficheur.c: 245:     {
 {
 "246
 [; ;afficheur.c: 246:         while(d1command(tableau[0]-32,0xC0)==0)
-[e $U 872  ]
-[e :U 873 ]
+[e $U 874  ]
+[e :U 875 ]
 "247
 [; ;afficheur.c: 247:             __nop();
 [e ( ___nop ..  ]
-[e :U 872 ]
+[e :U 874 ]
 "246
 [; ;afficheur.c: 246:         while(d1command(tableau[0]-32,0xC0)==0)
-[e $ == -> ( _d1command (2 , -> - -> *U + _tableau * -> -> 0 `i `x -> -> # *U _tableau `i `x `i -> 32 `i `uc -> -> 192 `i `uc `i -> 0 `i 873  ]
-[e :U 874 ]
+[e $ == -> ( _d1command (2 , -> - -> *U + _tableau * -> -> 0 `i `x -> -> # *U _tableau `i `x `i -> 32 `i `uc -> -> 192 `i `uc `i -> 0 `i 875  ]
+[e :U 876 ]
 "248
 [; ;afficheur.c: 248:         tableau++;
 [e ++ _tableau * -> -> 1 `i `x -> -> # *U _tableau `i `x ]
 "249
 [; ;afficheur.c: 249:     }
 }
-[e :U 869 ]
+[e :U 871 ]
 "244
 [; ;afficheur.c: 244:     while( (tableau[0]!=0) && (tableau[0]!='\0') )
-[e $ && != -> *U + _tableau * -> -> 0 `i `x -> -> # *U _tableau `i `x `i -> 0 `i != -> *U + _tableau * -> -> 0 `i `x -> -> # *U _tableau `i `x `ui -> 0 `ui 870  ]
-[e :U 871 ]
+[e $ && != -> *U + _tableau * -> -> 0 `i `x -> -> # *U _tableau `i `x `i -> 0 `i != -> *U + _tableau * -> -> 0 `i `x -> -> # *U _tableau `i `x `ui -> 0 `ui 872  ]
+[e :U 873 ]
 "250
 [; ;afficheur.c: 250: }
-[e :UE 868 ]
+[e :UE 870 ]
 }
 "252
 [; ;afficheur.c: 252: void draw_hex8(unsigned char octet)
@@ -1889,62 +1894,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _c -> >> -> _octet `i -> 4 `i `uc ]
 "257
 [; ;afficheur.c: 257:     if (c>9)
-[e $ ! > -> _c `i -> 9 `i 876  ]
+[e $ ! > -> _c `i -> 9 `i 878  ]
 "258
 [; ;afficheur.c: 258:         c=c+0x17;
 [e = _c -> + -> _c `i -> 23 `i `uc ]
-[e $U 877  ]
+[e $U 879  ]
 "259
 [; ;afficheur.c: 259:     else
-[e :U 876 ]
+[e :U 878 ]
 "260
 [; ;afficheur.c: 260:         c=c+0x10;
 [e = _c -> + -> _c `i -> 16 `i `uc ]
-[e :U 877 ]
+[e :U 879 ]
 "261
 [; ;afficheur.c: 261:     while(d1command(c,0xC0)==0)
-[e $U 878  ]
-[e :U 879 ]
+[e $U 880  ]
+[e :U 881 ]
 "262
 [; ;afficheur.c: 262:         __nop();
 [e ( ___nop ..  ]
-[e :U 878 ]
+[e :U 880 ]
 "261
 [; ;afficheur.c: 261:     while(d1command(c,0xC0)==0)
-[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 879  ]
-[e :U 880 ]
+[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 881  ]
+[e :U 882 ]
 "264
 [; ;afficheur.c: 264:     c=(octet&0x0F);
 [e = _c -> & -> _octet `i -> 15 `i `uc ]
 "265
 [; ;afficheur.c: 265:     if (c>9)
-[e $ ! > -> _c `i -> 9 `i 881  ]
+[e $ ! > -> _c `i -> 9 `i 883  ]
 "266
 [; ;afficheur.c: 266:         c=c+0x17;
 [e = _c -> + -> _c `i -> 23 `i `uc ]
-[e $U 882  ]
+[e $U 884  ]
 "267
 [; ;afficheur.c: 267:     else
-[e :U 881 ]
+[e :U 883 ]
 "268
 [; ;afficheur.c: 268:         c=c+0x10;
 [e = _c -> + -> _c `i -> 16 `i `uc ]
-[e :U 882 ]
+[e :U 884 ]
 "269
 [; ;afficheur.c: 269:     while(d1command(c,0xC0)==0)
-[e $U 883  ]
-[e :U 884 ]
+[e $U 885  ]
+[e :U 886 ]
 "270
 [; ;afficheur.c: 270:         __nop();
 [e ( ___nop ..  ]
-[e :U 883 ]
+[e :U 885 ]
 "269
 [; ;afficheur.c: 269:     while(d1command(c,0xC0)==0)
-[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 884  ]
-[e :U 885 ]
+[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 886  ]
+[e :U 887 ]
 "272
 [; ;afficheur.c: 272: }
-[e :UE 875 ]
+[e :UE 877 ]
 }
 "274
 [; ;afficheur.c: 274: void draw_dec8(unsigned char octet)
@@ -1983,49 +1988,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _c -> + -> _cent `i -> 16 `i `uc ]
 "283
 [; ;afficheur.c: 283:     while(d1command(c,0xC0)==0)
-[e $U 887  ]
-[e :U 888 ]
+[e $U 889  ]
+[e :U 890 ]
 "284
 [; ;afficheur.c: 284:         __nop();
 [e ( ___nop ..  ]
-[e :U 887 ]
+[e :U 889 ]
 "283
 [; ;afficheur.c: 283:     while(d1command(c,0xC0)==0)
-[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 888  ]
-[e :U 889 ]
+[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 890  ]
+[e :U 891 ]
 "286
 [; ;afficheur.c: 286:     c=dix+0x10;
 [e = _c -> + -> _dix `i -> 16 `i `uc ]
 "287
 [; ;afficheur.c: 287:     while(d1command(c,0xC0)==0)
-[e $U 890  ]
-[e :U 891 ]
+[e $U 892  ]
+[e :U 893 ]
 "288
 [; ;afficheur.c: 288:         __nop();
 [e ( ___nop ..  ]
-[e :U 890 ]
+[e :U 892 ]
 "287
 [; ;afficheur.c: 287:     while(d1command(c,0xC0)==0)
-[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 891  ]
-[e :U 892 ]
+[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 893  ]
+[e :U 894 ]
 "290
 [; ;afficheur.c: 290:     c=unit+0x10;
 [e = _c -> + -> _unit `i -> 16 `i `uc ]
 "291
 [; ;afficheur.c: 291:     while(d1command(c,0xC0)==0)
-[e $U 893  ]
-[e :U 894 ]
+[e $U 895  ]
+[e :U 896 ]
 "292
 [; ;afficheur.c: 292:         __nop();
 [e ( ___nop ..  ]
-[e :U 893 ]
+[e :U 895 ]
 "291
 [; ;afficheur.c: 291:     while(d1command(c,0xC0)==0)
-[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 894  ]
-[e :U 895 ]
+[e $ == -> ( _d1command (2 , _c -> -> 192 `i `uc `i -> 0 `i 896  ]
+[e :U 897 ]
 "293
 [; ;afficheur.c: 293: }
-[e :UE 886 ]
+[e :UE 888 ]
 }
 "295
 [; ;afficheur.c: 295: void goto_lico(unsigned char ligne, unsigned char colonne)
@@ -2049,32 +2054,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _adr -> -> 31488 `i `ui ]
 "300
 [; ;afficheur.c: 300:     if (ligne>15) ligne=0;
-[e $ ! > -> _ligne `i -> 15 `i 897  ]
+[e $ ! > -> _ligne `i -> 15 `i 899  ]
 [e = _ligne -> -> 0 `i `uc ]
-[e :U 897 ]
+[e :U 899 ]
 "301
 [; ;afficheur.c: 301:     if (colonne>39) colonne=0;
-[e $ ! > -> _colonne `i -> 39 `i 898  ]
+[e $ ! > -> _colonne `i -> 39 `i 900  ]
 [e = _colonne -> -> 0 `i `uc ]
-[e :U 898 ]
+[e :U 900 ]
 "302
 [; ;afficheur.c: 302:     adr=adr+40*ligne+colonne;
 [e = _adr + + _adr -> * -> 40 `i -> _ligne `i `ui -> _colonne `ui ]
 "303
 [; ;afficheur.c: 303:     while(d2command((unsigned char)(adr&0x00FF),(unsigned char)(adr>>8),0x24)==0)
-[e $U 899  ]
-[e :U 900 ]
+[e $U 901  ]
+[e :U 902 ]
 "304
 [; ;afficheur.c: 304:         __nop();
 [e ( ___nop ..  ]
-[e :U 899 ]
+[e :U 901 ]
 "303
 [; ;afficheur.c: 303:     while(d2command((unsigned char)(adr&0x00FF),(unsigned char)(adr>>8),0x24)==0)
-[e $ == -> ( _d2command (3 , , -> & _adr -> -> 255 `i `ui `uc -> >> _adr -> 8 `i `uc -> -> 36 `i `uc `i -> 0 `i 900  ]
-[e :U 901 ]
+[e $ == -> ( _d2command (3 , , -> & _adr -> -> 255 `i `ui `uc -> >> _adr -> 8 `i `uc -> -> 36 `i `uc `i -> 0 `i 902  ]
+[e :U 903 ]
 "305
 [; ;afficheur.c: 305: }
-[e :UE 896 ]
+[e :UE 898 ]
 }
 "307
 [; ;afficheur.c: 307: void clear_text(void)
@@ -2094,9 +2099,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;afficheur.c: 312:     for (add=0;add!=0x8000;add++)
 {
 [e = _add -> -> 0 `i `ui ]
-[e $ != _add -> 32768 `ui 903  ]
-[e $U 904  ]
-[e :U 903 ]
+[e $ != _add -> 32768 `ui 905  ]
+[e $U 906  ]
+[e :U 905 ]
 "313
 [; ;afficheur.c: 313:     {
 {
@@ -2107,12 +2112,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;afficheur.c: 315:     }
 }
 [e ++ _add -> -> 1 `i `ui ]
-[e $ != _add -> 32768 `ui 903  ]
-[e :U 904 ]
+[e $ != _add -> 32768 `ui 905  ]
+[e :U 906 ]
 }
 "316
 [; ;afficheur.c: 316: }
-[e :UE 902 ]
+[e :UE 904 ]
 }
 "318
 [; ;afficheur.c: 318: void clear_graphics(void)
@@ -2132,9 +2137,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;afficheur.c: 323:     for (add=0x8000;add!=0xF800;add++)
 {
 [e = _add -> 32768 `ui ]
-[e $ != _add -> 63488 `ui 907  ]
-[e $U 908  ]
-[e :U 907 ]
+[e $ != _add -> 63488 `ui 909  ]
+[e $U 910  ]
+[e :U 909 ]
 "324
 [; ;afficheur.c: 324:     {
 {
@@ -2145,12 +2150,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;afficheur.c: 326:     }
 }
 [e ++ _add -> -> 1 `i `ui ]
-[e $ != _add -> 63488 `ui 907  ]
-[e :U 908 ]
+[e $ != _add -> 63488 `ui 909  ]
+[e :U 910 ]
 }
 "327
 [; ;afficheur.c: 327: }
-[e :UE 906 ]
+[e :UE 908 ]
 }
 "329
 [; ;afficheur.c: 329: void clear_cgram(void)
@@ -2170,9 +2175,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;afficheur.c: 334:     for (add=0xF800;add!=0x0000;add++)
 {
 [e = _add -> 63488 `ui ]
-[e $ != _add -> -> 0 `i `ui 911  ]
-[e $U 912  ]
-[e :U 911 ]
+[e $ != _add -> -> 0 `i `ui 913  ]
+[e $U 914  ]
+[e :U 913 ]
 "335
 [; ;afficheur.c: 335:     {
 {
@@ -2183,12 +2188,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;afficheur.c: 337:     }
 }
 [e ++ _add -> -> 1 `i `ui ]
-[e $ != _add -> -> 0 `i `ui 911  ]
-[e :U 912 ]
+[e $ != _add -> -> 0 `i `ui 913  ]
+[e :U 914 ]
 }
 "338
 [; ;afficheur.c: 338: }
-[e :UE 910 ]
+[e :UE 912 ]
 }
 "340
 [; ;afficheur.c: 340: void plot1(unsigned char x, unsigned char y)
@@ -2215,60 +2220,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _d2command (3 , , -> -> & _add -> -> 255 `i `ui `uc `uc -> -> >> _add -> 8 `i `uc `uc -> -> 36 `i `uc ]
 "347
 [; ;afficheur.c: 347:     switch(x%6)
-[e $U 916  ]
+[e $U 918  ]
 "348
 [; ;afficheur.c: 348:     {
 {
 "350
 [; ;afficheur.c: 350:         case 0: command(0xFD); break;
-[e :U 917 ]
+[e :U 919 ]
 [e ( _command (1 -> -> 253 `i `uc ]
-[e $U 915  ]
+[e $U 917  ]
 "351
 [; ;afficheur.c: 351:         case 1: command(0xFC); break;
-[e :U 918 ]
+[e :U 920 ]
 [e ( _command (1 -> -> 252 `i `uc ]
-[e $U 915  ]
+[e $U 917  ]
 "352
 [; ;afficheur.c: 352:         case 2: command(0xFB); break;
-[e :U 919 ]
+[e :U 921 ]
 [e ( _command (1 -> -> 251 `i `uc ]
-[e $U 915  ]
+[e $U 917  ]
 "353
 [; ;afficheur.c: 353:         case 3: command(0xFA); break;
-[e :U 920 ]
+[e :U 922 ]
 [e ( _command (1 -> -> 250 `i `uc ]
-[e $U 915  ]
+[e $U 917  ]
 "354
 [; ;afficheur.c: 354:         case 4: command(0xF9); break;
-[e :U 921 ]
+[e :U 923 ]
 [e ( _command (1 -> -> 249 `i `uc ]
-[e $U 915  ]
+[e $U 917  ]
 "355
 [; ;afficheur.c: 355:         case 5: command(0xF8); break;
-[e :U 922 ]
+[e :U 924 ]
 [e ( _command (1 -> -> 248 `i `uc ]
-[e $U 915  ]
+[e $U 917  ]
 "356
 [; ;afficheur.c: 356:         default:break;
-[e :U 923 ]
-[e $U 915  ]
+[e :U 925 ]
+[e $U 917  ]
 "357
 [; ;afficheur.c: 357:     }
 }
-[e $U 915  ]
-[e :U 916 ]
-[e [\ % -> _x `i -> 6 `i , $ -> 0 `i 917
- , $ -> 1 `i 918
- , $ -> 2 `i 919
- , $ -> 3 `i 920
- , $ -> 4 `i 921
- , $ -> 5 `i 922
- 923 ]
-[e :U 915 ]
+[e $U 917  ]
+[e :U 918 ]
+[e [\ % -> _x `i -> 6 `i , $ -> 0 `i 919
+ , $ -> 1 `i 920
+ , $ -> 2 `i 921
+ , $ -> 3 `i 922
+ , $ -> 4 `i 923
+ , $ -> 5 `i 924
+ 925 ]
+[e :U 917 ]
 "359
 [; ;afficheur.c: 359: }
-[e :UE 914 ]
+[e :UE 916 ]
 }
 "361
 [; ;afficheur.c: 361: void plot0(unsigned char x, unsigned char y)
@@ -2295,58 +2300,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _d2command (3 , , -> -> & _add -> -> 255 `i `ui `uc `uc -> -> >> _add -> 8 `i `uc `uc -> -> 36 `i `uc ]
 "368
 [; ;afficheur.c: 368:     switch(x%6)
-[e $U 926  ]
+[e $U 928  ]
 "369
 [; ;afficheur.c: 369:     {
 {
 "371
 [; ;afficheur.c: 371:         case 0: command(0xF5); break;
-[e :U 927 ]
+[e :U 929 ]
 [e ( _command (1 -> -> 245 `i `uc ]
-[e $U 925  ]
+[e $U 927  ]
 "372
 [; ;afficheur.c: 372:         case 1: command(0xF4); break;
-[e :U 928 ]
+[e :U 930 ]
 [e ( _command (1 -> -> 244 `i `uc ]
-[e $U 925  ]
+[e $U 927  ]
 "373
 [; ;afficheur.c: 373:         case 2: command(0xF3); break;
-[e :U 929 ]
+[e :U 931 ]
 [e ( _command (1 -> -> 243 `i `uc ]
-[e $U 925  ]
+[e $U 927  ]
 "374
 [; ;afficheur.c: 374:         case 3: command(0xF2); break;
-[e :U 930 ]
+[e :U 932 ]
 [e ( _command (1 -> -> 242 `i `uc ]
-[e $U 925  ]
+[e $U 927  ]
 "375
 [; ;afficheur.c: 375:         case 4: command(0xF1); break;
-[e :U 931 ]
+[e :U 933 ]
 [e ( _command (1 -> -> 241 `i `uc ]
-[e $U 925  ]
+[e $U 927  ]
 "376
 [; ;afficheur.c: 376:         case 5: command(0xF0); break;
-[e :U 932 ]
+[e :U 934 ]
 [e ( _command (1 -> -> 240 `i `uc ]
-[e $U 925  ]
+[e $U 927  ]
 "377
 [; ;afficheur.c: 377:         default:break;
-[e :U 933 ]
-[e $U 925  ]
+[e :U 935 ]
+[e $U 927  ]
 "378
 [; ;afficheur.c: 378:     }
 }
-[e $U 925  ]
-[e :U 926 ]
-[e [\ % -> _x `i -> 6 `i , $ -> 0 `i 927
- , $ -> 1 `i 928
- , $ -> 2 `i 929
- , $ -> 3 `i 930
- , $ -> 4 `i 931
- , $ -> 5 `i 932
- 933 ]
-[e :U 925 ]
+[e $U 927  ]
+[e :U 928 ]
+[e [\ % -> _x `i -> 6 `i , $ -> 0 `i 929
+ , $ -> 1 `i 930
+ , $ -> 2 `i 931
+ , $ -> 3 `i 932
+ , $ -> 4 `i 933
+ , $ -> 5 `i 934
+ 935 ]
+[e :U 927 ]
 "380
 [; ;afficheur.c: 380: }
-[e :UE 924 ]
+[e :UE 926 ]
 }

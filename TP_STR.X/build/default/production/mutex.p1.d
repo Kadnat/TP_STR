@@ -1,11 +1,11 @@
-build/default/debug/semaphore.p1:  \
-semaphore.c  \
-semaphore.h  \
+build/default/production/mutex.p1:  \
+mutex.c  \
 main.h  \
 systeme.h  \
 variables_globales.h  \
 afficheur.h  \
 eeprom.h  \
+mutex.h  \
 stid.h  \
 rxtx.h  \
 gui.h  \

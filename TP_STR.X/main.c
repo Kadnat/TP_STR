@@ -8,6 +8,14 @@ void main()
     initialisation_des_ports();
     initialisation_du_systeme();
     mutex_init();
+    
+    task_control[0].priority = 1;  task_control[0].period = 1;   task_control[0].next_tick = 0; task_control[0].is_ready = 1;
+    task_control[1].priority = 3;  task_control[1].period = 8;   task_control[1].next_tick = 0; task_control[1].is_ready = 1;
+    task_control[2].priority = 5;  task_control[2].period = 50;  task_control[2].next_tick = 0; task_control[2].is_ready = 1;
+    task_control[3].priority = 6;  task_control[3].period = 100; task_control[3].next_tick = 0; task_control[3].is_ready = 1;
+    task_control[4].priority = 2;  task_control[4].period = 5;   task_control[4].next_tick = 0; task_control[4].is_ready = 1;
+    task_control[5].priority = 4;  task_control[5].period = 12;  task_control[5].next_tick = 0; task_control[5].is_ready = 1;
+
 
         // D�marrage du syst�me
     T0CONbits.TMR0ON=1; //D�marrage du Timer0

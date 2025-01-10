@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c systeme.c T1.c T2.c T3.c T4.c T5.c T6.c afficheur.c semaphore.c stid.c rxtx.c eeprom.c mutex.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c systeme.c T1.c T2.c T3.c T4.c T5.c T6.c afficheur.c stid.c rxtx.c eeprom.c mutex.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/systeme.p1 ${OBJECTDIR}/T1.p1 ${OBJECTDIR}/T2.p1 ${OBJECTDIR}/T3.p1 ${OBJECTDIR}/T4.p1 ${OBJECTDIR}/T5.p1 ${OBJECTDIR}/T6.p1 ${OBJECTDIR}/afficheur.p1 ${OBJECTDIR}/semaphore.p1 ${OBJECTDIR}/stid.p1 ${OBJECTDIR}/rxtx.p1 ${OBJECTDIR}/eeprom.p1 ${OBJECTDIR}/mutex.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/systeme.p1.d ${OBJECTDIR}/T1.p1.d ${OBJECTDIR}/T2.p1.d ${OBJECTDIR}/T3.p1.d ${OBJECTDIR}/T4.p1.d ${OBJECTDIR}/T5.p1.d ${OBJECTDIR}/T6.p1.d ${OBJECTDIR}/afficheur.p1.d ${OBJECTDIR}/semaphore.p1.d ${OBJECTDIR}/stid.p1.d ${OBJECTDIR}/rxtx.p1.d ${OBJECTDIR}/eeprom.p1.d ${OBJECTDIR}/mutex.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/systeme.p1 ${OBJECTDIR}/T1.p1 ${OBJECTDIR}/T2.p1 ${OBJECTDIR}/T3.p1 ${OBJECTDIR}/T4.p1 ${OBJECTDIR}/T5.p1 ${OBJECTDIR}/T6.p1 ${OBJECTDIR}/afficheur.p1 ${OBJECTDIR}/stid.p1 ${OBJECTDIR}/rxtx.p1 ${OBJECTDIR}/eeprom.p1 ${OBJECTDIR}/mutex.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/systeme.p1.d ${OBJECTDIR}/T1.p1.d ${OBJECTDIR}/T2.p1.d ${OBJECTDIR}/T3.p1.d ${OBJECTDIR}/T4.p1.d ${OBJECTDIR}/T5.p1.d ${OBJECTDIR}/T6.p1.d ${OBJECTDIR}/afficheur.p1.d ${OBJECTDIR}/stid.p1.d ${OBJECTDIR}/rxtx.p1.d ${OBJECTDIR}/eeprom.p1.d ${OBJECTDIR}/mutex.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/systeme.p1 ${OBJECTDIR}/T1.p1 ${OBJECTDIR}/T2.p1 ${OBJECTDIR}/T3.p1 ${OBJECTDIR}/T4.p1 ${OBJECTDIR}/T5.p1 ${OBJECTDIR}/T6.p1 ${OBJECTDIR}/afficheur.p1 ${OBJECTDIR}/semaphore.p1 ${OBJECTDIR}/stid.p1 ${OBJECTDIR}/rxtx.p1 ${OBJECTDIR}/eeprom.p1 ${OBJECTDIR}/mutex.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/systeme.p1 ${OBJECTDIR}/T1.p1 ${OBJECTDIR}/T2.p1 ${OBJECTDIR}/T3.p1 ${OBJECTDIR}/T4.p1 ${OBJECTDIR}/T5.p1 ${OBJECTDIR}/T6.p1 ${OBJECTDIR}/afficheur.p1 ${OBJECTDIR}/stid.p1 ${OBJECTDIR}/rxtx.p1 ${OBJECTDIR}/eeprom.p1 ${OBJECTDIR}/mutex.p1
 
 # Source Files
-SOURCEFILES=main.c systeme.c T1.c T2.c T3.c T4.c T5.c T6.c afficheur.c semaphore.c stid.c rxtx.c eeprom.c mutex.c
+SOURCEFILES=main.c systeme.c T1.c T2.c T3.c T4.c T5.c T6.c afficheur.c stid.c rxtx.c eeprom.c mutex.c
 
 
 
@@ -159,14 +159,6 @@ ${OBJECTDIR}/afficheur.p1: afficheur.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit3    -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/afficheur.p1 afficheur.c 
 	@-${MV} ${OBJECTDIR}/afficheur.d ${OBJECTDIR}/afficheur.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/afficheur.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/semaphore.p1: semaphore.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/semaphore.p1.d 
-	@${RM} ${OBJECTDIR}/semaphore.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit3    -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/semaphore.p1 semaphore.c 
-	@-${MV} ${OBJECTDIR}/semaphore.d ${OBJECTDIR}/semaphore.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/semaphore.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/stid.p1: stid.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
@@ -272,14 +264,6 @@ ${OBJECTDIR}/afficheur.p1: afficheur.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/afficheur.p1 afficheur.c 
 	@-${MV} ${OBJECTDIR}/afficheur.d ${OBJECTDIR}/afficheur.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/afficheur.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/semaphore.p1: semaphore.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/semaphore.p1.d 
-	@${RM} ${OBJECTDIR}/semaphore.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=0 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=hybrid:auto:auto:auto     -o ${OBJECTDIR}/semaphore.p1 semaphore.c 
-	@-${MV} ${OBJECTDIR}/semaphore.d ${OBJECTDIR}/semaphore.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/semaphore.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/stid.p1: stid.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 

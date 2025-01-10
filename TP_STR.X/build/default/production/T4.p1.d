@@ -5,8 +5,8 @@ main.h  \
 systeme.h  \
 variables_globales.h  \
 afficheur.h  \
-semaphore.h  \
 eeprom.h  \
+mutex.h  \
 stid.h  \
 rxtx.h  \
 gui.h  \

@@ -32,11 +32,14 @@ void tache6(void) {
                 else if(MARCHE_ARRIERE == 0) drive_c = 2;
 
                 // 4. Lecture des autres paramètres
-                speed_c = vitesse;
-                water_c = min(ANALOG_TEMP_EAU, 0xfd);
-                oil_c = min(ANALOG_TEMP_HUILE, 0xfd);
+                speed_c = vitesse;   
+                water_c = ANALOG_TEMP_EAU;
+                oil_c = ANALOG_TEMP_HUILE;
                 battery_c = batterie;
-                
+
+                if(water_c >= 0xfd) water_c = 0xfd;
+                if(oil_c >= 0xfd) oil_c = 0xfd;
+
                 // 5. Traitement du joystick
                 // Position des roues
                 if(ANALOG_JOYSTICK_X < 83) wheels = 2;

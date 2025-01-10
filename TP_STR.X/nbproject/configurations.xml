@@ -14,7 +14,6 @@
       <itemPath>T5.h</itemPath>
       <itemPath>T6.h</itemPath>
       <itemPath>afficheur.h</itemPath>
-      <itemPath>semaphore.h</itemPath>
       <itemPath>stid.h</itemPath>
       <itemPath>rxtx.h</itemPath>
       <itemPath>eeprom.h</itemPath>
@@ -41,7 +40,6 @@
       <itemPath>T5.c</itemPath>
       <itemPath>T6.c</itemPath>
       <itemPath>afficheur.c</itemPath>
-      <itemPath>semaphore.c</itemPath>
       <itemPath>stid.c</itemPath>
       <itemPath>rxtx.c</itemPath>
       <itemPath>eeprom.c</itemPath>
