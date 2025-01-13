@@ -1,9 +1,9 @@
 
 18F87K22 Memory Summary:
-    Program space        used  1950h (  6480) of 20000h bytes   (  4.9%)
+    Program space        used  195Eh (  6494) of 20000h bytes   (  5.0%)
     Data space           used    AEh (   174) of   F16h bytes   (  4.5%)
     Configuration bits   used     7h (     7) of     7h words   (100.0%)
     EEPROM space         used     0h (     0) of   400h bytes   (  0.0%)
     ID Location space    used     8h (     8) of     8h bytes   (100.0%)
-    Data stack space     used   615h (  1557) of   615h bytes   (100.0%)
+    Data stack space     used   613h (  1555) of   613h bytes   (100.0%)
 

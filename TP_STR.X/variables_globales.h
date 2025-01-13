@@ -111,6 +111,7 @@ TaskControl task_control[NOMBRE_DE_TACHES] __at(0x805);
 
 uint8_t i_m __at(0x900);
 uint8_t i_mutex2 __at(0x901);
+uint8_t highest_prio __at(0x902);
 
 /* Contextes des tâches */
 unsigned char contexte1[66] __at(0x100);    // Contexte tâche 1

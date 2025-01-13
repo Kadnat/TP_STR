@@ -11280,6 +11280,8 @@ typedef struct {
 TaskControl task_control[6] __attribute__((address(0x805)));
 
 uint8_t i_m __attribute__((address(0x900)));
+uint8_t i_mutex2 __attribute__((address(0x901)));
+uint8_t highest_prio __attribute__((address(0x902)));
 
 
 unsigned char contexte1[66] __attribute__((address(0x100)));

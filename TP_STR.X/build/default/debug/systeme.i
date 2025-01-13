@@ -11272,6 +11272,8 @@ typedef struct {
 TaskControl task_control[6] __attribute__((address(0x805)));
 
 uint8_t i_m __attribute__((address(0x900)));
+uint8_t i_mutex2 __attribute__((address(0x901)));
+uint8_t highest_prio __attribute__((address(0x902)));
 
 
 unsigned char contexte1[66] __attribute__((address(0x100)));
@@ -11494,15 +11496,15 @@ void __attribute__((picinterrupt(("high_priority")))) fonction_d_interruption(vo
         }
 
 
-        uint8_t highest_prio = 0;
+        highest_prio = 0;
         tache_active = 0;
 
-        for(uint8_t i = 0; i < 6; i++) {
-            if(task_control[i].is_ready &&
-               !(mutex.attente & (1 << i)) &&
-               task_control[i].priority > highest_prio) {
-                highest_prio = task_control[i].priority;
-                tache_active = i+1;
+        for(i_mutex2 = 0; i_mutex2 < 6; i_mutex2++) {
+            if(task_control[i_mutex2].is_ready &&
+               !(mutex.attente & (1 << i_mutex2)) &&
+               task_control[i_mutex2].priority > highest_prio) {
+                highest_prio = task_control[i_mutex2].priority;
+                tache_active = i_mutex2+1;
             }
         }
 

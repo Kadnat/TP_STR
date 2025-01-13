@@ -11281,6 +11281,7 @@ TaskControl task_control[6] __attribute__((address(0x805)));
 
 uint8_t i_m __attribute__((address(0x900)));
 uint8_t i_mutex2 __attribute__((address(0x901)));
+uint8_t highest_prio __attribute__((address(0x902)));
 
 
 unsigned char contexte1[66] __attribute__((address(0x100)));
@@ -11433,141 +11434,33 @@ void tache4(void)
 {
 
 
-    for(unsigned char i = 2 ; i < 37 ; i++)
-        {
-            if( (i < 11) ||
-                ((i > 14) && (i < 24)) ||
-                ((i > 27) && (i < 37))
-              )
-            {
-                goto_lico(12, i);draw_char('*');
-            }
-        }
-    for(unsigned char i = 15; i >= 13 ; i--)
-    {
-        goto_lico(i, 1); draw_char('*');goto_lico(i, 11); draw_char('*');
-        goto_lico(i, 14); draw_char('*');goto_lico(i, 24); draw_char('*');
-        goto_lico(i, 27); draw_char('*');goto_lico(i, 37); draw_char('*');
-    }
-
-
-    goto_lico(11, 2); draw_char('T');goto_lico(11, 3); draw_char('e');goto_lico(11, 4); draw_char('m');goto_lico(11, 5); draw_char('p');
-    goto_lico(11, 7); draw_char('E');goto_lico(11, 8); draw_char('a');goto_lico(11, 9); draw_char('u');
-
-    goto_lico(11, 28); draw_char('T');goto_lico(11, 29); draw_char('e');goto_lico(11, 30); draw_char('m');goto_lico(11, 31); draw_char('p');
-    goto_lico(11, 33); draw_char('H');goto_lico(11, 34); draw_char('u');goto_lico(11, 35); draw_char('i');goto_lico(11, 36); draw_char('l');goto_lico(11, 37); draw_char('e');
-
-    goto_lico(11, 16); draw_char('V');goto_lico(11, 17); draw_char('i');goto_lico(11, 18); draw_char('t');
-    goto_lico(11, 19); draw_char('e');goto_lico(11, 20); draw_char('s');goto_lico(11, 21); draw_char('s');goto_lico(11, 22); draw_char('e');
-
-
-    goto_lico(14, 19);draw_char('k');goto_lico(14, 20);draw_char('m');goto_lico(14, 21);draw_char('/');goto_lico(14, 22);draw_char('h');
-    goto_lico(14, 8);draw_char('C');goto_lico(14, 34);draw_char('C');
-
-    goto_lico(0, 36); draw_char('%');
-
-
-    unsigned char y = 0;
-    for(unsigned char i = 1 ; i <= 38 ; i++)
-    {
-        if( (i == 13) || (i == 26) ){}
-        else
-        {
-            goto_lico(2, i);draw_char('*');
-            goto_lico(9, i);draw_char('*');
-        }
-    }
-    for(unsigned char i = 8 ; i >= 3 ; i--)
-    {
-        goto_lico(i, 1); draw_char('*');goto_lico(i, 12); draw_char('*');
-        goto_lico(i, 14); draw_char('*');goto_lico(i, 25); draw_char('*');
-        goto_lico(i, 27); draw_char('*');goto_lico(i, 38); draw_char('*');
-    }
-
-
-    goto_lico(3, 16); draw_char('A');goto_lico(3, 17); draw_char('L');goto_lico(3, 18); draw_char('A');goto_lico(3, 19); draw_char('R');goto_lico(3, 20); draw_char('M');goto_lico(3, 21); draw_char('E');goto_lico(3, 22); draw_char('S');
-
-
-    goto_lico(3, 4); draw_char('M');goto_lico(3, 5); draw_char('O');goto_lico(3, 6); draw_char('T');goto_lico(3, 7); draw_char('E');goto_lico(3, 8); draw_char('U');goto_lico(3, 9); draw_char('R');
-    goto_lico(5, 2); draw_char('M');goto_lico(5, 3); draw_char('A');goto_lico(5, 4); draw_char('R');goto_lico(5, 5); draw_char('C');goto_lico(5, 6); draw_char('H');goto_lico(5, 7); draw_char('E');
-    goto_lico(7, 2); draw_char('K');goto_lico(7, 3); draw_char('M');goto_lico(7, 4); draw_char('a');goto_lico(7, 5); draw_char('g');goto_lico(7, 6); draw_char('e');
-
-
-    goto_lico(3, 30); draw_char('P');goto_lico(3, 31); draw_char('I');goto_lico(3, 32); draw_char('L');goto_lico(3, 33); draw_char('O');goto_lico(3, 34); draw_char('T');goto_lico(3, 35); draw_char('E');
-    goto_lico(5, 28); draw_char('S');goto_lico(5, 29); draw_char('I');goto_lico(5, 30); draw_char('E');goto_lico(5, 31); draw_char('G');goto_lico(5, 32); draw_char('E');
-    goto_lico(7, 29); draw_char('C');goto_lico(7, 30); draw_char('L');goto_lico(7, 31); draw_char('E');
-
-
-    goto_lico(0,0);draw_char('F');goto_lico(0,1);draw_char('O');goto_lico(0,2);draw_char('R');goto_lico(0,3);draw_char('K');goto_lico(0,4);draw_char('L');goto_lico(0,5);draw_char('I');goto_lico(0,6);draw_char('F');goto_lico(0,7);draw_char('T');goto_lico(0,8);draw_char(' ');
-    goto_lico(0,9);draw_char('S');goto_lico(0,10);draw_char('I');goto_lico(0,11);draw_char('M');goto_lico(0,12);draw_char('U');goto_lico(0,13);draw_char('L');goto_lico(0,14);draw_char('A');goto_lico(0,15);draw_char('T');goto_lico(0,16);draw_char('O');goto_lico(0,17);draw_char('R');
-
-    __nop();
-    __nop();
-
     while(1)
     {
 
-        goto_lico(14, 16); draw_hex8(vitesse);
-        goto_lico(14, 4); draw_hex8(ANALOG_TEMP_EAU);
-        goto_lico(14, 30); draw_hex8(ANALOG_TEMP_HUILE);
-        goto_lico(0, 33); draw_hex8(batterie);
-        goto_lico(7, 8);draw_char(km[3]); goto_lico(7, 9);draw_char(km[2]);
-        goto_lico(7, 10);draw_char(km[1]); goto_lico(7, 11);draw_char(km[0]);
+        goto_lico(6,0);
+
+        draw_dec8(batterie);
+
+        goto_lico(8,0);
+
+        draw_dec8(vitesse);
 
 
-        if(alarme_batterie)
-        {
-            goto_lico(5, 15);draw_char('B');goto_lico(5, 16);draw_char('A');goto_lico(5, 17);draw_char('T');goto_lico(5, 19);draw_char('F');goto_lico(5, 20);draw_char('A');
-            goto_lico(5, 21);draw_char('I');goto_lico(5, 22);draw_char('B');goto_lico(5, 23);draw_char('L');goto_lico(5, 24);draw_char('E');
-        }
-        else
-        {
-            for(unsigned char i = 15; i <= 24 ; i++ )
-            {
-                goto_lico(5, i); draw_char(' ');
-            }
-        }
+        goto_lico(10,0);
 
-        if(alarme_eau)
-        {
-            goto_lico(6, 15);draw_char('T');goto_lico(6, 17);draw_char('E');goto_lico(6, 18);draw_char('A');goto_lico(6, 19);draw_char('U');
-            goto_lico(6, 21);draw_char('E');goto_lico(6, 22);draw_char('R');goto_lico(6, 23);draw_char('R');
-        }
-        else
-        {
-            goto_lico(6, 15);draw_char('T');goto_lico(6, 17);draw_char('E');goto_lico(6, 18);draw_char('A');goto_lico(6, 19);draw_char('U');
-            goto_lico(6, 21);draw_char('O');goto_lico(6, 22);draw_char('K');
+        draw_dec8(ANALOG_JOYSTICK_Y);
 
-        }
+        goto_lico(12,0);
+        draw_dec8(km[3]);
 
-        if(alarme_huile)
-        {
-            goto_lico(7, 15);draw_char('T');goto_lico(7, 17);draw_char('O');goto_lico(7, 18);draw_char('I');goto_lico(7, 19);draw_char('L');
-            goto_lico(7, 21);draw_char('E');goto_lico(7, 22);draw_char('R');goto_lico(7, 23);draw_char('R');
-        }
-        else
-        {
-            goto_lico(7, 15);draw_char('T');goto_lico(7, 17);draw_char('O');goto_lico(7, 18);draw_char('I');goto_lico(7, 19);draw_char('L');
-            goto_lico(7, 21);draw_char('O');goto_lico(7, 22);draw_char('K');
+        goto_lico(13,0);
+        draw_dec8(km[2]);
 
-        }
+        goto_lico(14,0);
+        draw_dec8(km[1]);
 
-        if(alarme_choc)
-        {
-            goto_lico(8, 15);draw_char('C');goto_lico(8, 16);draw_char('H');goto_lico(8, 17);draw_char('O');goto_lico(8, 18);draw_char('C');goto_lico(8, 19);draw_char('>');
-            goto_lico(8, 20);draw_char('A');goto_lico(8, 21);draw_char('R');goto_lico(8, 22);draw_char('R');goto_lico(8, 23);draw_char('E');goto_lico(8, 24);draw_char('T');
-        }
-        else
-        {
-           for(unsigned char i = 15; i <= 24 ; i++ )
-            {
-                goto_lico(8, i); draw_char(' ');
-            }
-        }
-
-        if(alarme_frein){goto_lico(5, 9);draw_char('(');goto_lico(5, 10);draw_char('P');goto_lico(5, 10);draw_char(')');}
-        else if(PORTBbits.RB0){goto_lico(5, 9);draw_char('A');goto_lico(5, 10);draw_char('v');goto_lico(5, 10);draw_char(' ');}
-        else if(PORTBbits.RB1){goto_lico(5, 9);draw_char('A');goto_lico(5, 10);draw_char('r');goto_lico(5, 10);draw_char(' ');}
-        else{goto_lico(5, 9);draw_char(' ');goto_lico(5, 10);draw_char('N');goto_lico(5, 10);draw_char(' ');}
+        goto_lico(15,0);
+        draw_dec8(km[0]);
     }
+
 }

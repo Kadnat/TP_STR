@@ -11,7 +11,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./variables_globales.h: 104: typedef struct {
 [s S830 `uc 1 `us 1 `us 1 `uc 1 ]
 [n S830 . priority period next_tick is_ready ]
-[v F6572 `(v ~T0 @X0 0 tf ]
+[v F6573 `(v ~T0 @X0 0 tf ]
 "37 ./mutex.h
 [; ;./mutex.h: 37: char mutex_acquire(char tache);
 [v _mutex_acquire `(uc ~T0 @X0 0 ef1`uc ]
@@ -1110,53 +1110,56 @@ Version 4.0 HI-TECH Software Intermediate Code
 "113
 [; ;./variables_globales.h: 113: uint8_t i_mutex2 __attribute__((address(0x901)));
 [v _i_mutex2 `uc ~T0 @X0 1 e@2305 ]
-"116
-[; ;./variables_globales.h: 116: unsigned char contexte1[66] __attribute__((address(0x100)));
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
+"114
+[; ;./variables_globales.h: 114: uint8_t highest_prio __attribute__((address(0x902)));
+[v _highest_prio `uc ~T0 @X0 1 e@2306 ]
 "117
-[; ;./variables_globales.h: 117: unsigned char contexte2[66] __attribute__((address(0x200)));
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+[; ;./variables_globales.h: 117: unsigned char contexte1[66] __attribute__((address(0x100)));
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
 "118
-[; ;./variables_globales.h: 118: unsigned char contexte3[66] __attribute__((address(0x300)));
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+[; ;./variables_globales.h: 118: unsigned char contexte2[66] __attribute__((address(0x200)));
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
 "119
-[; ;./variables_globales.h: 119: unsigned char contexte4[66] __attribute__((address(0x400)));
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
+[; ;./variables_globales.h: 119: unsigned char contexte3[66] __attribute__((address(0x300)));
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
 "120
-[; ;./variables_globales.h: 120: unsigned char contexte5[66] __attribute__((address(0x500)));
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+[; ;./variables_globales.h: 120: unsigned char contexte4[66] __attribute__((address(0x400)));
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
 "121
-[; ;./variables_globales.h: 121: unsigned char contexte6[66] __attribute__((address(0x600)));
+[; ;./variables_globales.h: 121: unsigned char contexte5[66] __attribute__((address(0x500)));
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+"122
+[; ;./variables_globales.h: 122: unsigned char contexte6[66] __attribute__((address(0x600)));
 [v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
-"124
-[; ;./variables_globales.h: 124: unsigned char STKPTR_T1 __attribute__((address(0x103)));
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
 "125
-[; ;./variables_globales.h: 125: unsigned char STKPTR_T2 __attribute__((address(0x203)));
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+[; ;./variables_globales.h: 125: unsigned char STKPTR_T1 __attribute__((address(0x103)));
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
 "126
-[; ;./variables_globales.h: 126: unsigned char STKPTR_T3 __attribute__((address(0x303)));
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+[; ;./variables_globales.h: 126: unsigned char STKPTR_T2 __attribute__((address(0x203)));
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
 "127
-[; ;./variables_globales.h: 127: unsigned char STKPTR_T4 __attribute__((address(0x403)));
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+[; ;./variables_globales.h: 127: unsigned char STKPTR_T3 __attribute__((address(0x303)));
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
 "128
-[; ;./variables_globales.h: 128: unsigned char STKPTR_T5 __attribute__((address(0x503)));
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+[; ;./variables_globales.h: 128: unsigned char STKPTR_T4 __attribute__((address(0x403)));
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
 "129
-[; ;./variables_globales.h: 129: unsigned char STKPTR_T6 __attribute__((address(0x603)));
+[; ;./variables_globales.h: 129: unsigned char STKPTR_T5 __attribute__((address(0x503)));
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+"130
+[; ;./variables_globales.h: 130: unsigned char STKPTR_T6 __attribute__((address(0x603)));
 [v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
-"133
-[; ;./variables_globales.h: 133: void (*fptr)(void);
-[v _fptr `*F6572 ~T0 @X0 1 e ]
 "134
-[; ;./variables_globales.h: 134: unsigned short int val_tos;
-[v _val_tos `us ~T0 @X0 1 e ]
+[; ;./variables_globales.h: 134: void (*fptr)(void);
+[v _fptr `*F6573 ~T0 @X0 1 e ]
 "135
-[; ;./variables_globales.h: 135: unsigned char * puc;
-[v _puc `*uc ~T0 @X0 1 e ]
+[; ;./variables_globales.h: 135: unsigned short int val_tos;
+[v _val_tos `us ~T0 @X0 1 e ]
 "136
-[; ;./variables_globales.h: 136: unsigned char tc[3];
+[; ;./variables_globales.h: 136: unsigned char * puc;
+[v _puc `*uc ~T0 @X0 1 e ]
+"137
+[; ;./variables_globales.h: 137: unsigned char tc[3];
 [v _tc `uc ~T0 @X0 -> 3 `i e ]
 "40 ./main.h
 [p x CONFIG1L  =  0x15  ]

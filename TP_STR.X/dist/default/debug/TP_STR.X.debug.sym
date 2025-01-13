@@ -7,11 +7,11 @@ write_d_aff@data 1 0 COMRAM 1
 _initialisation_du_systeme 14DE 0 CODE 0
 ___lwdiv@counter 7 0 COMRAM 1
 __end_of_lecture_normale 1CF8 0 CODE 0
-_tc 33 0 COMRAM 1
+_tc 32 0 COMRAM 1
 _km 801 0 ABS 1
 goto_lico@adr D 0 COMRAM 1
 __S0 24BC 0 ABS 0
-__S1 85 0 ABS 0
+__S1 36 0 ABS 0
 __S2 F16 0 ABS 0
 __S4 0 0 ABS 0
 __S5 0 0 ABS 0
@@ -19,7 +19,7 @@ _BSR FE0 0 ABS 0
 __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
 _i_m 900 0 ABS 1
-_puc 30 0 COMRAM 1
+_puc 2F 0 COMRAM 1
 __end_of___awdiv 1DBA 0 CODE 0
 _TMR0 FD6 0 ABS 0
 _T0IE 7F95 0 ABS 0
@@ -33,10 +33,10 @@ _TOSH FFE 0 ABS 0
 _TOSL FFD 0 ABS 0
 _TOSU FFF 0 ABS 0
 _main 1E7A 0 CODE 0
-___sp 901 0 STACK 2
-btemp 36 0 COMRAM 1
-_fptr 2D 0 COMRAM 1
-start 492 0 CODE 0
+___sp 903 0 STACK 2
+btemp 35 0 COMRAM 1
+_fptr 2C 0 COMRAM 1
+start 4A0 0 CODE 0
 _EEPROM_Write 238E 0 CODE 0
 _FSR0H FEA 0 ABS 0
 _FSR1H FE2 0 ABS 0
@@ -59,10 +59,10 @@ _counter_T3 712 0 ABS 1
 _TRISJ F9A 0 ABS 0
 _PORTH F87 0 ABS 0
 clear_graphics@add 9 0 COMRAM 1
-ttemp5 37 0 COMRAM 1
-ttemp6 3A 0 COMRAM 1
-ttemp7 3E 0 COMRAM 1
-wtemp8 37 0 COMRAM 1
+ttemp5 36 0 COMRAM 1
+ttemp6 39 0 COMRAM 1
+ttemp7 3D 0 COMRAM 1
+wtemp8 36 0 COMRAM 1
 __Hconfig 30000E 0 CONFIG 4
 __Lconfig 0 0 CONFIG 4
 _batterie 704 0 ABS 1
@@ -86,7 +86,7 @@ __Hnvrram 0 0 COMRAM 1
 __Lnvrram 0 0 COMRAM 1
 tache6@frein E 0 COMRAM 1
 _mutex 83 0 ABS 1
-int$flags 36 0 COMRAM 1
+int$flags 35 0 COMRAM 1
 wait_status_ok@status 3 0 COMRAM 1
 _RCSTA1 FAB 0 ABS 0
 _TXREG1 FAD 0 ABS 0
@@ -134,7 +134,7 @@ __Lmediumconst 0 0 MEDIUMCONST 0
 __Hfarbss 0 0 FARRAM 0
 __Lfarbss 0 0 FARRAM 0
 _PCLATH FFA 0 ABS 0
-__Hintcode 492 0 CODE 0
+__Hintcode 4A0 0 CODE 0
 __Lintcode 8 0 CODE 0
 __Hfardata 0 0 FARRAM 0
 _ADRESH FC4 0 ABS 0
@@ -168,7 +168,7 @@ __LnvCOMRAM 0 0 ABS 0
 ___heap_hi 0 0 ABS 0
 __end_of_draw_dec8 1E7A 0 CODE 0
 lecture_normale@n_bit 7 0 COMRAM 1
-__pnvCOMRAM 2D 0 COMRAM 1
+__pnvCOMRAM 2C 0 COMRAM 1
 lecture_normale@octet 8 0 COMRAM 1
 _lecture_8bit_analogique 2268 0 CODE 0
 __Hsivt_hi 0 0 ABS 0
@@ -188,16 +188,16 @@ __Lheap 0 0 HEAP 7
 __end_of_stid_delai_us 2410 0 CODE 0
 __end_of_EEPROM_Write 23BE 0 CODE 0
 _goto_lico 2020 0 CODE 0
-__Htemp 37 0 COMRAM 1
-__Ltemp 36 0 COMRAM 1
-stacklo 901 0 ABS 0
+__Htemp 36 0 COMRAM 1
+__Ltemp 35 0 COMRAM 1
+stacklo 903 0 ABS 0
 __Hrbit 0 0 COMRAM 1
 __Lrbit 0 0 COMRAM 1
 __end_of_initialisation_afficheur 1C20 0 CODE 0
-__Hinit 496 0 CODE 0
-__Linit 492 0 CODE 0
-__Hintcodelo 492 0 CODE 0
-__Lintcodelo 492 0 CODE 0
+__Hinit 4A4 0 CODE 0
+__Linit 4A0 0 CODE 0
+__Hintcodelo 4A0 0 CODE 0
+__Lintcodelo 4A0 0 CODE 0
 __Hrbss 0 0 COMRAM 1
 __end_of_main 1F28 0 CODE 0
 __Lrbss 0 0 COMRAM 1
@@ -214,10 +214,9 @@ _SPBRGH1 FD4 0 ABS 0
 __Hsivt_lo 0 0 ABS 0
 _pointeur_de_tache 70 0 ABS 1
 __Lsivt_lo 0 0 ABS 0
-tache5@i_1653 21 0 COMRAM 1
 tache6@choc F 0 COMRAM 1
 _stid_delai_us 23EC 0 CODE 0
-fonction_d_interruption@i 2C 0 COMRAM 1
+tache3@i_1506 5 0 COMRAM 1
 _fonction_d_interruption 8 0 CODE 0
 _BSR_TEMPORAIRE 62 0 ABS 1
 _TRISCbits F94 0 ABS 0
@@ -252,9 +251,9 @@ __Lbank4 0 0 ABS 0
 __Hbank5 0 0 ABS 0
 __Lbank5 0 0 ABS 0
 _TBLPTRL FF6 0 ABS 0
-__Hpowerup 492 0 CODE 0
+__Hpowerup 4A0 0 CODE 0
 stid_delai_us@isdu 1 0 COMRAM 1
-__Lpowerup 492 0 CODE 0
+__Lpowerup 4A0 0 CODE 0
 __Hbank6 0 0 ABS 0
 __Lbank6 0 0 ABS 0
 lecture_normale@stid_id 3 0 COMRAM 1
@@ -279,7 +278,7 @@ __Htext3 0 0 ABS 0
 __Ltext3 0 0 ABS 0
 __ptext2 14DE 0 CODE 0
 __ptext3 235C 0 CODE 0
-___stack_hi C0C 0 STACK 2
+___stack_hi C0D 0 STACK 2
 __Htext5 0 0 ABS 0
 __Ltext5 0 0 ABS 0
 _TBLPTRU FF8 0 ABS 0
@@ -297,7 +296,7 @@ _STKPTR_T1 103 0 ABS 1
 __Htext8 0 0 ABS 0
 __Ltext8 0 0 ABS 0
 __ptext7 1FAC 0 CODE 0
-__pbssCOMRAM 33 0 COMRAM 1
+__pbssCOMRAM 32 0 COMRAM 1
 _alarme_frein 70A 0 ABS 1
 __Htext9 0 0 ABS 0
 __Ltext9 0 0 ABS 0
@@ -308,7 +307,7 @@ _mutexT6Flag 82 0 ABS 1
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 tache6@battery_c C 0 COMRAM 1
-initialisation_du_systeme@temp 84 0 BANK0 1
+initialisation_du_systeme@temp 2B 0 COMRAM 1
 _STKPTR_T2 203 0 ABS 1
 tache3@i 3 0 COMRAM 1
 tache5@i 20 0 COMRAM 1
@@ -346,11 +345,12 @@ __Hrdata 0 0 COMRAM 1
 __Lrdata 0 0 COMRAM 1
 tache6@water_c 14 0 COMRAM 1
 _passageT3 711 0 ABS 1
+tache5@i_1665 21 0 COMRAM 1
 __Hidloc 200008 0 IDLOC 5
 __Lidloc 0 0 IDLOC 5
 _command 2410 0 CODE 0
 __Hstack F16 0 STACK 2
-__Lstack 901 0 STACK 2
+__Lstack 903 0 STACK 2
 __Hparam 0 0 COMRAM 1
 __Lparam 0 0 COMRAM 1
 __Hspace_0 24BC 0 ABS 0
@@ -361,7 +361,7 @@ __pcstackCOMRAM 1 0 COMRAM 1
 _passageT5 715 0 ABS 1
 _vitesse 703 0 ABS 1
 __end_of_clear_graphics 2324 0 CODE 0
-__Hspace_1 85 0 ABS 0
+__Hspace_1 36 0 ABS 0
 __Lspace_1 0 0 ABS 0
 __Hsmallconst 1002 0 SMALLCONST 0
 __Lsmallconst 1000 0 SMALLCONST 0
@@ -379,18 +379,15 @@ ___awdiv 1CF8 0 CODE 0
 __ramtop 1000 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
 ___lwdiv 1FAC 0 CODE 0
-_val_tos 31 0 COMRAM 1
+_val_tos 30 0 COMRAM 1
 __Hconst 0 0 CONST 0
 __Lconst 0 0 CONST 0
 __Hspace_4 60000E 0 ABS 0
 __Lspace_4 0 0 ABS 0
-__HcstackBANK0hhh 0 0 ABS 0
-__LcstackBANK0hhh 0 0 ABS 0
 _ANALOG_JOYSTICK_X 708 0 ABS 1
 _ANALOG_JOYSTICK_Y 709 0 ABS 1
-__pcstackBANK0hhh 84 0 BANK0 1
 _ANALOG_TEMP_EAU 707 0 ABS 1
-___stack_lo 901 0 STACK 2
+___stack_lo 903 0 STACK 2
 __end_of_mutex_acquire 221C 0 CODE 0
 tache6@key_c D 0 COMRAM 1
 goto_lico@colonne 9 0 COMRAM 1
@@ -481,7 +478,7 @@ __Htext25 0 0 ABS 0
 __Ltext25 0 0 ABS 0
 __ptext15 2496 0 CODE 0
 __ptext34 23BE 0 CODE 0
-___inthi_sp C0C 0 STACK 2
+___inthi_sp C0D 0 STACK 2
 __Htext16 0 0 ABS 0
 __Ltext16 0 0 ABS 0
 __ptext25 2324 0 CODE 0
@@ -532,6 +529,7 @@ _Tick_Count 71 0 ABS 1
 __end_of_tache1 14DE 0 CODE 0
 _alarme_choc 70F 0 ABS 1
 __end_of_goto_lico 2094 0 CODE 0
+_highest_prio 902 0 ABS 1
 intlevel0 0 0 CODE 0
 intlevel1 0 0 CODE 0
 intlevel2 0 0 CODE 0
@@ -540,10 +538,10 @@ tache5@average_speed 22 0 COMRAM 1
 tache6@speed_c B 0 COMRAM 1
 __end_of_tache4 1FAC 0 CODE 0
 tache6@wheels 12 0 COMRAM 1
-__end_of_fonction_d_interruption 492 0 CODE 0
+__end_of_fonction_d_interruption 4A0 0 CODE 0
 tache3@kilometrage 7 0 COMRAM 1
-___inthi_stack_lo C0C 0 STACK 2
-tache3@i_1498 5 0 COMRAM 1
+_i_mutex2 901 0 ABS 1
+___inthi_stack_lo C0D 0 STACK 2
 _mutex_release 24B2 0 CODE 0
 ___lbdiv@quotient 4 0 COMRAM 1
 __end_of_command 2434 0 CODE 0
@@ -555,7 +553,6 @@ mutex_acquire@tache 4 0 COMRAM 1
 _clear_text 22B0 0 CODE 0
 __end_of_wait_status_ok 2108 0 CODE 0
 _task_control 805 0 ABS 1
-fonction_d_interruption@highest_prio 2B 0 COMRAM 1
 EEPROM_Write@data 1 0 COMRAM 1
 _alarme_huile 70D 0 ABS 1
 check_status_ok@res 1 0 COMRAM 1
@@ -571,12 +568,11 @@ __end_of_check_status_ok 235C 0 CODE 0
 __end_of_mutex_init 24B2 0 CODE 0
 ___awdiv@dividend 1 0 COMRAM 1
 %segments
-stack 901 F15 STACK 901 2
+stack 903 F15 STACK 903 2
 reset_vec 0 5 CODE 0 0
-intcode 8 495 CODE 8 0
+intcode 8 4A3 CODE 8 0
 smallconst 1000 1001 SMALLCONST 1000 0
-cstackCOMRAM 1 36 COMRAM 1 1
-cstackBANK0hhh 84 84 BANK0 84 1
+cstackCOMRAM 1 35 COMRAM 1 1
 text5 1002 24BB CODE 1002 0
 %locals
 dist/default/debug/TP_STR.X.debug.o
@@ -597,18 +593,18 @@ main.c
 22 1F1A 0 CODE 0
 23 1F1C 0 CODE 0
 27 1F1E 0 CODE 0
-/tmp/xc4sqcWOi/driver_tmp_1.s
-7876 2486 0 CODE 0
-7878 2486 0 CODE 0
-7881 2486 0 CODE 0
-7894 2486 0 CODE 0
-7895 2488 0 CODE 0
-7896 248A 0 CODE 0
-7902 248C 0 CODE 0
-7904 248C 0 CODE 0
-7905 248E 0 CODE 0
-7906 2490 0 CODE 0
-7907 2492 0 CODE 0
+/tmp/xcDTvwXIg/driver_tmp_1.s
+7882 2486 0 CODE 0
+7884 2486 0 CODE 0
+7887 2486 0 CODE 0
+7900 2486 0 CODE 0
+7901 2488 0 CODE 0
+7902 248A 0 CODE 0
+7908 248C 0 CODE 0
+7910 248C 0 CODE 0
+7911 248E 0 CODE 0
+7912 2490 0 CODE 0
+7913 2492 0 CODE 0
 mutex.c
 9 24A6 0 CODE 0
 10 24A6 0 CODE 0
@@ -669,8 +665,8 @@ main.c
 63 2388 0 CODE 0
 64 238A 0 CODE 0
 66 238C 0 CODE 0
-/tmp/xc4sqcWOi/driver_tmp_1.s
-9783 8 0 CODE 0
+/tmp/xcDTvwXIg/driver_tmp_1.s
+9779 8 0 CODE 0
 systeme.c
 18 8 0 CODE 0
 21 1A 0 CODE 0
@@ -715,47 +711,47 @@ systeme.c
 84 264 0 CODE 0
 85 266 0 CODE 0
 87 26A 0 CODE 0
-88 26C 0 CODE 0
-91 2E2 0 CODE 0
-92 2F6 0 CODE 0
-94 2FC 0 CODE 0
-96 30E 0 CODE 0
-101 322 0 CODE 0
-102 324 0 CODE 0
-103 326 0 CODE 0
-104 32A 0 CODE 0
-105 32E 0 CODE 0
-106 33E 0 CODE 0
-107 34E 0 CODE 0
-108 35E 0 CODE 0
-110 36E 0 CODE 0
-111 37E 0 CODE 0
-112 38E 0 CODE 0
-113 39E 0 CODE 0
-115 3AE 0 CODE 0
-116 3BE 0 CODE 0
-117 3CE 0 CODE 0
-118 3DE 0 CODE 0
-122 3EE 0 CODE 0
-123 3F2 0 CODE 0
-125 3F4 0 CODE 0
-126 404 0 CODE 0
-127 414 0 CODE 0
-128 424 0 CODE 0
-129 434 0 CODE 0
-132 43C 0 CODE 0
-133 448 0 CODE 0
-135 44E 0 CODE 0
-142 450 0 CODE 0
-143 45C 0 CODE 0
-145 464 0 CODE 0
-149 466 0 CODE 0
-150 46A 0 CODE 0
-151 46E 0 CODE 0
-152 472 0 CODE 0
-153 476 0 CODE 0
-154 47A 0 CODE 0
-155 47E 0 CODE 0
+88 282 0 CODE 0
+91 2FA 0 CODE 0
+92 30E 0 CODE 0
+94 314 0 CODE 0
+96 31C 0 CODE 0
+101 330 0 CODE 0
+102 332 0 CODE 0
+103 334 0 CODE 0
+104 338 0 CODE 0
+105 33C 0 CODE 0
+106 34C 0 CODE 0
+107 35C 0 CODE 0
+108 36C 0 CODE 0
+110 37C 0 CODE 0
+111 38C 0 CODE 0
+112 39C 0 CODE 0
+113 3AC 0 CODE 0
+115 3BC 0 CODE 0
+116 3CC 0 CODE 0
+117 3DC 0 CODE 0
+118 3EC 0 CODE 0
+122 3FC 0 CODE 0
+123 400 0 CODE 0
+125 402 0 CODE 0
+126 412 0 CODE 0
+127 422 0 CODE 0
+128 432 0 CODE 0
+129 442 0 CODE 0
+132 44A 0 CODE 0
+133 456 0 CODE 0
+135 45C 0 CODE 0
+142 45E 0 CODE 0
+143 46A 0 CODE 0
+145 472 0 CODE 0
+149 474 0 CODE 0
+150 478 0 CODE 0
+151 47C 0 CODE 0
+152 480 0 CODE 0
+153 484 0 CODE 0
+154 488 0 CODE 0
+155 48C 0 CODE 0
 T6.c
 8 1002 0 CODE 0
 10 1002 0 CODE 0
