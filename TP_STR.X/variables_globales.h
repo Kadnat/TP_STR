@@ -42,23 +42,23 @@ extern "C" {
 #define     TACHE6                  6
 
 /* Variables de sauvegarde de contexte */
-unsigned char W_TEMPORAIRE         __at(0x60);    // Sauvegarde W
-unsigned char STATUS_TEMPORAIRE    __at(0x61);    // Sauvegarde STATUS
-unsigned char BSR_TEMPORAIRE       __at(0x62);    // Sauvegarde BSR
-unsigned char FSR0H_TEMPORAIRE     __at(0x63);    // Sauvegarde FSR0H
-unsigned char FSR0L_TEMPORAIRE     __at(0x64);    // Sauvegarde FSR0L
-unsigned char DEMARRAGE            __at(0x65);    // Flag de démarrage système
+unsigned char W_TEMPORAIRE         __at(0xA00);    // Sauvegarde W
+unsigned char STATUS_TEMPORAIRE    __at(0xA01);    // Sauvegarde STATUS
+unsigned char BSR_TEMPORAIRE       __at(0xA02);    // Sauvegarde BSR
+unsigned char FSR0H_TEMPORAIRE     __at(0xA03);    // Sauvegarde FSR0H
+unsigned char FSR0L_TEMPORAIRE     __at(0xA04);    // Sauvegarde FSR0L
+unsigned char DEMARRAGE            __at(0xA05);    // Flag de démarrage système
 
 /* Variables système */
-unsigned char queue[NOMBRE_DE_TACHES]  __at(0x69);    // File d'attente des tâches
-unsigned char tache_active             __at(0x6F);    // Tâche en cours d'exécution
-unsigned char pointeur_de_tache        __at(0x70);    // Pointeur de tâche courante
-unsigned int Tick_Count                __at(0x71);    // Compteur système
+unsigned char queue[NOMBRE_DE_TACHES]  __at(0xA09);    // File d'attente des tâches
+unsigned char tache_active             __at(0xA0F);    // Tâche en cours d'exécution
+unsigned char pointeur_de_tache        __at(0xA10);    // Pointeur de tâche courante
+unsigned int Tick_Count                __at(0xA11);    // Compteur système
 
 /* Variables de mutex et communication */
-unsigned char RXTX_libre              __at(0x80);    // État communication série
-unsigned char mutexT1Flag             __at(0x81);    // Mutex tâche 1
-unsigned char mutexT6Flag             __at(0x82);    // Mutex tâche 6
+unsigned char RXTX_libre              __at(0xA14);    // État communication série
+unsigned char mutexT1Flag             __at(0xA15);    // Mutex tâche 1
+unsigned char mutexT6Flag             __at(0xA16);    // Mutex tâche 6
 typedef union {
     unsigned char val; // Repr�sentation brute (8 bits) du mutex
     struct {
@@ -66,7 +66,7 @@ typedef union {
         unsigned attente:7;    // Bits 1-7 : bitmap des t�ches en attente (une t�che par bit)
     };
 } Mutex_t;
-Mutex_t mutex __at(0x83);
+Mutex_t mutex __at(0xA17);
 
 /* Variables Tâche 1 - Gestion des entrées */
 unsigned char n                       __at(0x745);    // Compteur général
