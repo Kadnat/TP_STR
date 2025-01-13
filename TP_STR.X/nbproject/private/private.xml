@@ -4,20 +4,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/semaphore.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/semaphore.h</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T1.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T5.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T3.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T4.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T6.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/rxtx.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/eeprom.h</file>
             <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/variables_globales.h</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/afficheur.c</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/main.h</file>
-            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T6.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T3.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T2.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T6.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T5.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/mutex.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T4.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T3.c</file>
             <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T2.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T1.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/main.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/gui.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/rxtx.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/gui.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T6.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T5.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/mutex.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/T4.h</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/eeprom.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/stid.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/systeme.c</file>
+            <file>file:/Users/nathanaelblavo/Documents/git_real_time/TP_STR/TP_STR.X/main.h</file>
         </group>
     </open-files>
 </project-private>

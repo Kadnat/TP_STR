@@ -1,133 +1,97 @@
 #include "T1.h"
 
-//Les taches 1 et 6 utilisent un s�maphore afin d'�viter que la t1 update les variables HW
-//alors que l'envoie UART n'est pas finie (puisque l'uart envoie les valeurs de ces derni�res)
-void tache1(void)
-{   
-    //acquisition et enregistrement dans des variables globales des entr?es analog et du tactile.
-    
-    unsigned char ma_tache = TACHE1;  
-    unsigned char n; //nombre d'octet de la cle d'identification
-    unsigned char buffer_vitesse_plus = 1;   //sert a modifier la valeur de vitesse sur appuie unique et non continu
-    unsigned char buffer_vitesse_moins = 1;  //sert a modifier la valeur de vitesse sur appuie unique et non continu
-    unsigned char buffer_batterie_plus = 1;  //sert a modifier la valeur de batterie sur appuie unique et non continu
-    unsigned char buffer_batterie_moins = 1; //sert a modifier la valeur de batterie sur appuie unique et non continu
-    di();                                   //disable interrupt
+/**
+ * Tâche 1: Gestion des entrées/sorties et des acquisitions analogiques
+ * Cette tâche utilise un mutex partagé avec la tâche 6 pour éviter les conflits
+ * lors de l'envoi UART des valeurs Hardware
+ */
+void tache1(void) {   
+    // Initialisation des variables
+    n = 0;
+    buffer_vitesse_plus = 1;
+    buffer_vitesse_moins = 1;
+    buffer_batterie = batterie;
+    mutexT1Flag = 0;
+
+    // Configuration initiale du système
+    di();                                  
     initialisation_afficheur();             
     clear_text();
     clear_graphics();
     init_rxtx();
-    RXTX_libre=1;
-    TXREG1='R';
+    RXTX_libre = 1;
+    TXREG1 = 'R';
     ei();
 
-    LED_R=0;LED_G=0;LED_B=0;
-    semtask1FLAG = 0;
+    // Extinction des LEDs
+    LED_R = 0; LED_G = 0; LED_B = 0;
     
-    while(1)
-    {
-        while(semtask1FLAG);
-        
-        //while (PIR1bits.TX1IF==0);   TXREG1='A';while (TXSTA1bits.TRMT==0);
-        
-        // Essaie d'acqu?rir le s?maphore
-        while (semaphore_tryacquire(ma_tache) == 0)
-        {
-        
-            // Si le semaphore n'est pas disponible, 
-            // on attend passivement
-            // (l'ordonnanceur passera a une autre tache)
-        }
-    
-        //Une fois le semaphore acquis on peut passer a la routine d'acquisisiton
-        gui_update_batterie(100);
-        //Acquisition et actualisation des valeurs analogiques jusqu'au tour suivant
-        ANALOG_JOYSTICK_X = lecture_8bit_analogique(JOYSTICK_X);
-        ANALOG_JOYSTICK_Y = lecture_8bit_analogique(JOYSTICK_Y);
-        ANALOG_TEMP_HUILE = lecture_8bit_analogique(TEMPERATURE_HUILE);
-        ANALOG_TEMP_EAU   = lecture_8bit_analogique(TEMPERATURE_EAU);
-    
-        //Acquisition et actualisation sur boutons poussoirs vitesse
-            //BOUTON VITESSE+
-        if((VITESSE_PLUS==0) && (buffer_vitesse_plus==1))      //Si appuie sur bp viteese plus
-        {
-            buffer_vitesse_plus=0;
-            if(vitesse < 6)
-            {
-                vitesse++;
-            }
-        }
-        else if((VITESSE_PLUS==1) && (buffer_vitesse_plus==0))  //Si bp relach? alors raz buffer sur bouton
-        {
-            buffer_vitesse_plus=1;
-        }
-            //BOUTON VITESSE-
-        if((VITESSE_MOINS==0) && (buffer_vitesse_moins==1))      //Si appuie sur bp viteese moins
-        {
-            buffer_vitesse_moins=0;
-            if(vitesse > 0)
-            {
-                vitesse--;
-            }
-        }
-        else if((VITESSE_MOINS==1) && (buffer_vitesse_moins==0))  //Si bp relach? alors raz buffer sur bouton
-        {
-            buffer_vitesse_moins=1;
-        }
-        //////////////////////////////////
-        //Acquisition et actualisation sur boutons poussoirs batterie
-            //BOUTON BATTERIE+
-        if((BATTERIE_PLUS==0) && (buffer_batterie_plus==1))      //Si appuie sur bp viteese plus
-        {
-            buffer_batterie_plus=0;
-            if(batterie < 100)
-            {
-                batterie++;
-            }
-        }
-        else if((BATTERIE_PLUS==1) && (buffer_batterie_plus==0))  //Si bp relach? alors raz buffer sur bouton
-        {
-            buffer_batterie_plus=1;
-        }
-            //BOUTON BATTERIE-
-        if((BATTERIE_MOINS==0) && (buffer_batterie_moins==1))      //Si appuie sur bp viteese moins
-        {
-            buffer_batterie_moins=0;
-            if(batterie > 0)
-            {
-                batterie--;
-            }
-        }
-        else if((BATTERIE_MOINS==1) && (buffer_batterie_moins==0))  //Si bp relach? alors raz buffer sur bouton
-        {
-            buffer_batterie_moins=1;
-        }
-        
-        //LECTURE CLE?  => Voir ce que ?a implique en HW et en traitement SW pour voir si c'est plus pertinent de le mettre ici
-        n=lecture_normale(badge);
-        if (n>0)
-        {
-            if(n<10)
-            {
-                n_octet_badge=n;
-            }
-            else
-            {
-                n_octet_badge=0;
-            }
-        }
-        else
-        {
-            n_octet_badge=0;
-        }
-        //TACTILE GERE DANS TACHE 3 AVEC AFFICHAGE
-        //while (PIR1bits.TX1IF==0);   TXREG1='G';while (TXSTA1bits.TRMT==0);
+    while(1) {
+        if(!mutexT1Flag) {
+            if(mutex_acquire(TACHE1)) {
+                // 1. Lecture des valeurs analogiques
+                ANALOG_JOYSTICK_X = lecture_8bit_analogique(JOYSTICK_X);
+                ANALOG_JOYSTICK_Y = lecture_8bit_analogique(JOYSTICK_Y);
+                ANALOG_TEMP_HUILE = lecture_8bit_analogique(TEMPERATURE_HUILE);
+                ANALOG_TEMP_EAU = lecture_8bit_analogique(TEMPERATURE_EAU);
+                
+                // 2. Gestion de la vitesse
+                // Bouton vitesse+
+                if((VITESSE_PLUS == 0) && (buffer_vitesse_plus == 1)) {
+                    buffer_vitesse_plus = 0;
+                    if(vitesse < 6) vitesse++;
+                } else if((VITESSE_PLUS == 1) && (buffer_vitesse_plus == 0)) {
+                    buffer_vitesse_plus = 1;
+                }
 
+                // Bouton vitesse-
+                if((VITESSE_MOINS==0) && (buffer_vitesse_moins==1))      //Si appuie sur bp viteese moins
+                {
+                    buffer_vitesse_moins=0;
+                    if(vitesse > 0)
+                    {
+                        vitesse--;
+                    }
+                }
+                else if((VITESSE_MOINS==1) && (buffer_vitesse_moins==0))  
+                {
+                    buffer_vitesse_moins=1;
+                }
+                
+                // 3. Gestion des alarmes et de la sécurité
+                if(alarme_eau || alarme_huile || alarme_batterie || 
+                   alarme_frein || alarme_conducteur || alarme_choc) {
+                    vitesse = 0;
+                }
 
-        semaphore_release(ma_tache);
-        semtask1FLAG = 1;
-        
-        T0IF = 1;
+                // 4. Gestion de la batterie
+                if(BATTERIE_PLUS==0 && batterie == 0)     
+                {
+                    batterie = 100;
+                    buffer_batterie = 10000;
+                }
 
+                // 5. Lecture du badge
+                n=lecture_normale(badge);
+                if (n>0)
+                {
+                    if(n<10)
+                    {
+                        n_octet_badge=n;
+                    }
+                    else
+                    {
+                        n_octet_badge=0;
+                    }
+                }
+                else
+                {
+                    n_octet_badge=0;
+                }
+
+                mutex_release(TACHE1);
+                mutexT1Flag = 1;
+            }
+        }
     }
 }

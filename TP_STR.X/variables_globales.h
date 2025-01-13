@@ -5,6 +5,24 @@
  * Created on 29 janvier 2015, 09:59
  */
 
+/*
+ * CARTOGRAPHIE MÉMOIRE:
+ * --------------------
+ * 0x60-0x64 : Variables temporaires pour la sauvegarde de contexte
+ * 0x65      : Variable de démarrage
+ * 0x69-0x6F : File d'attente des tâches
+ * 0x70-0x72 : Variables système (pointeur et compteur)
+ * 0x80-0x83 : Variables de mutex et communication
+ * 0x700-0x745: Variables globales des tâches
+ * 0x801-0x804: Kilométrage
+ * 0x100-0x142: Contexte tâche 1
+ * 0x200-0x242: Contexte tâche 2
+ * 0x300-0x342: Contexte tâche 3
+ * 0x400-0x442: Contexte tâche 4
+ * 0x500-0x542: Contexte tâche 5
+ * 0x600-0x642: Contexte tâche 6
+ */
+
 #ifndef VARIABLES_GLOBALES_H
 #define	VARIABLES_GLOBALES_H
 
@@ -13,7 +31,6 @@ extern "C" {
 #endif
 
 #include "main.h"
-#include "systeme.h"
 
             /* Constantes */
 #define     NOMBRE_DE_TACHES        6
@@ -24,53 +41,93 @@ extern "C" {
 #define     TACHE5                  5
 #define     TACHE6                  6
 
-/* Variables globales */
-    // On stock dans la bank0 on laisse la zone access ram (00-5F) pour le compilateur
-unsigned char W_TEMPORAIRE         __at(0x60);
-unsigned char STATUS_TEMPORAIRE    __at(0x61);
-unsigned char BSR_TEMPORAIRE       __at(0x62);
-unsigned char FSR0H_TEMPORAIRE     __at(0x63);
-unsigned char FSR0L_TEMPORAIRE     __at(0x64);
-unsigned char DEMARRAGE            __at(0x65);
+/* Variables de sauvegarde de contexte */
+unsigned char W_TEMPORAIRE         __at(0xA00);    // Sauvegarde W
+unsigned char STATUS_TEMPORAIRE    __at(0xA01);    // Sauvegarde STATUS
+unsigned char BSR_TEMPORAIRE       __at(0xA02);    // Sauvegarde BSR
+unsigned char FSR0H_TEMPORAIRE     __at(0xA03);    // Sauvegarde FSR0H
+unsigned char FSR0L_TEMPORAIRE     __at(0xA04);    // Sauvegarde FSR0L
+unsigned char DEMARRAGE            __at(0xA05);    // Flag de démarrage système
 
-//Variables touch pad
-unsigned char TP_appui             __at(0x66);
-unsigned char TP_x                 __at(0x67);
-unsigned char TP_y                 __at(0x68);
+/* Variables système */
+unsigned char queue[NOMBRE_DE_TACHES]  __at(0xA09);    // File d'attente des tâches
+unsigned char tache_active             __at(0xA0F);    // Tâche en cours d'exécution
+unsigned char pointeur_de_tache        __at(0xA10);    // Pointeur de tâche courante
+unsigned int Tick_Count                __at(0xA11);    // Compteur système
 
-unsigned char queue[NOMBRE_DE_TACHES]        __at(0x69);
-unsigned char tache_active         __at(0x6F);
-unsigned char pointeur_de_tache    __at(0x70);
-unsigned int Tick_Count            __at(0x71);
-unsigned char vitesse              __at(0x73);
-unsigned char vitesse_1             __at(0x87);  //sample de la valeur de vitesse n-1
-unsigned char batterie             __at(0x74);
+/* Variables de mutex et communication */
+unsigned char RXTX_libre              __at(0xA14);    // État communication série
+unsigned char mutexT1Flag             __at(0xA15);    // Mutex tâche 1
+unsigned char mutexT6Flag             __at(0xA16);    // Mutex tâche 6
+typedef union {
+    unsigned char val; // Repr�sentation brute (8 bits) du mutex
+    struct {
+        unsigned libre:1;      // Bit 0 : 1 si mutex libre, 0 si pris
+        unsigned attente:7;    // Bits 1-7 : bitmap des t�ches en attente (une t�che par bit)
+    };
+} Mutex_t;
+Mutex_t mutex __at(0xA17);
 
-unsigned char badge[10]            __at(0x75);
-unsigned char n_octet_badge        __at(0x7F);
+/* Variables Tâche 1 - Gestion des entrées */
+unsigned char n                       __at(0x745);    // Compteur général
+unsigned char buffer_vitesse_plus     __at(0x700);    // Buffer vitesse +
+unsigned char buffer_vitesse_moins    __at(0x701);    // Buffer vitesse -
+unsigned char vitesse                 __at(0x703);    // Vitesse courante
+unsigned char batterie                __at(0x704);    // Niveau batterie
+unsigned char badge[10]               __at(0x730);    // Buffer badge RFID
+unsigned char n_octet_badge           __at(0x705);    // Compteur octets badge
+unsigned char ANALOG_TEMP_HUILE       __at(0x706);    // Température huile
+unsigned char ANALOG_TEMP_EAU         __at(0x707);    // Température eau
+unsigned char ANALOG_JOYSTICK_X       __at(0x708);    // Position X joystick
+unsigned char ANALOG_JOYSTICK_Y       __at(0x709);    // Position Y joystick
 
-unsigned char RXTX_libre        __at(0x80);
+/* Variables Tâche 2 - Gestion des alarmes */
+unsigned char alarme_frein            __at(0x70A);    // État alarme frein
+unsigned char alarme_cle              __at(0x70B);    // État alarme clé
+unsigned char alarme_eau              __at(0x70C);    // État alarme eau
+unsigned char alarme_huile            __at(0x70D);    // État alarme huile
+unsigned char alarme_batterie         __at(0x70E);    // État alarme batterie
+unsigned char alarme_choc             __at(0x70F);    // État alarme choc
+unsigned char alarme_conducteur       __at(0x710);    // État alarme conducteur
 
-unsigned char ANALOG_TEMP_HUILE     __at(0x81);
-unsigned char ANALOG_TEMP_EAU       __at(0x82);
-unsigned char ANALOG_JOYSTICK_X     __at(0x83);
-unsigned char ANALOG_JOYSTICK_Y     __at(0x84);
+/* Variables Tâche 3 - Gestion de l'EEPROM */
+unsigned char passageT3               __at(0x711);    // Compteur passage T3
+unsigned int counter_T3               __at(0x712);    // Compteur général T3
 
-unsigned char semtask6FLAG __at(0x85);
-unsigned char semtask1FLAG __at(0x86);
+/* Variables Tâche 5 - Gestion batterie */
+unsigned char cptT5                   __at(0x714);    // Compteur T5
+unsigned char passageT5               __at(0x715);    // Compteur passage T5
+unsigned int buffer_batterie          __at(0x716);    // Buffer niveau batterie
 
-unsigned char alarme_frein __at(0x150);
-unsigned char alarme_cle __at(0x151);
-unsigned char alarme_eau __at(0x152);
-unsigned char alarme_huile __at(0x153);
-unsigned char alarme_batterie __at(0x154);
-unsigned char alarme_choc __at(0x155);
-unsigned char alarme_conducteur __at(0x156);
+/* Variables système - Kilométrage */
+unsigned char km[4]                   __at(0x801);    // Compteur kilométrage
+typedef struct {
+    uint8_t priority;
+    uint16_t period;    // multiple de 10ms
+    uint16_t next_tick;
+    uint8_t is_ready;
+} TaskControl;
+TaskControl task_control[NOMBRE_DE_TACHES] __at(0x805);
 
-unsigned int Tick_SaveT2 __at(0x157);
+uint8_t i_m __at(0x900);
+uint8_t i_mutex2 __at(0x901);
+uint8_t highest_prio __at(0x902);
 
-unsigned char BuzzerOn __at(0x159);
+/* Contextes des tâches */
+unsigned char contexte1[66] __at(0x100);    // Contexte tâche 1
+unsigned char contexte2[66] __at(0x200);    // Contexte tâche 2
+unsigned char contexte3[66] __at(0x300);    // Contexte tâche 3
+unsigned char contexte4[66] __at(0x400);    // Contexte tâche 4
+unsigned char contexte5[66] __at(0x500);    // Contexte tâche 5
+unsigned char contexte6[66] __at(0x600);    // Contexte tâche 6
 
+/* Pointeurs de pile des tâches */
+unsigned char STKPTR_T1               __at(0x103);    // Pointeur pile T1
+unsigned char STKPTR_T2               __at(0x203);    // Pointeur pile T2
+unsigned char STKPTR_T3               __at(0x303);    // Pointeur pile T3
+unsigned char STKPTR_T4               __at(0x403);    // Pointeur pile T4
+unsigned char STKPTR_T5               __at(0x503);    // Pointeur pile T5
+unsigned char STKPTR_T6               __at(0x603);    // Pointeur pile T6
 
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
@@ -78,35 +135,6 @@ void (*fptr)(void);
 unsigned short int val_tos;
 unsigned char * puc;
 unsigned char tc[3];
-
-
-//Contexte = 18 registres SFR + 48 octet de 00h � 2Fh = 66 octets
-/* R�servation de la zone de 100h � 142h pour le contexte de la tache 1 */
-/* R�servation de la zone de 200h � 242h pour le contexte de la tache 2 */
-/* Ainsi de suite ...*/
-/* Chaque contexte va utiliser 66 octets (0x42) au d�but de la banque correspondante */
-unsigned char contexte1[66] __at(0x100);
-unsigned char contexte2[66] __at(0x200);
-unsigned char contexte3[66] __at(0x300);
-unsigned char contexte4[66] __at(0x400);
-unsigned char contexte5[66] __at(0x500);
-unsigned char contexte6[66] __at(0x600);
-
-
-unsigned char STKPTR_T1             __at(0x103);
-unsigned char STKPTR_T2             __at(0x203);
-unsigned char STKPTR_T3             __at(0x303);
-unsigned char STKPTR_T4             __at(0x403);
-unsigned char STKPTR_T5             __at(0x503);
-unsigned char STKPTR_T6             __at(0x603);
-
-
-//Variables globales hardware
-unsigned char ANALOG_TEMP_HUILE;
-unsigned char ANALOG_TEMP_EAU;
-unsigned char ANALOG_JOYSTICK_X;
-unsigned char ANALOG_JOYSTICK_Y;
-
 
 #ifdef	__cplusplus
 }
