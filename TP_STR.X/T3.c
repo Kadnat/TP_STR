@@ -8,7 +8,7 @@ void tache3(void) {
     // Initialisation des variables
     counter_T3 = 0;
     passageT3 = 0;
-    unsigned long kilometrage = 0;
+    kilometrage = 0;
     
     // Initialisation de l'EEPROM si nécessaire
     if (EEPROM_Read(0x00) == 0xFF && 

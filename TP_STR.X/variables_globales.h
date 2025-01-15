@@ -94,6 +94,7 @@ unsigned char alarme_conducteur       __at(0x710);    // État alarme conducteur
 /* Variables Tâche 3 - Gestion de l'EEPROM */
 unsigned char passageT3               __at(0x711);    // Compteur passage T3
 unsigned int counter_T3               __at(0x712);    // Compteur général T3
+unsigned long kilometrage             __at(0x720);    //kmage de 720 � 724
 
 /* Variables Tâche 5 - Gestion batterie */
 unsigned char cptT5                   __at(0x714);    // Compteur T5
