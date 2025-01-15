@@ -26,6 +26,9 @@ void tache1(void) {
     // Extinction des LEDs
     LED_R = 0; LED_G = 0; LED_B = 0;
     
+    //espace gui
+    
+    
     while(1) {
         if(!mutexT1Flag) {
             if(mutex_acquire(TACHE1)) {
