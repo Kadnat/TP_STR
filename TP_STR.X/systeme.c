@@ -83,6 +83,10 @@ void __interrupt(high_priority) fonction_d_interruption(void)
         // Trouver la tâche prête la plus prioritaire qui n'est pas bloquée par le mutex
         highest_prio = 0;
         tache_active = 0;
+        
+        //DEBUG MUTEX SIMULTANE
+        if(mutex.attente == 0x42) mutex.libre = 1;
+        
 
         for(i_mutex2 = 0; i_mutex2 < NOMBRE_DE_TACHES; i_mutex2++) {
             if(task_control[i_mutex2].is_ready && 

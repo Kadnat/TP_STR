@@ -89,7 +89,7 @@ void tache1(void) {
                     n_octet_badge=0;
                 }
 
-                mutex_release(TACHE1);
+                mutex_release();
                 mutexT1Flag = 1;
             }
         }

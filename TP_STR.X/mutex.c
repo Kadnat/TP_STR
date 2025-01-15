@@ -21,7 +21,7 @@ char mutex_acquire(char tache) {
     return 0;              // échec acquisition
 }
 
-void mutex_release(char tache) {
+void mutex_release() {
     mutex.libre = 1;
     mutex.attente = 0;     // libère toutes les tâches en attente
 }

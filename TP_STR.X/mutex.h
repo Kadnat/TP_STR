@@ -35,7 +35,7 @@
 
 void mutex_init(void);
 char mutex_acquire(char tache);
-void mutex_release(char tache);
+void mutex_release();
 
 #endif	
 
