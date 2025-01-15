@@ -173,7 +173,6 @@ void gui_update_batterie(char batt)
     draw_dec8(batt);
     if(batt != 0)   //si batterie non nulle
     {
-        LED_G=0;LED_B=0;LED_R=0;    //Affichage écran blanc
         if(batt <= 15)
         {
            for(i = 1; i <= 3; i++)       //Batterie faible (<15%)
@@ -236,7 +235,6 @@ void gui_update_batterie(char batt)
                plot0(234, y-i); plot0(235, y-i);                //effacage cran batt 3/4
                plot0(236, y-i);                               //effaçage cran batt < 99
            } 
-        LED_G=1;LED_B=1;   //Affichage ecran Rouge
     }
 }
 
@@ -371,7 +369,7 @@ void gui_update_temperature(char t_eau, char t_huile)
     goto_lico(14,31);
     draw_dec8(t_huile);
     
-    gui_temp_alert(t_eau, t_huile);
+    //gui_temp_alert(t_eau, t_huile);
 }
 
 void gui_temp_alert(unsigned char t_eau, unsigned char t_huile) //a changer

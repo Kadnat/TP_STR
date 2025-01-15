@@ -63,7 +63,7 @@ void tache6(void) {
                 while (PIR1bits.TX1IF==0); TXREG1=battery_c; while (TXSTA1bits.TRMT==0);
                 while (PIR1bits.TX1IF==0); TXREG1=0xFF; while (TXSTA1bits.TRMT==0);
 
-                mutex_release(TACHE6);
+                mutex_release();
                 mutexT6Flag = 1;
             }
         }
