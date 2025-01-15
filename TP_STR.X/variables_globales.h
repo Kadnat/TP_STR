@@ -69,6 +69,7 @@ typedef union {
 Mutex_t mutex __at(0xA17);
 
 /* Variables Tâche 1 - Gestion des entrées */
+
 unsigned char n                       __at(0x745);    // Compteur général
 unsigned char buffer_vitesse_plus     __at(0x700);    // Buffer vitesse +
 unsigned char buffer_vitesse_moins    __at(0x701);    // Buffer vitesse -
@@ -98,6 +99,7 @@ unsigned int counter_T3               __at(0x712);    // Compteur général T3
 unsigned char cptT5                   __at(0x714);    // Compteur T5
 unsigned char passageT5               __at(0x715);    // Compteur passage T5
 unsigned int buffer_batterie          __at(0x716);    // Buffer niveau batterie
+
 
 /* Variables système - Kilométrage */
 unsigned char km[4]                   __at(0x801);    // Compteur kilométrage
