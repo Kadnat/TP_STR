@@ -67,12 +67,13 @@ def handle_received_data(trame_fragment):
         if "fe" in g.buffer and "ff" in g.buffer:
             # Trouver les indices des délimiteurs
             start_idx = g.buffer.index("fe")
-            end_idx = g.buffer.index("ff", start_idx) + 2  # Inclure "FF"
 
             # Si FF précède FE, supprimer les données invalides avant FE
             if start_idx > g.buffer.index("ff"):
                 g.buffer = g.buffer[start_idx:]
                 return
+            else :
+                end_idx = g.buffer.index("ff", start_idx) + 2  # Inclure "FF"
 
             # Extraire la trame complète
             trame_complete = g.buffer[start_idx:end_idx]
@@ -81,17 +82,21 @@ def handle_received_data(trame_fragment):
             # Réinitialiser le buffer après traitement
             g.buffer = g.buffer[end_idx:]
 
-            g.buffer = ""
+            g.buffer = "" 
             
-            # Traiter la trame complète
-            trame_data = decode_trame(trame_complete)
-            print(f"Trame décodée : {trame_data}")
-
-            # Exécuter les contrôles du chariot élévateur
-            control_forklift(trame_data)    
+            if len(trame_complete) == 20:
+                trame_data = decode_trame(trame_complete)
+                print(f"Trame décodée : {trame_data}")
+                # print("Engine :", g.Engine)
+                # print("Drive :", g.Drive)
+                # print("Forklift :", g.Forklift)
+                # print("HandBrake :", g.HandBrake)
+                # print("WheelDirection :", g.WheelDirection)
+                # Exécuter les contrôles du chariot élévateur
+                control_forklift(trame_data)
 
     except ValueError as e:
-        print(f"Erreur lors du décodage de la trame : {e}")
+        raise
 
 def main():
     """
@@ -107,7 +112,7 @@ def main():
     # trame_thread.start()
 
     # Initialiser le travailleur série pour la communication UART
-    worker = SerialWorker(port='COM5', baudrate=9600)
+    worker = SerialWorker(port='COM8', baudrate=9600)
     worker.data_received.connect(handle_received_data)
 
     # Démarrer la réception

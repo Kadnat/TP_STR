@@ -6,7 +6,7 @@ from src import globals as g
 
 #############
 #   Main    #
-#############
+#############ff f
 
 def control_forklift(state_dict):
     """
@@ -14,7 +14,8 @@ def control_forklift(state_dict):
     et simule les actions sur le clavier en fonction des conditions définies.
     """
     # 1. Motor control
-    if state_dict['key_presence'] and state_dict['seat_presence']:  # Allumer moteur
+    if state_dict['key_presence'] and state_dict['seat_presence'] and state_dict['water_temp'] < 100 and state_dict['oil_temp'] < 110:  
+        # Allumer moteur
         if g.Engine == False:
             pyautogui.press('f')
             g.Engine = True
@@ -25,7 +26,7 @@ def control_forklift(state_dict):
             g.Engine = False
             print("Stop Engine...")
             
-    # 2. Brake control
+    # 2. Brake control 
     if state_dict['hand_brake'] and g.HandBrake == False:           # Activer Frein à main
         pyautogui.press('space')
         g.HandBrake = True
@@ -100,9 +101,9 @@ def control_forklift(state_dict):
         pyautogui.press('f')
         g.Engine = False
     # battery
-    if state_dict['battery'] <= 0 and g.Engine == True:
-        pyautogui.press('f')
-        g.Engine = False
+    # if state_dict['battery'] <= 0 and g.Engine == True:
+    #     pyautogui.press('f')
+    #     g.Engine = False
 
 #########################
 #   Unitary function    #

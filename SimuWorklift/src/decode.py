@@ -1,7 +1,4 @@
 def decode_trame(hex_trame):
-    if len(hex_trame) != 20:
-        raise ValueError("Wrong length for frame ! (20 needed)")
-
     # Start Flag
     start_flag = hex_trame[0:2]
     if start_flag != 'fe':
@@ -9,10 +6,10 @@ def decode_trame(hex_trame):
     
     # 3e & 4e caractère hexadécimal - 4 bits booléens
     status_data = int(hex_trame[2:4], 16)
-    key_presence =  True #not bool(status_data & 0x8)    # 1000
-    seat_presence = not bool(status_data & 0x4)   # 0100
-    hand_brake = not bool(status_data & 0x2)      # 0010
-    shock = not bool(status_data & 0x1)           # 0001
+    key_presence =  bool(status_data & 0x8)   # 1000
+    seat_presence = not bool(status_data & 0x4)         # 0100
+    hand_brake = not bool(status_data & 0x2)            # 0010
+    shock = not bool(status_data & 0x1)                 # 0001
 
     # 5e & 6e caractère hexadécimal - Marche (3 états possibles)
     drive = int(hex_trame[4:6], 16)
